@@ -1,0 +1,7 @@
+usr/bin
+usr/share/kde4
+usr/share/man
+usr/share/pacpl
+extra/README.module extra/sample.m usr/share/doc/pacpl/modules
+extra/README.extra extra/pacpl-gui.kmdr usr/share/doc/pacpl/pacpl-gui
+etc/pacpl/*.conf

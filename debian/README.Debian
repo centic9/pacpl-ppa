@@ -1,0 +1,35 @@
+pacpl for Debian
+----------------
+
+Notes about /etc/pacpl/codecs.conf file:
+
+- Default MP3 encoder is now "twolame" as "toolame" has been removed from the
+  archive.
+
+ -- Cristian Greco <cristian.debian@gmail.com>  Wed, 02 Sep 2009 20:15:34 +0200
+
+Notes about /etc/pacpl/codecs.conf file:
+
+- Default MP3 encoder is set to "toolame" because this is the sole package
+  available in main section;
+- You won't be able to encode to M4A/MP4 or decode from AAC, because "faac"
+  package is not available in main section and "ffmpeg" support is disabled;
+- You won't be able to encode to TTA because "ttaenc" package is not included
+  in Debian at all.
+
+ -- Cristian Greco <cgreco@cs.unibo.it>  Mon, 13 Oct 2008 11:41:59 +0200
+
+
+Notes about the content of modules/ and pacpl-gui/ directories:
+
+- modules: you can use modules to extend pacpl conversion features adding new
+  supported file formats. See modules/README.module for more detailed
+  instructions to create your module, then place it in /etc/pacpl/modules and
+  it will be automatically detected next time you run pacpl.
+
+- pacpl-gui: this is a very simple gui for pacpl. You must install the
+  suggested kommander package in order to run it. Please read
+  pacpl-gui/README.extra (second section).
+
+
+ -- Cristian Greco <cgreco@cs.unibo.it>  Fri, 26 Sep 2008 21:56:57 +0200

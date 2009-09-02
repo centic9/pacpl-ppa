@@ -1,0 +1,12 @@
+#!/usr/bin/make -f
+
+%:
+	dh --with quilt $@
+
+override_dh_auto_configure:
+	# Use --enable-all here, but don't install d3lphin and amarok plugins in
+	# pacpl.install. This is due to a strange behavior of the configure script.
+	./configure --enable-all
+
+override_dh_auto_install:
+	dh_auto_install --destdir=debian/tmp

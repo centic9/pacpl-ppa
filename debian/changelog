@@ -1,0 +1,63 @@
+pacpl (4.0.5-2) unstable; urgency=low
+
+  * debian/control:
+    - remove amarok from Suggests: and package description since
+      pacpl no longer works with amarok2 (see upstream changelog);
+    - recommends twolame instead of toolame, which has been removed
+      from the archive; (Closes: #529537)
+    - build-dep on debhelper (>= 7.0.50) and quilt (>= 0.46-7), thus
+      rewrite debian/rules in a tiny form;
+    - bump up Standards-Version to 3.8.3 (no changes needed);
+    - add Vcs-* stuff.
+  * debian/patches:
+    - 10_twolame_mp3_enc.patch: add support for twolame mp3 encoder;
+    - 01_codecs-conf.patch: new, rename to change the prefix number
+      (20_codecs-conf.patch) and update description;
+    - 30_readme_module.patch: new, provide better documentation for
+      README.module.
+  * debian/pacpl.install: don't install amarok plugin.
+  * README.Debian: add a note about the new twolame support.
+
+ -- Cristian Greco <cristian.debian@gmail.com>  Wed, 02 Sep 2009 20:19:01 +0200
+
+pacpl (4.0.5-1) unstable; urgency=low
+
+  * New upstream version. 
+    - debian/pacpl.install: updated in order to install new konqueror/dolphin
+      plugins and deleted old mime files.
+  * debian/control: bump up Standards-Version to 3.8.1 (no changes required).
+
+ -- Cristian Greco <cristian.debian@gmail.com>  Mon, 06 Apr 2009 13:37:29 +0200
+
+pacpl (4.0.4-1) unstable; urgency=low
+
+  * New upstream version.
+  * debian/rules, debian/pacpl.install: disable d3lphin plugin
+    (removed from Debian).
+  * debian/control:
+    - remove d3lphin from Suggests;
+    - minor changes to description;
+    - added new codecs to Recommends;
+    - delete Build-Depends on autotools-dev;
+    - new maintainer email address. 
+  * debian/pacpl.docs: removed, useless.
+  * debian/copyright: updated.
+
+ -- Cristian Greco <cristian.debian@gmail.com>  Fri, 27 Feb 2009 07:58:26 +0100
+
+pacpl (4.0.3-2) unstable; urgency=low
+
+  * Fix a (stupid but) potentially RC bug: "Depends" on all needed perl
+    modules, not only "Build-Depends".
+  * debian/control, debian/rules, README.source: Build-Depends on quilt patch
+    system and add a patch for /etc/pacpl/codecs.conf and new notes to
+    README.Debian to explain unavailable enc/decoding options for Debian.
+
+ -- Cristian Greco <cgreco@cs.unibo.it>  Mon, 13 Oct 2008 11:41:59 +0200
+
+pacpl (4.0.3-1) unstable; urgency=low
+
+  * Initial release (Closes: #492666)
+
+ -- Cristian Greco <cgreco@cs.unibo.it>  Fri, 26 Sep 2008 21:56:57 +0200
+

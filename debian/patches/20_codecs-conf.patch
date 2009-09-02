@@ -1,0 +1,42 @@
+Author: Cristian Greco <cristian.debian@gmail.com>
+Description: Set default encoders and decoders for Debian to packages
+availables in main section. In particular, set 'twolame' as default mp3 encoder
+and 'ffmpeg' as default tta decoder.
+--- a/codecs.conf
++++ b/codecs.conf
+@@ -1,6 +1,17 @@
+ # specify the default encoder/decoder for each file format.
+ # 
+ # FORMAT = encoder,decoder <-- must look exactly like this.
++#
++#
++# Debian specific notes about encoder/decoder support.
++# #############################################################################
++# - Default MP3 encoder is set to "twolame" because this is the only supported
++#   package available in main section;
++# - You won't be able to encode to M4A/MP4 or decode from AAC, because "faac"
++#   package is not available in main section and "ffmpeg" support is disabled;
++# - You won't be able to encode to TTA because "ttaenc" package is not
++#   available in Debian at all.
++# #############################################################################
+ 
+ # encoders: faac, ffmpeg
+ # decoders: faad, ffmpeg, mplayer
+@@ -27,7 +38,7 @@
+ # encoders: lame, bladeenc, gogo, toolame, ffmpeg, sox
+ # decoders: lame, ffmpeg, mplayer, sox
+ #
+-MP3 = lame,lame
++MP3 = twolame,lame
+ 
+ # encoders: oggenc, ffmpeg, sox
+ # decoders: oggdec, ffmpeg, mplayer, sox
+@@ -37,7 +48,7 @@
+ # encoders: ttaenc
+ # decoders: ttaenc, ffmpeg, mplayer
+ #
+-TTA = ttaenc,ttaenc
++TTA = ttaenc,ffmpeg
+ 
+ # encoders: wavpack
+ # decoders: wvunpack, ffmpeg, mplayer
