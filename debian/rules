@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 
 %:
-	dh --with quilt $@
+	dh $@
 
 override_dh_auto_configure:
 	# Use --enable-all here, but don't install d3lphin and amarok plugins in
