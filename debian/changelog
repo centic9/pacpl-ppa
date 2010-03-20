@@ -1,4 +1,10 @@
-pacpl (4.0.5-3ubuntu0~ppa1) lucid; urgency=low
+pacpl (4.0.5-3ubuntu0~ppa2) lucid; urgency=low
+
+  * Upload for lucid because quilt format 3.0 is not supported in karmic.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sat, 20 Mar 2010 21:37:30 +0100
+
+pacpl (4.0.5-3ubuntu0~ppa1) karmic; urgency=low
 
   * Add support for ape format via jmac java application from libjmac-java as
     application mac is not available at all on Ubuntu.
