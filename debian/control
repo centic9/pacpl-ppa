@@ -28,7 +28,7 @@ Depends: ${perl:Depends}, ${misc:Depends},
          libaudio-wma-perl
 Recommends: cdparanoia, faad, ffmpeg, flac, flake, mplayer,
  mppenc, sndfile-programs, sox, speex, twolame, vorbis-tools, wavpack
-Suggests: konqueror, dolphin, kommander
+Suggests: konqueror, dolphin, kommander, libjmac-java
 Description: multi-purpose audio converter/ripper/tagger script
  Perl Audio Converter is a tool for converting multiple audio types from one
  format to another using various external encoders/decoders.
