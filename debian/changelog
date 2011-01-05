@@ -1,3 +1,10 @@
+pacpl (4.0.5-3ubuntu0~ppa3) lucid; urgency=low
+
+  * Try to use twolame for mp2, not for mp3, which is incorrect.
+  * Avoid having large patches due to cut off blanks at line-end.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Wed, 05 Jan 2011 19:03:02 +0100
+
 pacpl (4.0.5-3ubuntu0~ppa2) lucid; urgency=low
 
   * Upload for lucid because quilt format 3.0 is not supported in karmic.

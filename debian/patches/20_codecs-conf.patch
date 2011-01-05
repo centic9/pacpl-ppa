@@ -2,8 +2,10 @@ Author: Cristian Greco <cristian.debian@gmail.com>
 Description: Set default encoders and decoders for Debian to packages
 availables in main section. In particular, set 'twolame' as default mp3 encoder
 and 'ffmpeg' as default tta decoder.
---- a/codecs.conf
-+++ b/codecs.conf
+Index: pacpl-4.0.5/codecs.conf
+===================================================================
+--- pacpl-4.0.5.orig/codecs.conf	2011-01-05 19:04:56.000000000 +0100
++++ pacpl-4.0.5/codecs.conf	2011-01-05 19:04:58.000000000 +0100
 @@ -1,6 +1,17 @@
  # specify the default encoder/decoder for each file format.
  # 
@@ -22,16 +24,7 @@ and 'ffmpeg' as default tta decoder.
  
  # encoders: faac, ffmpeg
  # decoders: faad, ffmpeg, mplayer
-@@ -27,7 +38,7 @@
- # encoders: lame, bladeenc, gogo, toolame, ffmpeg, sox
- # decoders: lame, ffmpeg, mplayer, sox
- #
--MP3 = lame,lame
-+MP3 = twolame,lame
- 
- # encoders: oggenc, ffmpeg, sox
- # decoders: oggdec, ffmpeg, mplayer, sox
-@@ -37,7 +48,7 @@
+@@ -46,7 +57,7 @@
  # encoders: ttaenc
  # decoders: ttaenc, ffmpeg, mplayer
  #

@@ -1,4 +1,4 @@
-10_twolame_mp3_enc.patch
+50_add_jmac_ape.diff
+60_twolame_mp2.diff
 20_codecs-conf.patch
 30_readme_module.patch
-40_add_jmac_ape.diff
