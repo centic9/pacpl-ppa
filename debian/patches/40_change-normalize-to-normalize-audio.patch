@@ -1,0 +1,23 @@
+Description: Correct "normalize" program and package name.
+ "normalize" Debian package was renamed to "normalize-audio", 
+ So, program name used in pacpl is corrected in this patch.
+Author: Maxime Chatelle <mmyc@gmx.com>
+Bug-Debian: http://bugs.debian.org/589790
+Forwarded: not-needed
+Last-Updated: 2011-06-20
+
+Index: pacpl/pacpl
+===================================================================
+--- pacpl.orig/pacpl	2011-06-20 17:00:08.492983116 +0200
++++ pacpl/pacpl	2011-06-20 17:04:09.504983025 +0200
+@@ -1833,8 +1833,8 @@
+        }
+        
+        # normalize wav file before encoding to output format
+-       perror("no_app","normalize") if $normalize and not `which normalize 2>/dev/null`;
+-       system("normalize $nopts \"$outf.$$.wav\"") if $normalize;
++       perror("no_app","normalize") if $normalize and not `which normalize-audio 2>/dev/null`;
++       system("normalize-audio $nopts \"$outf.$$.wav\"") if $normalize;
+ 
+        # copy meta-data from input file to %tag_name 
+        read_tags("$inf.$infmt", "$if") if $run{$if}{TAGS}{READ} == 1 and not $dryrun;

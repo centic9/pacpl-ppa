@@ -1,8 +1,8 @@
 Source: pacpl
 Section: sound
 Priority: optional
-Maintainer: Cristian Greco <cristian@regolo.cc>
-Build-Depends: debhelper (>= 7.0.50),
+Maintainer: Maxime Chatelle <mmyc@gmx.com>
+Build-Depends: debhelper (>= 8.0),
                libcddb-get-perl,
                libogg-vorbis-header-perl,
                libmp3-tag-perl,
@@ -10,11 +10,10 @@ Build-Depends: debhelper (>= 7.0.50),
                libaudio-flac-header-perl,
                libaudio-musepack-perl,
                libaudio-wma-perl
-Standards-Version: 3.8.3
+Standards-Version: 3.9.2
 Homepage: http://pacpl.sourceforge.net
 Vcs-Git: git://git.debian.org/git/collab-maint/pacpl.git
 Vcs-Browser: http://git.debian.org/?p=collab-maint/pacpl.git
-DM-Upload-Allowed: yes
 
 Package: pacpl
 Architecture: all
@@ -26,9 +25,9 @@ Depends: ${perl:Depends}, ${misc:Depends},
          libaudio-flac-header-perl,
          libaudio-musepack-perl,
          libaudio-wma-perl
-Recommends: cdparanoia, faad, ffmpeg, flac, flake, mplayer,
- mppenc, sndfile-programs, sox, speex, twolame, vorbis-tools, wavpack
-Suggests: konqueror, dolphin, kommander, libjmac-java
+Recommends: cdparanoia, faad, ffmpeg, flac, flake, mplayer, lame, 
+ mppenc, sndfile-programs, sox, speex, vorbis-tools, wavpack, normalize-audio
+Suggests: konqueror, dolphin, kommander, twolame
 Description: multi-purpose audio converter/ripper/tagger script
  Perl Audio Converter is a tool for converting multiple audio types from one
  format to another using various external encoders/decoders.
@@ -47,4 +46,4 @@ Description: multi-purpose audio converter/ripper/tagger script
  a simple kommander gui and extensions for Dolphin and Konqueror.
  You can write your own modules in order to add support for new file formats.
  .
- See README.Debian for more informations on supported formats.
+ See README.Debian for more information about supported formats.

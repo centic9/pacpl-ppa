@@ -1,10 +1,10 @@
 Author: Cristian Greco <cristian.debian@gmail.com>
 Description: Better documentation for README.module (in particular, specify
 where to install user modules).
-Index: pacpl-4.0.5/extra/README.module
+Index: pacpl/extra/README.module
 ===================================================================
---- pacpl-4.0.5.orig/extra/README.module	2011-01-05 18:53:24.000000000 +0100
-+++ pacpl-4.0.5/extra/README.module	2011-01-05 19:04:19.000000000 +0100
+--- pacpl.orig/extra/README.module	2011-06-19 17:09:52.226973695 +0200
++++ pacpl/extra/README.module	2011-06-19 17:15:36.598973561 +0200
 @@ -1,8 +1,14 @@
  USER MODULES:
  

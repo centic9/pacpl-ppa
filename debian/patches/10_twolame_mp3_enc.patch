@@ -1,5 +1,6 @@
-Author: Cristian Greco <cristian.debian@gmail.com>
 Description: Add support for "twolame" mp3 encoder.
+Author: Cristian Greco <cristian.debian@gmail.com>
+
 --- a/pacpl
 +++ b/pacpl
 @@ -537,6 +537,17 @@

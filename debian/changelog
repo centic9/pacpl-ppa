@@ -1,22 +1,58 @@
-pacpl (4.0.5-3ubuntu0~ppa3) lucid; urgency=low
+pacpl (4.0.5-7) unstable; urgency=low
 
-  * Try to use twolame for mp2, not for mp3, which is incorrect.
-  * Avoid having large patches due to cut off blanks at line-end.
+  * debian/control:
+    - fix a typo in long description.
+    - added lame in Recommends.
+  * debian/README.Debian:
+    - removed note about lame-not-in-debian.
+  * removed 35_pacpl_patent-warning-for-mp3-using-lame.patch, lame is now in
+    Debian main, so, this patch is no more needed. (Closes: #636388)
 
- -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Wed, 05 Jan 2011 19:03:02 +0100
+ -- Maxime Chatelle <mmyc@gmx.com>  Thu, 18 Aug 2011 20:00:51 +0200
 
-pacpl (4.0.5-3ubuntu0~ppa2) lucid; urgency=low
+pacpl (4.0.5-6) unstable; urgency=low
 
-  * Upload for lucid because quilt format 3.0 is not supported in karmic.
+  * debian/patches
+    - added 50_replace-depreciated-switch-by-given-for-perl5.14.patch
+      to use given/when instead of switch/case syntax (Closes: #629464)
 
- -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sat, 20 Mar 2010 21:37:30 +0100
+ -- Maxime Chatelle <mmyc@gmx.com>  Thu, 23 Jun 2011 22:47:15 +0200
 
-pacpl (4.0.5-3ubuntu0~ppa1) karmic; urgency=low
+pacpl (4.0.5-5) unstable; urgency=low
 
-  * Add support for ape format via jmac java application from libjmac-java as
-    application mac is not available at all on Ubuntu.
+  * debian/control:   
+    - New maintainer: Maxime Chatelle <mmyc@gmx.com> (closes: #608808)
+    - Bump up to policy 3.9.2. (no changes)
+    - moved 'twolame' Recommand to Suggest.
+    - added Recommand: normalize-audio (Closes: #589790)
+    - Up to debhelper 8.0+
+  * debian/compat:
+    - set to debhelper 8
+  * debian/patches:
+    - Removed 20_codecs-conf.patch falling back to original, 
+      using lame as mp3 encoder. Twolame encode to mp2, not mp3.
+    - Added 35_pacpl_patent-warning-for-mp3-using-lame.patch to issue
+      warning about patented mp3 file format (see patch header for detail)
+      And, changed default mp3 decoder to ffmpeg (was lame)(included in patch).
+      (the two previous Closes: #608601)
+    - Added patch : 40_change-normalize-to-normalize-audio.patch 
+      (Closes: #589790)
+    - Added patch: 45_case-independent-flac-tags.patch
+      thank to Luca Niccoli <lultimouomo@gmail.com> 
+      (Closes: #561459)
+  * debian/README.Debian: Added notice about mp3 encoding.
 
- -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sat, 20 Mar 2010 20:39:17 +0100
+ -- Maxime Chatelle <mmyc@gmx.com>  Mon, 20 Jun 2011 23:00:34 +0200
+
+pacpl (4.0.5-4) unstable; urgency=low
+
+  * Orphaning package.
+  * debian/control:
+    - set maintainer to Debian QA Group.
+    - fix spelling-error-in-description.
+    - bump up Standards-Version to 3.9.1 (no changes).
+
+ -- Cristian Greco <cristian@regolo.cc>  Mon, 03 Jan 2011 18:02:44 +0100
 
 pacpl (4.0.5-3) unstable; urgency=low
 

@@ -1,4 +1,5 @@
-50_add_jmac_ape.diff
-60_twolame_mp2.diff
-20_codecs-conf.patch
+10_twolame_mp3_enc.patch
 30_readme_module.patch
+40_change-normalize-to-normalize-audio.patch
+45_case-independent-flac-tags.patch
+50_replace-depreciated-switch-by-given-for-perl5.14.patch

@@ -1,6 +1,5 @@
 pacpl for Debian
 ----------------
-
 Notes about /etc/pacpl/codecs.conf file:
 
 - Default MP3 encoder is now "twolame" as "toolame" has been removed from the
