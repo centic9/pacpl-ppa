@@ -25,7 +25,8 @@ Depends: ${perl:Depends}, ${misc:Depends},
          libmp4-info-perl,
          libaudio-flac-header-perl,
          libaudio-musepack-perl,
-         libaudio-wma-perl
+         libaudio-wma-perl,
+         libaudio-scan-perl
 Recommends: cdparanoia, faad, ffmpeg, flac, flake, mplayer, lame, 
  mppenc, sndfile-programs, sox, speex, vorbis-tools, wavpack, normalize-audio
 Suggests: konqueror, dolphin, kommander, twolame, libjmac-java
