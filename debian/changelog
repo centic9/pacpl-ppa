@@ -1,29 +1,12 @@
-pacpl (4.0.5-7ubuntu1~ppa4) precise; urgency=low
+pacpl (4.0.5-7.1) unstable; urgency=low
 
-  * Upload for Precise.
+  * Non-maintainer upload.
+  * debian/control: B-D and Depend on libogg-vorbis-header-pureperl-perl.
+  * debian/patches:
+    - added 60_use-ogg-vorbis-header-pureperl.patch to avoid use of
+      Ogg::Vorbis::Header. (Closes: #655405)
 
- -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sun, 06 May 2012 10:51:52 +0200
-
-pacpl (4.0.5-7ubuntu1~ppa2) lucid; urgency=low
-
-  * Add runtime dependency on Audio::Scan as well.
-
- -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sun, 20 Nov 2011 19:41:00 +0100
-
-pacpl (4.0.5-7ubuntu1~ppa1) lucid; urgency=low
-
-  * Add patch which uses Audio::Scan instead of Audio::APETags, 
-   (LP: #892610.)
-
- -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sun, 20 Nov 2011 10:02:57 +0100
-
-pacpl (4.0.5-7ubuntu0+ppa1) lucid; urgency=low
-
-  * Upport changes to -7 from debian, remaining patches
-     - add ape using jmac and java
-     - add mp2 using twolame
-
- -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Tue, 06 Sep 2011 23:04:00 +0200
+ -- Tim Retout <diocles@debian.org>  Mon, 09 Apr 2012 22:41:38 +0100
 
 pacpl (4.0.5-7) unstable; urgency=low
 
@@ -80,26 +63,6 @@ pacpl (4.0.5-4) unstable; urgency=low
     - bump up Standards-Version to 3.9.1 (no changes).
 
  -- Cristian Greco <cristian@regolo.cc>  Mon, 03 Jan 2011 18:02:44 +0100
-
-pacpl (4.0.5-3ubuntu0~ppa3) lucid; urgency=low
-
-  * Try to use twolame for mp2, not for mp3, which is incorrect.
-  * Avoid having large patches due to cut off blanks at line-end.
-
- -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Wed, 05 Jan 2011 19:03:02 +0100
-
-pacpl (4.0.5-3ubuntu0~ppa2) lucid; urgency=low
-
-  * Upload for lucid because quilt format 3.0 is not supported in karmic.
-
- -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sat, 20 Mar 2010 21:37:30 +0100
-
-pacpl (4.0.5-3ubuntu0~ppa1) karmic; urgency=low
-
-  * Add support for ape format via jmac java application from libjmac-java as
-    application mac is not available at all on Ubuntu.
-
- -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sat, 20 Mar 2010 20:39:17 +0100
 
 pacpl (4.0.5-3) unstable; urgency=low
 

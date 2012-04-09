@@ -7,10 +7,10 @@ Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=629464
 Last-Update: 2011-06-23
 Forwarded: yes, https://sourceforge.net/tracker/?func=detail&aid=3325345&group_id=139264&atid=742827
 
-Index: pacpl-4.0.5.ppa/pacpl
+Index: pacpl/pacpl
 ===================================================================
---- pacpl-4.0.5.ppa.orig/pacpl	2011-09-06 23:07:54.000000000 +0200
-+++ pacpl-4.0.5.ppa/pacpl	2011-09-06 23:09:44.000000000 +0200
+--- pacpl.orig/pacpl	2011-06-23 22:18:35.815058656 +0200
++++ pacpl/pacpl	2011-06-23 22:18:35.827058656 +0200
 @@ -19,7 +19,7 @@
  
  use strict;
@@ -20,7 +20,7 @@ Index: pacpl-4.0.5.ppa/pacpl
  use Getopt::Long;
  use File::Basename;
  use File::Find;
-@@ -1924,99 +1924,99 @@
+@@ -1950,99 +1950,99 @@
  
      my $opt = shift;
  
@@ -212,7 +212,7 @@ Index: pacpl-4.0.5.ppa/pacpl
        }
  
  }
-@@ -2053,28 +2053,23 @@
+@@ -2079,28 +2079,23 @@
  
      my $type = shift;
  
@@ -258,7 +258,7 @@ Index: pacpl-4.0.5.ppa/pacpl
      }
  }
  
-@@ -2086,9 +2081,9 @@
+@@ -2112,9 +2107,9 @@
      my ($in_file, $in_format) = @_;
      my $tag_module = $run{$in_format}{TAGS}{MODULE};
  
@@ -270,7 +270,7 @@ Index: pacpl-4.0.5.ppa/pacpl
                              my $mp3tag = $tag_module->new($in_file);
                              my @tags   = $mp3tag->autoinfo();
  
-@@ -2103,7 +2098,7 @@
+@@ -2129,7 +2124,7 @@
                              return 0;
                         }
  
@@ -279,7 +279,7 @@ Index: pacpl-4.0.5.ppa/pacpl
                              my $ogg_tag = $tag_module->new($in_file);
  
                              my ($tit, $tra, $art, $alb, $com, $yea, $gen);
-@@ -2130,7 +2125,7 @@
+@@ -2156,7 +2151,7 @@
                              return 0;
                         }
                         
@@ -288,7 +288,7 @@ Index: pacpl-4.0.5.ppa/pacpl
                              my $pid  = open(SPX, "speexdec \"$in_file\" tmp1-$$.wav 2>&1 |") or perror("opening_file","$in_file");
                              my @data = <SPX>;
                                 @data = grep(!/^$|^#/, @data);
-@@ -2155,7 +2150,7 @@
+@@ -2181,7 +2176,7 @@
                               return 0;
                         }
  
@@ -297,7 +297,7 @@ Index: pacpl-4.0.5.ppa/pacpl
                              my $flac_tag = $tag_module->new($in_file)->tags();
  
                                 if ($flac_tag->{title}) {
-@@ -2197,7 +2192,7 @@
+@@ -2223,7 +2218,7 @@
                              return 0;
                         }
  
@@ -306,7 +306,7 @@ Index: pacpl-4.0.5.ppa/pacpl
                              my $mp4_tag = $tag_module->new($in_file);
  
                                 $tag_name{title}   = $mp4_tag->{TITLE}    if $mp4_tag->{TITLE};
-@@ -2211,7 +2206,7 @@
+@@ -2237,7 +2232,7 @@
                              return 0;
                         }
  
@@ -315,7 +315,7 @@ Index: pacpl-4.0.5.ppa/pacpl
  
                              my $mpc_tag = $tag_module->new($in_file)->tags();
  
-@@ -2226,7 +2221,7 @@
+@@ -2252,7 +2247,7 @@
                              return 0;
                         }
  
@@ -324,7 +324,7 @@ Index: pacpl-4.0.5.ppa/pacpl
                              my $wv_tag = $tag_module->getTags($in_file)->{'tags'};
  
                                 $tag_name{title}   = $wv_tag->{TITLE}   if $wv_tag->{TITLE};
-@@ -2240,7 +2235,7 @@
+@@ -2266,7 +2261,7 @@
                              return 0;
                         }
  
@@ -333,7 +333,7 @@ Index: pacpl-4.0.5.ppa/pacpl
                              my $wma_tag = Audio::WMA->new($in_file)->tags();
  
                                 $tag_name{title}   = $wma_tag->{TITLE}       if $wma_tag->{TITLE};
-@@ -2254,7 +2249,7 @@
+@@ -2280,7 +2275,7 @@
                              return 0;
                         }
  
@@ -342,7 +342,7 @@ Index: pacpl-4.0.5.ppa/pacpl
      }
  }
  
-@@ -2264,9 +2259,9 @@
+@@ -2290,9 +2285,9 @@
      my ($out_file, $out_format) = @_;
      my  $tag_m;
  
@@ -354,7 +354,7 @@ Index: pacpl-4.0.5.ppa/pacpl
                              $tag_m = MP3::Tag->new("$out_file");
                              
                              # ID3v2 Tags
-@@ -2299,7 +2294,7 @@
+@@ -2325,7 +2320,7 @@
  
                          }
  
@@ -363,7 +363,7 @@ Index: pacpl-4.0.5.ppa/pacpl
                              $tag_m = Ogg::Vorbis::Header->new("$out_file");
                              
                              # this prevents duplicate tags =)
-@@ -2320,7 +2315,7 @@
+@@ -2346,7 +2341,7 @@
  
                          }
  
@@ -372,7 +372,7 @@ Index: pacpl-4.0.5.ppa/pacpl
                              $tag_m = Audio::FLAC::Header->new("$out_file");
                           my $tag_i = $tag_m->tags();
  
-@@ -2337,7 +2332,7 @@
+@@ -2363,7 +2358,7 @@
                            return 0;
                         }
  
@@ -381,10 +381,10 @@ Index: pacpl-4.0.5.ppa/pacpl
      }
  
  }
-Index: pacpl-4.0.5.ppa/configure
+Index: pacpl/configure
 ===================================================================
---- pacpl-4.0.5.ppa.orig/configure	2011-09-06 23:03:21.000000000 +0200
-+++ pacpl-4.0.5.ppa/configure	2011-09-06 23:07:54.000000000 +0200
+--- pacpl.orig/configure	2011-06-23 22:21:04.463058598 +0200
++++ pacpl/configure	2011-06-23 22:21:28.507058589 +0200
 @@ -1,18 +1,22 @@
  #! /bin/sh
  # Guess values for system-dependent variables and create Makefiles.
@@ -4373,10 +4373,10 @@ Index: pacpl-4.0.5.ppa/configure
  $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
  fi
  
-Index: pacpl-4.0.5.ppa/configure.ac
+Index: pacpl/configure.ac
 ===================================================================
---- pacpl-4.0.5.ppa.orig/configure.ac	2011-09-06 23:03:21.000000000 +0200
-+++ pacpl-4.0.5.ppa/configure.ac	2011-09-06 23:07:54.000000000 +0200
+--- pacpl.orig/configure.ac	2011-06-23 22:20:26.775058613 +0200
++++ pacpl/configure.ac	2011-06-23 22:20:49.791058604 +0200
 @@ -61,8 +61,7 @@
  echo "checking for required perl modules..."
  echo ""

@@ -6,11 +6,11 @@ Bug-Debian: http://bugs.debian.org/589790
 Forwarded: not-needed
 Last-Updated: 2011-06-20
 
-Index: pacpl-4.0.5.ppa/pacpl
+Index: pacpl/pacpl
 ===================================================================
---- pacpl-4.0.5.ppa.orig/pacpl	2011-09-06 23:07:54.000000000 +0200
-+++ pacpl-4.0.5.ppa/pacpl	2011-09-06 23:09:48.000000000 +0200
-@@ -1807,8 +1807,8 @@
+--- pacpl.orig/pacpl	2011-06-20 17:00:08.492983116 +0200
++++ pacpl/pacpl	2011-06-20 17:04:09.504983025 +0200
+@@ -1833,8 +1833,8 @@
         }
         
         # normalize wav file before encoding to output format
