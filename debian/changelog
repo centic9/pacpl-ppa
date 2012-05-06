@@ -1,3 +1,9 @@
+pacpl (4.0.5-7ubuntu1~ppa4) precise; urgency=low
+
+  * Upload for Precise.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sun, 06 May 2012 10:51:52 +0200
+
 pacpl (4.0.5-7ubuntu1~ppa2) lucid; urgency=low
 
   * Add runtime dependency on Audio::Scan as well.
