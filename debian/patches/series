@@ -6,3 +6,4 @@
 50_add_jmac_ape.diff
 60_twolame_mp2.diff
 70_use_audio_scan.patch
+60_use-ogg-vorbis-header-pureperl.patch

@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Maxime Chatelle <mmyc@gmx.com>
 Build-Depends: debhelper (>= 8.0),
                libcddb-get-perl,
-               libogg-vorbis-header-perl,
+               libogg-vorbis-header-pureperl-perl,
                libmp3-tag-perl,
                libmp4-info-perl,
                libaudio-flac-header-perl,
@@ -20,7 +20,7 @@ Package: pacpl
 Architecture: all
 Depends: ${perl:Depends}, ${misc:Depends},
          libcddb-get-perl,
-         libogg-vorbis-header-perl,
+         libogg-vorbis-header-pureperl-perl,
          libmp3-tag-perl,
          libmp4-info-perl,
          libaudio-flac-header-perl,

@@ -1,3 +1,19 @@
+pacpl (4.0.5-7.1ubuntu0~ppa1) precise; urgency=low
+
+  * Rebase to 4.0.5-7.1 debian version.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sun, 30 Sep 2012 00:19:58 +0200
+
+pacpl (4.0.5-7.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * debian/control: B-D and Depend on libogg-vorbis-header-pureperl-perl.
+  * debian/patches:
+    - added 60_use-ogg-vorbis-header-pureperl.patch to avoid use of
+      Ogg::Vorbis::Header. (Closes: #655405)
+
+ -- Tim Retout <diocles@debian.org>  Mon, 09 Apr 2012 22:41:38 +0100
+
 pacpl (4.0.5-7ubuntu1~ppa4) precise; urgency=low
 
   * Upload for Precise.
