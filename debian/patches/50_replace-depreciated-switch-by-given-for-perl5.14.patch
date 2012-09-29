@@ -7,10 +7,10 @@ Bug-Debian: http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=629464
 Last-Update: 2011-06-23
 Forwarded: yes, https://sourceforge.net/tracker/?func=detail&aid=3325345&group_id=139264&atid=742827
 
-Index: pacpl-4.0.5.ppa/pacpl
+Index: git/pacpl
 ===================================================================
---- pacpl-4.0.5.ppa.orig/pacpl	2011-09-06 23:07:54.000000000 +0200
-+++ pacpl-4.0.5.ppa/pacpl	2011-09-06 23:09:44.000000000 +0200
+--- git.orig/pacpl	2012-09-30 00:26:07.000000000 +0200
++++ git/pacpl	2012-09-30 00:26:21.000000000 +0200
 @@ -19,7 +19,7 @@
  
  use strict;
@@ -381,10 +381,10 @@ Index: pacpl-4.0.5.ppa/pacpl
      }
  
  }
-Index: pacpl-4.0.5.ppa/configure
+Index: git/configure
 ===================================================================
---- pacpl-4.0.5.ppa.orig/configure	2011-09-06 23:03:21.000000000 +0200
-+++ pacpl-4.0.5.ppa/configure	2011-09-06 23:07:54.000000000 +0200
+--- git.orig/configure	2012-09-30 00:25:45.000000000 +0200
++++ git/configure	2012-09-30 00:26:20.000000000 +0200
 @@ -1,18 +1,22 @@
  #! /bin/sh
  # Guess values for system-dependent variables and create Makefiles.
@@ -4373,10 +4373,10 @@ Index: pacpl-4.0.5.ppa/configure
  $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
  fi
  
-Index: pacpl-4.0.5.ppa/configure.ac
+Index: git/configure.ac
 ===================================================================
---- pacpl-4.0.5.ppa.orig/configure.ac	2011-09-06 23:03:21.000000000 +0200
-+++ pacpl-4.0.5.ppa/configure.ac	2011-09-06 23:07:54.000000000 +0200
+--- git.orig/configure.ac	2012-09-30 00:25:46.000000000 +0200
++++ git/configure.ac	2012-09-30 00:26:20.000000000 +0200
 @@ -61,8 +61,7 @@
  echo "checking for required perl modules..."
  echo ""

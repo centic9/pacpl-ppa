@@ -1,7 +1,7 @@
-Index: pacpl-4.0.5.ppa/pacpl
+Index: git/pacpl
 ===================================================================
---- pacpl-4.0.5.ppa.orig/pacpl	2011-11-20 10:12:24.000000000 +0100
-+++ pacpl-4.0.5.ppa/pacpl	2011-11-20 10:12:24.000000000 +0100
+--- git.orig/pacpl	2012-09-30 00:26:07.000000000 +0200
++++ git/pacpl	2012-09-30 00:26:18.000000000 +0200
 @@ -32,7 +32,7 @@
  use MP4::Info;
  use Audio::WMA;
@@ -29,10 +29,10 @@ Index: pacpl-4.0.5.ppa/pacpl
  
                                 $tag_name{title}   = $wv_tag->{TITLE}   if $wv_tag->{TITLE};
                                 $tag_name{track}   = $wv_tag->{TRACK}   if $wv_tag->{TRACK};
-Index: pacpl-4.0.5.ppa/configure
+Index: git/configure
 ===================================================================
---- pacpl-4.0.5.ppa.orig/configure	2011-11-20 10:12:24.000000000 +0100
-+++ pacpl-4.0.5.ppa/configure	2011-11-20 10:13:11.000000000 +0100
+--- git.orig/configure	2012-09-30 00:26:07.000000000 +0200
++++ git/configure	2012-09-30 00:26:18.000000000 +0200
 @@ -3041,7 +3041,7 @@
  			CDDB_get
  			Ogg::Vorbis::Header
@@ -42,10 +42,10 @@ Index: pacpl-4.0.5.ppa/configure
  			Audio::WMA
  			MP3::Tag
  			MP4::Info
-Index: pacpl-4.0.5.ppa/configure.ac
+Index: git/configure.ac
 ===================================================================
---- pacpl-4.0.5.ppa.orig/configure.ac	2011-11-20 10:12:24.000000000 +0100
-+++ pacpl-4.0.5.ppa/configure.ac	2011-11-20 10:13:29.000000000 +0100
+--- git.orig/configure.ac	2012-09-30 00:26:07.000000000 +0200
++++ git/configure.ac	2012-09-30 00:26:07.000000000 +0200
 @@ -70,7 +70,7 @@
  			CDDB_get
  			Ogg::Vorbis::Header 
@@ -55,10 +55,10 @@ Index: pacpl-4.0.5.ppa/configure.ac
  			Audio::WMA 
  			MP3::Tag
  			MP4::Info 
-Index: pacpl-4.0.5.ppa/extra/mod-install.sh
+Index: git/extra/mod-install.sh
 ===================================================================
---- pacpl-4.0.5.ppa.orig/extra/mod-install.sh	2011-11-20 10:12:10.000000000 +0100
-+++ pacpl-4.0.5.ppa/extra/mod-install.sh	2011-11-20 10:14:38.000000000 +0100
+--- git.orig/extra/mod-install.sh	2012-09-30 00:25:45.000000000 +0200
++++ git/extra/mod-install.sh	2012-09-30 00:26:07.000000000 +0200
 @@ -21,5 +21,5 @@
  $cpan 'install Ogg::Vorbis::Header'
  $cpan 'install IO::String'

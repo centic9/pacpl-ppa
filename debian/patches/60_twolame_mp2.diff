@@ -1,7 +1,7 @@
-Index: pacpl-4.0.5.ppa/codecs.conf
+Index: git/codecs.conf
 ===================================================================
---- pacpl-4.0.5.ppa.orig/codecs.conf	2011-09-06 23:07:54.000000000 +0200
-+++ pacpl-4.0.5.ppa/codecs.conf	2011-09-06 23:07:54.000000000 +0200
+--- git.orig/codecs.conf	2012-09-30 00:26:07.000000000 +0200
++++ git/codecs.conf	2012-09-30 00:26:07.000000000 +0200
 @@ -28,6 +28,11 @@
  M4A = faac,faad
  MP4 = faac,faad
@@ -14,10 +14,10 @@ Index: pacpl-4.0.5.ppa/codecs.conf
  # encoders: lame, bladeenc, gogo, toolame, ffmpeg, sox
  # decoders: lame, ffmpeg, mplayer, sox
  #
-Index: pacpl-4.0.5.ppa/pacpl
+Index: git/pacpl
 ===================================================================
---- pacpl-4.0.5.ppa.orig/pacpl	2011-09-06 23:07:54.000000000 +0200
-+++ pacpl-4.0.5.ppa/pacpl	2011-09-06 23:07:54.000000000 +0200
+--- git.orig/pacpl	2012-09-30 00:26:07.000000000 +0200
++++ git/pacpl	2012-09-30 00:26:20.000000000 +0200
 @@ -485,6 +485,58 @@
                             },
                 },

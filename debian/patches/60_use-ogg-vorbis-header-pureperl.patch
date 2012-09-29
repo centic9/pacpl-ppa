@@ -2,8 +2,10 @@ Description: Use Ogg::Vorbis::Header::PurePerl
 Author: Tim Retout <diocles@debian.org>
 Bug-Debian: http://bugs.debian.org/655405
 
---- a/pacpl
-+++ b/pacpl
+Index: git/pacpl
+===================================================================
+--- git.orig/pacpl	2012-09-30 00:26:07.000000000 +0200
++++ git/pacpl	2012-09-30 00:26:07.000000000 +0200
 @@ -26,7 +26,7 @@
  use File::Spec::Functions qw(rel2abs);
  
@@ -13,7 +15,7 @@ Bug-Debian: http://bugs.debian.org/655405
  use MP3::Tag;
  use Audio::FLAC::Header;
  use MP4::Info;
-@@ -682,7 +682,7 @@
+@@ -734,7 +734,7 @@
                  TAGS    => {
                               READ   => 1,
                               WRITE  => 1,
@@ -22,7 +24,7 @@ Bug-Debian: http://bugs.debian.org/655405
                             },
                 },
         
-@@ -2295,7 +2295,7 @@
+@@ -2358,7 +2358,7 @@
                          }
  
             when ('ogg')   {
@@ -31,8 +33,10 @@ Bug-Debian: http://bugs.debian.org/655405
                              
                              # this prevents duplicate tags =)
                              $tag_m->clear_comments();
---- a/configure
-+++ b/configure
+Index: git/configure
+===================================================================
+--- git.orig/configure	2012-09-30 00:26:07.000000000 +0200
++++ git/configure	2012-09-30 00:26:07.000000000 +0200
 @@ -3039,7 +3039,7 @@
  			File::Find
  			File::Spec::Functions
@@ -40,5 +44,5 @@ Bug-Debian: http://bugs.debian.org/655405
 -			Ogg::Vorbis::Header
 +			Ogg::Vorbis::Header::PurePerl
  			Audio::Musepack
- 			Audio::APETags
+ 			Audio::Scan
  			Audio::WMA
