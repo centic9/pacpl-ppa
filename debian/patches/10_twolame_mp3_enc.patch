@@ -1,9 +1,11 @@
 Description: Add support for "twolame" mp3 encoder.
 Author: Cristian Greco <cristian.debian@gmail.com>
 
---- a/pacpl
-+++ b/pacpl
-@@ -537,6 +537,17 @@
+Index: git/pacpl
+===================================================================
+--- git.orig/pacpl	2014-03-16 14:27:19.000000000 +0100
++++ git/pacpl	2014-03-16 19:10:07.000000000 +0100
+@@ -1141,6 +1141,17 @@
                                          PROMPT => { BITRATE => 1 },
                                        },
  

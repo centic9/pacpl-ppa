@@ -1,0 +1,46 @@
+Index: git/codecs.conf
+===================================================================
+--- git.orig/codecs.conf	2012-09-30 00:25:45.000000000 +0200
++++ git/codecs.conf	2012-09-30 00:26:21.000000000 +0200
+@@ -7,6 +7,10 @@
+ #
+ AAC = faac,faad
+ 
++# encoders: jmac, mac
++# decoders: jmac, mac
++APE = jmac,jmac
++
+ # encoders: flac, ffmpeg
+ # decoders: flac, ffmpeg, mplayer
+ #
+Index: git/pacpl
+===================================================================
+--- git.orig/pacpl	2012-09-30 00:26:07.000000000 +0200
++++ git/pacpl	2012-09-30 00:26:21.000000000 +0200
+@@ -834,6 +834,13 @@
+                                                     },
+                                         PROMPT => { ACOMP => 1 },
+                                      },
++                              jmac => {
++                                        NAME => "java",
++                                        ESTR => sub {
++                                                      "-jar /usr/share/java/jmac.jar c2 %i %o"
++                                                    },
++                                     },
++
+                             },
+                 
+                 DECODER => {
+@@ -841,7 +848,11 @@
+                                         NAME => "mac",
+                                         DSTR => sub { "%i %o -d $dopts" },
+                                      },
+-                           },
++                              jmac => {
++                                        NAME => "java",
++                                        DSTR => sub { "-jar /usr/share/java/jmac.jar d %i %o" },
++                                     },
++			   },
+ 
+                 TAGS    => {
+                              READ   => 0,
