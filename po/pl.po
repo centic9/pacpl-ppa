@@ -10,7 +10,7 @@
 # 4) sprawdź pisownię
 # 5) proszę przetłumacz również te instrukcje i dołącz je do pliku lang.po
 # 
-# Wyślij swoje tłumaczenie do viiron@gmail.com
+# Wyślij swoje tłumaczenie do vorzox@gmail.com
 
 #####################
 # Komunikaty błędów #
@@ -49,6 +49,8 @@ seek_help = zobacz 'pacpl --help' lub 'pacpl --longhelp' w celu zapoznania się 
 ##############
 
 converting = Konwertowanie:
+up_to_date = is up to date:
+update_version = A newer version of Perl Audio Converter exists:
 conv_comp = Konwersja zakończona.
 removed_tmp = usunięto plik tymczasowy:
 removed_src = usunięto plik źródłowy:
@@ -67,25 +69,25 @@ show_encoders = kodery dla
 show_decoders = dekodery dla
 
 ######################################
-# Zapytania dla Konquerora i Amaroka #
+# Zapytania dla Konquerora i Dolphina #
 ######################################
 
-kde_overwrite = czy nadpisać plik wyjściowy jeśli istnieje? (1 = tak, 0 = nie)
-kde_bitrate = wybierz bitrate
-kde_freq = częstość próbkowania audio
-kde_chans = kanały audio
-kde_fcomp = poziom kompresji FLAC
-kde_pcomp = poziom kompresji LPAC
-kde_acomp = poziom kompresji APE
-kde_oggqual = poziom jakości Ogg Vorbis
-kde_spxqual = poziom jakości speex
-kde_aacqual = poziom jakości AAC/MP4/M4A
-kde_mpcqual = poziom jakości Musepack
-kde_ofmode = tryb kompresji OptimFrog
-kde_ofopt = poziom optymalizacji OptimFrog
-kde_bratio = BONK downsampling ratio
-kde_bquanl = poziom BONK quantanization
-kde_bpsize = rozmiar BONK predictor
+gui_overwrite = czy nadpisać plik wyjściowy jeśli istnieje? (1 = tak, 0 = nie)
+gui_bitrate = wybierz bitrate
+gui_freq = częstość próbkowania audio
+gui_chans = kanały audio
+gui_fcomp = poziom kompresji FLAC
+gui_acomp = poziom kompresji APE
+gui_oggqual = poziom jakości Ogg Vorbis
+gui_spxqual = poziom jakości speex
+gui_aacqual = poziom jakości AAC/MP4/M4A
+gui_mpcqual = poziom jakości Musepack
+gui_ofmode = tryb kompresji OptimFrog
+gui_ofopt = poziom optymalizacji OptimFrog
+gui_bratio = BONK downsampling ratio
+gui_bquanl = poziom BONK quantanization
+gui_bpsize = rozmiar BONK predictor
+gui_outdir = Select output folder
 
 #################
 # Teksty pomocy #
@@ -97,9 +99,11 @@ preserve = zachowaj strukturę katalogu
 formats = wyświetl listę obsługiwanych formatów kodowania/dekodowania
 only = konwertuj tylko pliki z poddanym rozszerzeniem
 keep = zachowaj oryginalne pliki, nie koduj ich ponownie
+jobs = number of simultaneous files to process
 help = wyświetl to menu pomocy
 longhelp = lista wszystkich opcji
 version = wyświetl informację o wersji programu
+update = check for newer version
 usage = użycie: pacpl --to <format> <opcje> [plik(i)/katalog(i)]
 defopts = turn off default encoder options (0)
 eopts = opcje kodera użytkownika
@@ -121,7 +125,6 @@ freq = częstotliwość audio (domyślnie 44100)
 channels = liczba kanałów audio (domyślnie 2)
 effect = efekt sox (aiff/au/snd/raw/voc/smp/avr/cdr)
 fcomp = poziom kompresji flac/fla (domyślnie 2)
-pcomp = poziom kompresji lpac/pac (domyślnie 3)
 acomp = poziom kompresji ape (domyślnie 3000)
 oggqual = poziom jakości ogg (domyślnie 3)
 spxqual = poziom jakości spx (domyślnie 8)
@@ -148,5 +151,5 @@ nocddb = wyłącz cddb
 noinput = wyłącz interaktywność cddb
 nscheme = schemat nazw
 cdinfo = pokaż informację cddb dla bieżącego dysku
-device = domyślnie = /dev/cdrom
+device = domyślnie = /dev/dvd
 rip_usage = zgrywanie audio: pacpl --rip [ścieżka(i)/all] --to <format> <opcje>

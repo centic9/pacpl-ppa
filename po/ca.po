@@ -10,7 +10,7 @@
 # 4) spell check
 # 5) please translate these instructions and include them with your lang.po
 # 
-# You can submit your translations to viiron@gmail.com
+# You can submit your translations to vorzox@gmail.com
 
 ##################
 # Error messages #
@@ -49,6 +49,8 @@ seek_help = vegeu 'pacpl --help' o 'pacpl --longhelp' per a la llista d'opcions.
 ###########
 
 converting = Convertint:
+up_to_date = is up to date:
+update_version = A newer version of Perl Audio Converter exists:
 conv_comp = Conversió finalitzada.
 removed_tmp = fitxer temporal esborrat:
 removed_src = fitxer original esborat:
@@ -67,25 +69,25 @@ show_encoders = encoders for
 show_decoders = decoders for
 
 #######################################
-# user prompts for Konqueror & Amarok #
+# user prompts for Konqueror & Dolphin #
 #######################################
 
-kde_overwrite = sobreescriure fitxer de sortida si existeix? (1 = si, 0 = no)
-kde_bitrate = seleccioneu bitrate
-kde_freq = rati de mostreig d'àudio
-kde_chans = canals d'àudio
-kde_fcomp = nivell de compresió FLAC
-kde_pcomp = nivell de compresió LPAC
-kde_acomp = nivell de compresió APE
-kde_oggqual = nivell de qualitat Ogg Vorbis
-kde_spxqual = nivell de qualitat speex
-kde_aacqual = nivell de qualitat AAC/MP4/M4A
-kde_mpcqual = nivell de qualitat Musepack
-kde_ofmode = mode de compresió OptimFrog
-kde_ofopt = nivell d'optimització OptimFrog
-kde_bratio = rati de pèrdua BONK
-kde_bquanl = rati de quantificació BONK
-kde_bpsize = mida de predicció BONK
+gui_overwrite = sobreescriure fitxer de sortida si existeix? (1 = si, 0 = no)
+gui_bitrate = seleccioneu bitrate
+gui_freq = rati de mostreig d'àudio
+gui_chans = canals d'àudio
+gui_fcomp = nivell de compresió FLAC
+gui_acomp = nivell de compresió APE
+gui_oggqual = nivell de qualitat Ogg Vorbis
+gui_spxqual = nivell de qualitat speex
+gui_aacqual = nivell de qualitat AAC/MP4/M4A
+gui_mpcqual = nivell de qualitat Musepack
+gui_ofmode = mode de compresió OptimFrog
+gui_ofopt = nivell d'optimització OptimFrog
+gui_bratio = rati de pèrdua BONK
+gui_bquanl = rati de quantificació BONK
+gui_bpsize = mida de predicció BONK
+gui_outdir = Select output folder
 
 ##################
 # Help menu text #
@@ -97,9 +99,11 @@ preserve = preserva l'estructura de directoris
 formats = llista els formats codificació/decodificació suportats
 only = només converteix fitxers coincidents amb l'extensió
 keep = manté fitxers coincidents amb el format de destí
+jobs = number of simultaneous files to process
 help = aquest menú d'ajut
 longhelp = llista completa d'opcions
 version = mostra informació de versió
+update = check for newer version
 usage = ús: pacpl --to <format> <opcions> [fitxer(s)/directori(s)]
 defopts = turn off default encoder options (0)
 eopts = opcions de codificació proporcionades per l'usuari
@@ -121,7 +125,6 @@ freq = freqüència d'àudio (def. 44100)
 channels = nombre de canals d'àudio (def. 2)
 effect = efecte sox (aiff/au/snd/raw/voc/smp/avr/cdr)
 fcomp = nivell de compresió flac/fla (def. 2)
-pcomp = nivell de compresió lpac/pac (def. 3)
 acomp = nivell de compresió ape (def. 3000)
 oggqual = nivell de qualitat ogg (def. 3)
 spxqual = nivell de qualitat spx (def. 8)
@@ -148,5 +151,5 @@ nocddb = desactiva cddb
 noinput = desactiva cddb interactivament
 nscheme = esquema de nombrat
 cdinfo = mostra informació cddb del disc actual
-device = defecte = /dev/cdrom
+device = defecte = /dev/dvd
 rip_usage = ús de l'exractor: pacpl --rip [pista(es)/tot] --to <format> <opcions>

@@ -10,7 +10,7 @@
 # 4) verifique a ortografia
 # 5) pro favor traduza estas instruções e inclua-as com o seu ficheiro lang.po
 # 
-# Pode submeter as suas traduções para viiron@gmail.com
+# Pode submeter as suas traduções para vorzox@gmail.com
 
 #####################
 # Mensagens de Erro #
@@ -49,6 +49,8 @@ seek_help = use 'pacpl --help' ou 'pacpl --longhelp' para apresentar a lista das
 #########
 
 converting = A converter:
+up_to_date = is up to date:
+update_version = A newer version of Perl Audio Converter exists:
 conv_comp = Conversão completa.
 removed_tmp = ficheiro temporário removido:
 removed_src = ficheiro de origem removido:
@@ -67,25 +69,25 @@ show_encoders = encoders for
 show_decoders = decoders for
 
 #################################################
-# prompts de utilizador para Konqueror & Amarok #
+# prompts de utilizador para Konqueror & Dolphin #
 #################################################
 
-kde_overwrite = sobrescrever o ficheiro de saída se este já existir? (1 = sim, 0 = não)
-kde_bitrate = seleccione o bitrate
-kde_freq = frequências de amostragem do som
-kde_chans = canais do som
-kde_fcomp = nível de compressão FLAC
-kde_pcomp = nível de compressão LPAC
-kde_acomp = nível de compressão APE
-kde_oggqual = nível de qualidade OggVorbis
-kde_spxqual = nível de qualidade speex
-kde_aacqual = nível de qualidade AAC/MP4/M4A
-kde_mpcqual = nível de qualidade Musepack
-kde_ofmode = modo de compressão OptimFrog
-kde_ofopt = nível de optimização OptimFrog
-kde_bratio = relação de downsampling BONK
-kde_bquanl = nível de quantificação BONK
-kde_bpsize = tamanho do predictor BONK
+gui_overwrite = sobrescrever o ficheiro de saída se este já existir? (1 = sim, 0 = não)
+gui_bitrate = seleccione o bitrate
+gui_freq = frequências de amostragem do som
+gui_chans = canais do som
+gui_fcomp = nível de compressão FLAC
+gui_acomp = nível de compressão APE
+gui_oggqual = nível de qualidade OggVorbis
+gui_spxqual = nível de qualidade speex
+gui_aacqual = nível de qualidade AAC/MP4/M4A
+gui_mpcqual = nível de qualidade Musepack
+gui_ofmode = modo de compressão OptimFrog
+gui_ofopt = nível de optimização OptimFrog
+gui_bratio = relação de downsampling BONK
+gui_bquanl = nível de quantificação BONK
+gui_bpsize = tamanho do predictor BONK
+gui_outdir = Select output folder
 
 ######################
 # Texto do menu help #
@@ -97,9 +99,11 @@ preserve = preserva da estrutura da directoria
 formats = lista formatos de codificação/descodificação suportados
 only = apenas converte ficheiros com a extensão indicada
 keep = manter os ficheiros correspondentes ao formato de destino
+jobs = number of simultaneous files to process
 help = este menu de ajuda
 longhelp = lista completa de opções
 version = mostra informação sobre a versão
+update = check for newer version
 usage = uso: pacpl --to <formato> <opções> [ficheiro(s)/directoria(s)]
 defopts = turn off default encoder options (0)
 eopts = opções de codificação indicados pelo utilizador
@@ -121,7 +125,6 @@ freq = frequência do som (def. 44100)
 channels = número de canais de som (def. 2)
 effect = efeito sox (aiff/au/snd/raw/voc/smp/avr/cdr)
 fcomp = nível de compressão flac/fla (def. 2)
-pcomp = nível de compressão lpac/pac (def. 3)
 acomp = nível de compressão ape (def. 3000)
 oggqual = nível de qualidade ogg (def. 3)
 spxqual = nível de qualidade spx (def. 8)
@@ -148,5 +151,5 @@ nocddb = desactivar cddb
 noinput = desactivar interactividade cddb
 nscheme = nome do esquema
 cdinfo = mostrar informação cddb do disco corrente
-device = default = /dev/cdrom
+device = default = /dev/dvd
 rip_usage = uso de estracção: pacpl --rip [pista(s)/all] --to <formato> <opções>

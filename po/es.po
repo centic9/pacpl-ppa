@@ -10,7 +10,7 @@
 # 4) spell check
 # 5) please translate these instructions and include them with your lang.po
 # 
-# You can submit your translations to viiron@gmail.com
+# You can submit your translations to vorzox@gmail.com
 
 ##################
 # Error messages #
@@ -49,6 +49,8 @@ seek_help = use 'pacpl --help' o 'pacpl --longhelp' para la lista de opciones.
 ###########
 
 converting = Convirtiendo:
+up_to_date = is up to date:
+update_version = A newer version of Perl Audio Converter exists:
 conv_comp = Conversión completada.
 removed_tmp = eliminado fichero temporal:
 removed_src = eliminado el fichero origen:
@@ -67,25 +69,25 @@ show_encoders = encoders for
 show_decoders = decoders for
 
 #######################################
-# user prompts for Konqueror & Amarok #
+# user prompts for Konqueror & Dolphin #
 #######################################
 
-kde_overwrite = ¿sobreescribir el archivo de salida si existe? (1 = s1, 0 = no)
-kde_bitrate = selecciona bitrate
-kde_freq = ratio de muestreo de audio
-kde_chans = canales de audio
-kde_fcomp = nivel de compresión FLAC
-kde_pcomp = nivel de compresión LPAC
-kde_acomp =  nivel de compresión APE
-kde_oggqual = calidad de salida Ogg Vorbis
-kde_spxqual = speex quality level
-kde_aacqual = nivel de calidad AAC/MP4/M4A
-kde_mpcqual = nivel de calidad Musepack
-kde_ofmode = modo de compresión OptimFrog
-kde_ofopt =  nivel de optimización OptimFrog
-kde_bratio = BONK downsampling ratio
-kde_bquanl = BONK quantanization level
-kde_bpsize = BONK predictor size
+gui_overwrite = ¿sobreescribir el archivo de salida si existe? (1 = s1, 0 = no)
+gui_bitrate = selecciona bitrate
+gui_freq = ratio de muestreo de audio
+gui_chans = canales de audio
+gui_fcomp = nivel de compresión FLAC
+gui_acomp =  nivel de compresión APE
+gui_oggqual = calidad de salida Ogg Vorbis
+gui_spxqual = speex quality level
+gui_aacqual = nivel de calidad AAC/MP4/M4A
+gui_mpcqual = nivel de calidad Musepack
+gui_ofmode = modo de compresión OptimFrog
+gui_ofopt =  nivel de optimización OptimFrog
+gui_bratio = BONK downsampling ratio
+gui_bquanl = BONK quantanization level
+gui_bpsize = BONK predictor size
+gui_outdir = Select output folder
 
 ##################
 # Help menu text #
@@ -97,9 +99,11 @@ preserve = preservar la estructura de  directorio
 formats = lista de formatos codificación/decodificación
 only = sólo convertir los ficheros que coincidan con la extensión
 keep = mantener la correspondencia de formato destino de los ficheros.
+jobs = number of simultaneous files to process
 help = este es el menu de ayuda
 longhelp = lista completa de opciones
 version = ver información de la versión 
+update = check for newer version
 usage = use: pacpl --to <formato> <opciones> [archivo(s)/directorio(s)]
 defopts = turn off default encoder options (0)
 eopts = opciones de usuario para el codificador
@@ -121,7 +125,6 @@ freq = frecuencia audio (def. 44100)
 channels = Número de canales de audio (def. 2)
 effect = efectos de sox (aiff/au/snd/raw/voc/smp/avr/cdr)
 fcomp = nivel de compresión flac/fla (def. 2)
-pcomp = nivel de compresión lpac/pac (def. 3)
 acomp = nivel de compresión ape (def. 3000)
 oggqual = nivel de calidad ogg (def. 3)
 spxqual = nivel de calidad spx (def. 8)
@@ -148,5 +151,5 @@ nocddb = Desactivar cddb
 noinput = Desactivar interactividad cddb
 nscheme = nombre de esquema
 cdinfo = Muestrala información cddb para el disco actual 
-device = default = /dev/cdrom
+device = default = /dev/dvd
 rip_usage = uso de la extracción: pacpl --rip [pista(s)/all] --to <formato> <opciones>

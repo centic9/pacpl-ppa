@@ -14,7 +14,7 @@
 # 4) spell check
 # 5) please translate these instructions and include them with your lang.po
 # 
-# You can submit your translations to viiron@gmail.com
+# You can submit your translations to vorzox@gmail.com
 
 ##############################
 # Error messages - Veateated #
@@ -53,6 +53,8 @@ seek_help = Vaata lisateavet pacpl võimaluste kohta 'pacpl --help' või 'pacpl 
 ####################
 
 converting = Konverteerin:
+up_to_date = is up to date:
+update_version = A newer version of Perl Audio Converter exists:
 conv_comp = Konverteerimine lõpetatud.
 removed_tmp = Kustutasin ajutise faili:
 removed_src = Kustutasin lähtefaili:
@@ -71,25 +73,25 @@ show_encoders = kodeerijad
 show_decoders = dekodeerijad
 
 ###############################################################################
-# user prompts for Konqueror & Amarok - Konqueror ja Amarok liideste päringud #
+# user prompts for Konqueror & Dolphin - Konqueror ja Dolphin liideste päringud #
 ###############################################################################
 
-kde_overwrite = kas kirjutan väljundfaili üle kui fail juba olemas on? (1 = jah, 0 = ei)
-kde_bitrate = vali bitikiirus
-kde_freq = audio sämplingusagedus
-kde_chans = audiokanaleid
-kde_fcomp = FLAC kompressioonitase
-kde_pcomp = LPAC kompressioonitase
-kde_acomp = APE kompressioonitase
-kde_oggqual = Ogg Vorbis kvaliteeditase
-kde_spxqual = speex kvaliteeditase
-kde_aacqual = AAC/MP4/M4A kvaliteeditase
-kde_mpcqual = Musepack kvaliteeditase
-kde_ofmode = OptimFrog kompressioonirežiim
-kde_ofopt = OptimFrog optimiseerimistase
-kde_bratio = BONK sämplingu alandamise suhtarv
-kde_bquanl = BONK kvantisatsioonitase
-kde_bpsize = BONK ennustusarv
+gui_overwrite = kas kirjutan väljundfaili üle kui fail juba olemas on? (1 = jah, 0 = ei)
+gui_bitrate = vali bitikiirus
+gui_freq = audio sämplingusagedus
+gui_chans = audiokanaleid
+gui_fcomp = FLAC kompressioonitase
+gui_acomp = APE kompressioonitase
+gui_oggqual = Ogg Vorbis kvaliteeditase
+gui_spxqual = speex kvaliteeditase
+gui_aacqual = AAC/MP4/M4A kvaliteeditase
+gui_mpcqual = Musepack kvaliteeditase
+gui_ofmode = OptimFrog kompressioonirežiim
+gui_ofopt = OptimFrog optimiseerimistase
+gui_bratio = BONK sämplingu alandamise suhtarv
+gui_bquanl = BONK kvantisatsioonitase
+gui_bpsize = BONK ennustusarv
+gui_outdir = Select output folder
 
 #####################################
 # Help menu text - Abiteabe tekstid #
@@ -101,9 +103,11 @@ preserve = säilita kataloogide struktuur
 formats = loenda toetatud kodeerimis- ja dekodeerimisvormingud
 only = konverteeri vaid nimetatud laiendiga failid
 keep = jäta alles sihtvormingus failid
+jobs = number of simultaneous files to process
 help = käesolev abiteave
 longhelp = terviklik parameetrite loetelu
 version = näita tarkvara versiooni
+update = check for newer version
 usage = Õige kasutus on: pacpl --to <vorming> <suvandid> [fail(id)/kataloog(id)]
 defopts = turn off default encoder options (0)
 eopts = kasutaja poolt määratud täiendavad suvandid (eelistused) kodeerimiseks
@@ -125,7 +129,6 @@ freq = audiosagedus (vaikimisi 44100)
 channels = audiokanalite arv (vaikimisi 2)
 effect = sox efekt (aiff/au/snd/raw/voc/smp/avr/cdr)
 fcomp = flac/fla kompressiooni tase (vaikimisi 2)
-pcomp = lpac/pac kompressiooni tase (vaikimisi 3)
 acomp = ape kompressiooni tase (vaikimisi 3000)
 oggqual = ogg vorbis kvaliteeditase (vaikimisi 3)
 spxqual = spx kvaliteeditase (vaikimisi 8)
@@ -152,5 +155,5 @@ nocddb = ära luba cddb-päringuid (välise CD-andmebaasi päringuid)
 noinput = ära luba cddb (välise CD-andmebaasi) interaktiivsust 
 nscheme = reeglid mille alusel moodustada failide nimed
 cdinfo = näita selle plaadi cddb (välise CD-andmebaasi) teavet
-device = plaadimängija (vaikimisi /dev/cdrom)
+device = plaadimängija (vaikimisi /dev/dvd)
 rip_usage = Lugude CD-lt failiks kopeerimise kasutus: pacpl --rip [lugu(lood)/kõik (all)] --to <vorming> <suvandid>

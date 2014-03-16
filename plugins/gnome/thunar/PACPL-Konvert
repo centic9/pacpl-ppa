@@ -1,0 +1,72 @@
+#!/usr/bin/perl
+#
+# Copywrite (C) Philip Lyons 2013-2014 (vorzox@gmail.com)
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+use strict;
+use warnings;
+use File::Spec::Functions qw(rel2abs);
+
+my $debug = 0;
+my $input = '';
+
+my $name = "Perl Audio Converter";
+
+my $formats = "3G2 3GP 8SVX AAC AC3 ADTS AIF AIFF AL AMB AMR APE AU AVR BONK CAF CDR CVU DAT DTS DVMS F32 F64 FAP FLA FLAC FSSD GSRT HCOM IMA IRCAM LA M4A MAT MAT4 MAT5 MAUD MMF MP2 MP3 MP3HD MP4 MPC MPP NIST OFF OFR OFS OGA OGG OPUS PAF PRC PVF RA RAW RF64 RM SD2 SF SHN SMP SND SOU SPX TTA TXW VMS VOC W64 WAV WMA WV";
+
+# main sub
+sub process_files {
+
+ system("kdialog --title 'Ooops...' --error 'Perl Audio Converter Not Installed. Exiting...'") if not `which pacpl`;
+ exit 1 if not `which pacpl`;
+
+ # sort through input files and discard those with unsupported formats (excluding directories)
+ foreach (@ARGV) {
+
+          chomp($_);
+
+          $_ = rel2abs($_);
+          
+          my $input_ext = `echo \"$_\" | awk -F"." '{print \$NF}'`;
+          
+          print "$_ has the ext $input_ext\n" if $debug == 1;
+                    
+          if (-f $_ and not `pacpl --formats | grep $input_ext`) 
+          {
+             print "$_ has unrecognized extension, skipping...\n" if $debug == 1;
+             system("kdialog --passivepopup '$name' Unable to convert '$_' (unsupported format)");
+             next;
+          }
+          else 
+          {             
+             $input = "$input \"$_\"";
+          }
+  }       
+  
+  # invoke pacpl and start conversion process
+  if ($input) {
+  
+      my $out_format = `kdialog --title \"$name\" --combobox 'Output Format' $formats`;
+      chomp($out_format);
+      
+      print  "pacpl --to $out_format $input --gui --kde\n" if $debug == 1;
+      system("pacpl --to $out_format $input --gui --kde");
+  }
+  
+}
+
+# start main
+process_files();
+

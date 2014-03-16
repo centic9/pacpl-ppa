@@ -10,7 +10,7 @@
 # 4) spell check
 # 5) please translate these instructions and include them with your lang.po
 # 
-# You can submit your translations to viiron@gmail.com
+# You can submit your translations to vorzox@gmail.com
 
 ##################
 # Error messages #
@@ -49,6 +49,8 @@ seek_help = zie 'pacpl --help' of 'pacpl --longhelp' voor een lijst met opties.
 ###########
 
 converting = Omzetten:
+up_to_date = is up to date:
+update_version = A newer version of Perl Audio Converter exists:
 conv_comp = ..klaar.
 removed_tmp = tijdelijk bestand verwijderd:
 removed_src = bronbestand verwijderd:
@@ -67,25 +69,25 @@ show_encoders = encoders voor
 show_decoders = decoders voor
 
 #######################################
-# user prompts for Konqueror & Amarok #
+# user prompts for Konqueror & Dolphin #
 #######################################
 
-kde_overwrite = uitvoerbestand overschrijven als het al bestaat? (1 = ja, 0 = nee)
-kde_bitrate = selecteer bitrate
-kde_freq = audio sampling rate
-kde_chans = audiokanalen
-kde_fcomp = FLAC-compressieniveau
-kde_pcomp = LPAC-compressieniveau
-kde_acomp = APE-compressieniveau
-kde_oggqual = Ogg Vorbis-kwaliteitsniveau
-kde_spxqual = speex-kwaliteitsniveau
-kde_aacqual = AAC/MP4/M4A-kwaliteitsniveau
-kde_mpcqual = Musepack-kwaliteitsniveau
-kde_ofmode = OptimFrog-compressiemodus
-kde_ofopt = OptimFrog-optimalisatieniveau
-kde_bratio = BONK-downsamplingverhouding
-kde_bquanl = BONK-kwantisatieniveau
-kde_bpsize = BONK-predictorgrootte
+gui_overwrite = uitvoerbestand overschrijven als het al bestaat? (1 = ja, 0 = nee)
+gui_bitrate = selecteer bitrate
+gui_freq = audio sampling rate
+gui_chans = audiokanalen
+gui_fcomp = FLAC-compressieniveau
+gui_acomp = APE-compressieniveau
+gui_oggqual = Ogg Vorbis-kwaliteitsniveau
+gui_spxqual = speex-kwaliteitsniveau
+gui_aacqual = AAC/MP4/M4A-kwaliteitsniveau
+gui_mpcqual = Musepack-kwaliteitsniveau
+gui_ofmode = OptimFrog-compressiemodus
+gui_ofopt = OptimFrog-optimalisatieniveau
+gui_bratio = BONK-downsamplingverhouding
+gui_bquanl = BONK-kwantisatieniveau
+gui_bpsize = BONK-predictorgrootte
+gui_outdir = Select output folder
 
 ##################
 # Help menu text #
@@ -97,9 +99,11 @@ preserve = mappenstructuur behouden
 formats = ondersteunde en/decodingformaten weergeven
 only = Alleen bestanden omzetten die overeenkomen met extensie
 keep = laat bestanden het bestemmingsformaat aanhouden
+jobs = number of simultaneous files to process
 help = dit hulpmenu
 longhelp = complete lijst van opties
 version = versie-informatie weergeven
+update = check for newer version
 usage = gebruik: pacpl --to <formaat> <opties> [bestand(en)/map(pen)]
 eopts = encoderopties van gebruiker
 dopts = decoderopties van gebruiker
@@ -120,7 +124,6 @@ freq = audiofrequentie (standaard: 44100)
 channels = aantal audiokanelen (standaard: 2)
 effect = sox-effect (aiff/au/snd/raw/voc/smp/avr/cdr)
 fcomp = flac/fla-compressieniveau (standaard: 2)
-pcomp = lpac/pac-compressieniveau (standaard: 3)
 acomp = ape-compressieniveau (standaard: 3000)
 oggqual = ogg-kwaliteitsniveau (standaard: 3)
 spxqual = spx-kwaliteitsniveau (standaard: 8)
@@ -147,5 +150,5 @@ nocddb = cddb uitschakelen
 noinput = cddb-interactiviteit uitschakelen
 nscheme = benoemingsschema
 cdinfo = cddb-informatie van huidige schijf weergeven
-device = standaard: = /dev/cdrom
+device = standaard: = /dev/dvd
 rip_usage = ripgebruik: pacpl --rip [track(s)/alles] --to <formaat> <opties>

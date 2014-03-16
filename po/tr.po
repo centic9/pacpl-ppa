@@ -11,7 +11,7 @@
 # 4) spell check
 # 5) please translate these instructions and include them with your lang.po
 # 
-# You can submit your translations to viiron@gmail.com
+# You can submit your translations to vorzox@gmail.com
 
 ##################
 # Error messages #
@@ -50,6 +50,8 @@ seek_help = seçenek listesi için 'pacpl --help' or 'pacpl --longhelp' komutlar
 ###########
 
 converting = çeviriliyor:
+up_to_date = is up to date:
+update_version = A newer version of Perl Audio Converter exists:
 conv_comp = ..tamamlandı.
 removed_tmp = geçici dosya silindi:
 removed_src = kaynak dosya silindi:
@@ -68,25 +70,25 @@ show_encoders = kodlayıcılar
 show_decoders = kod okuyucular
 
 #######################################
-# user prompts for Konqueror & Amarok #
+# user prompts for Konqueror & Dolphin #
 #######################################
 
-kde_overwrite = çıktı dosyası varsa üstüne yaz? (1 = evet, 0 = hayır)
-kde_bitrate = bitrate seç
-kde_freq = ses örnekleme oranı
-kde_chans = ses kanalları
-kde_fcomp = FLAC sıkıştırma seviyesi
-kde_pcomp = LPAC sıkıştırma seviyesi
-kde_acomp = APE sıkıştırma seviyesi
-kde_oggqual = Ogg Vorbis kalite seviyesi
-kde_spxqual = speex kalite seviyesi
-kde_aacqual = AAC/MP4/M4A kalite seviyesi
-kde_mpcqual = Musepack kalite seviyesi
-kde_ofmode = OptimFrog sıkıştırma modu
-kde_ofopt = OptimFrog optimizasyon seviyesi
-kde_bratio = BONK aşağı örnekleme oranı
-kde_bquanl = BONK quantanization seviyesi
-kde_bpsize = BONK predictor boyutu
+gui_overwrite = çıktı dosyası varsa üstüne yaz? (1 = evet, 0 = hayır)
+gui_bitrate = bitrate seç
+gui_freq = ses örnekleme oranı
+gui_chans = ses kanalları
+gui_fcomp = FLAC sıkıştırma seviyesi
+gui_acomp = APE sıkıştırma seviyesi
+gui_oggqual = Ogg Vorbis kalite seviyesi
+gui_spxqual = speex kalite seviyesi
+gui_aacqual = AAC/MP4/M4A kalite seviyesi
+gui_mpcqual = Musepack kalite seviyesi
+gui_ofmode = OptimFrog sıkıştırma modu
+gui_ofopt = OptimFrog optimizasyon seviyesi
+gui_bratio = BONK aşağı örnekleme oranı
+gui_bquanl = BONK quantanization seviyesi
+gui_bpsize = BONK predictor boyutu
+gui_outdir = Select output folder
 
 ##################
 # Help menu text #
@@ -98,9 +100,11 @@ preserve = dizin yapısını koru
 formats = desteklenen kodlama/kod okuma biçimlerini listele
 only = sadece uzantıları eşleşen dosyaları çevir
 keep = keep files matching destination format
+jobs = number of simultaneous files to process
 help = yardım
 longhelp = tüm seçenek listesi
 version = versiyon bilgisini göster
+update = check for newer version
 usage = kullanım: pacpl --to <biçim> <seçenek> [dosyalar/dizinler]
 orjopts = orjinal kodlayıcı ayarlarını kapat (0)
 eopts = kullanıcı tanımlı kodlayıcı seçenekleri
@@ -122,7 +126,6 @@ freq = örnek oranı (orj. 44100)
 channels = ses kanal sayısı (orj. 2)
 effect = sox efekt (aiff/au/snd/raw/voc/smp/avr/cdr)
 fcomp = flac/fla sıkıştırma seviyesi (orj. 2)
-pcomp = lpac/pac sıkıştırma seviyesi (orj. 3)
 acomp = ape sıkıştırma seviyesi (orj. 3000)
 oggqual = ogg kalite seviyesi (orj. 3)
 spxqual = spx kalite seviyesi (orj. 8)
@@ -149,5 +152,5 @@ nocddb = cddb yi etkisiz kıl
 noinput = cddb interactivity i etkisiz kıl
 nscheme = isimlendirme şeması
 cdinfo = takılı disk için cddb bilgisini göster
-device = varsayılan = /dev/cdrom
+device = varsayılan = /dev/dvd
 rip_usage = ses izi kodlama kullanım: pacpl --rip [parça(lar)/all] --to <biçim> <seçenekler>

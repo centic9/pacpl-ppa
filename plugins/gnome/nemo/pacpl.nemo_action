@@ -1,0 +1,7 @@
+[Nemo Action]
+Name=Perl Audio Converter
+Comment=Perl Audio Converter
+Exec=/usr/share/nemo/actions/PACPL-Convert %F
+Icon-Name=pacpl
+Selection=Any
+Extensions=dir;3G2;3GP;AAC;AC3;ADTS;AIF;AIFF;AMR;APE;AU;AVR;BONK;CAF;CDR;DTS;FAP;FLA;FLAC;IRCAM;LA;M4A;MAT;MAT4;MAT5;MMF;MP2;MP3;MP3HD;MP4;MPC;MPP;NIST;OFF;OFR;OFS;OGG;OPUS;PAF;PVF;RA;RAW;RM;SD2;SF;SHN;SMP;SND;SPX;TTA;VOC;W64;WAV;WMA;WV
