@@ -10,7 +10,7 @@
 # 4) Rechtschreibprüfung
 # 5) bitte übersetz diese Anweisung und benenne es in lang.po
 # 
-# fertig, dann sende die Übersetzung an  viiron@gmail.com
+# fertig, dann sende die Übersetzung an  vorzox@gmail.com
 
 ####################
 # Fehler Meldungen #
@@ -49,6 +49,8 @@ seek_help = benutzt 'pacpl --help' oder 'pacpl --longhelp' für eine Auflistung 
 #############
 
 converting = Konvertierung:
+up_to_date = is up to date:
+update_version = A newer version of Perl Audio Converter exists:
 conv_comp = Konvertierung fertig.
 removed_tmp = lösche temporäre Datei:
 removed_src = lösche quell Datei:
@@ -67,25 +69,25 @@ show_encoders = encoders for
 show_decoders = decoders for
 
 #############################################
-# Benutzer Kommandos für Konqueror & Amarok #
+# Benutzer Kommandos für Konqueror & Dolphin #
 #############################################
 
-kde_overwrite = Überschreibe Ausgabedatei wenn sie existiert? (1 = Ja, 0 = Nein)
-kde_bitrate = Wähle Bitrate
-kde_freq = Audio Samplingfrequenz
-kde_chans = Audio Kanäle
-kde_fcomp = FLAC Komprimierungsgrad
-kde_pcomp = LPAC Komprimierungsgrad
-kde_acomp = APE Komprimierungsgrad
-kde_oggqual = Ogg Vorbis Qualitätsgrad
-kde_spxqual = speex Qualitätsgrad
-kde_aacqual = AAC/MP4/M4A Qualitätsgrad
-kde_mpcqual = Musepack Qualitätsgrad
-kde_ofmode = OptimFrog Kompressionsmode
-kde_ofopt = OptimFrog Optimierungsgrad
-kde_bratio = BONK Verhältnis beim Heruntersampling
-kde_bquanl = BONK Quantisierung
-kde_bpsize = BONK Einflussgröße 
+gui_overwrite = Überschreibe Ausgabedatei wenn sie existiert? (1 = Ja, 0 = Nein)
+gui_bitrate = Wähle Bitrate
+gui_freq = Audio Samplingfrequenz
+gui_chans = Audio Kanäle
+gui_fcomp = FLAC Komprimierungsgrad
+gui_acomp = APE Komprimierungsgrad
+gui_oggqual = Ogg Vorbis Qualitätsgrad
+gui_spxqual = speex Qualitätsgrad
+gui_aacqual = AAC/MP4/M4A Qualitätsgrad
+gui_mpcqual = Musepack Qualitätsgrad
+gui_ofmode = OptimFrog Kompressionsmode
+gui_ofopt = OptimFrog Optimierungsgrad
+gui_bratio = BONK Verhältnis beim Heruntersampling
+gui_bquanl = BONK Quantisierung
+gui_bpsize = BONK Einflussgröße 
+gui_outdir = Select output folder
 
 ##############
 # Hilfe Menü #
@@ -98,8 +100,10 @@ formats = Liste von unterstützen Kodierung/Dekodierung Formaten
 only = nur konvertierte Dateianhänge stimmen überein
 keep = keep files matching destination format
 help = dieses Hilfsmenü
+jobs = number of simultaneous files to process
 longhelp = Komplette Liste der Optionen
 version = gib Informationen über die Version
+update = check for newer version
 usage = benutz: pacpl --to <Format> <Optionen> [Datei(en)/Verzeichnis(se)]
 defopts = turn off default encoder options (0)
 eopts = Benutzerspezifische Kodierungsoptionen
@@ -121,7 +125,6 @@ freq = Audio Samplingfreqenz (Standard 44100)
 channels = Anzahl der Audio Kanäle (Standard 2)
 effect = sox Effekt (aiff/au/snd/raw/voc/smp/avr/cdr)
 fcomp = flac/fla Komprimierungsgrad (Standard 2)
-pcomp = lpac/pac Komprimierungsgrad (Standard 3)
 acomp = ape Komprimierungsgrad (Standard 3000)
 oggqual = ogg Qualitätsgrad (Standard. 3)
 spxqual = spx Qualitätsgrad (Standard 8)
@@ -148,5 +151,5 @@ nocddb = deaktiviere cddb
 noinput = deaktiviere cddb interaktiv
 nscheme = Schema für die Namensgebung
 cdinfo = zeige cddb Informationen für aktuelle CD
-device = Standard = /dev/cdrom
+device = Standard = /dev/dvd
 rip_usage = lese: pacpl --rip [Track(s)/alle] --to <Format> <Optionen>

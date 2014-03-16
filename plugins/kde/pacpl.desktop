@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=audio/*;video/*;application/x-flash-video;inode/directory
+Icon=/etc/pacpl/icon.png
+Actions=PACPL-Convert
+X-KDE-StartupNotify=false
+X-KDE-Priority=TopLevel
+
+[Desktop Action PACPL-Convert]
+Name=Perl Audio Converter
+Icon=/etc/pacpl/pacpl.png
+Exec=/usr/bin/PACPL-Konvert %F
+

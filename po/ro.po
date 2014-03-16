@@ -10,7 +10,7 @@
 # 4) spell check
 # 5) please translate these instructions and include them with your lang.po
 # 
-# You can submit your translations to viiron@gmail.com
+# You can submit your translations to vorzox@gmail.com
 
 ##################
 # Error messages #
@@ -49,6 +49,8 @@ seek_help = vezi 'pacpl --help' sau 'pacpl --longhelp' pentru o lista de optiuni
 ###########
 
 converting = Convertim:
+up_to_date = is up to date:
+update_version = A newer version of Perl Audio Converter exists:
 conv_comp = ..executat.
 removed_tmp = sters fisierul temporar:
 removed_src = sters sursa fisierului:
@@ -67,25 +69,25 @@ show_encoders = encoderurile pentru
 show_decoders = decoderurile pentru
 
 #######################################
-# user prompts for Konqueror & Amarok #
+# user prompts for Konqueror & Dolphin #
 #######################################
 
-kde_overwrite = suprascrie fisierul de iesire daca el exista? (1 = da, 0 = nu)
-kde_bitrate = selecteaza rata de biti
-kde_freq = rata audio simpla
-kde_chans = canale audio
-kde_fcomp = nivel de compresie FLAC
-kde_pcomp = nivel de compresie LPAC
-kde_acomp = nivel de compresie APE
-kde_oggqual = nivel de calitate Ogg Vorbis
-kde_spxqual =  nivel de calitate speex
-kde_aacqual = nivel de calitate AAC/MP4/M4A
-kde_mpcqual = nivel de calitate Musepack
-kde_ofmode = mod de compresie OptimFrog
-kde_ofopt = nivel de optimizare OptimFrog
-kde_bratio = BONK downsampling ratio
-kde_bquanl = BONK quantanization level
-kde_bpsize = aproximarea dimensiunii cu BONK
+gui_overwrite = suprascrie fisierul de iesire daca el exista? (1 = da, 0 = nu)
+gui_bitrate = selecteaza rata de biti
+gui_freq = rata audio simpla
+gui_chans = canale audio
+gui_fcomp = nivel de compresie FLAC
+gui_acomp = nivel de compresie APE
+gui_oggqual = nivel de calitate Ogg Vorbis
+gui_spxqual =  nivel de calitate speex
+gui_aacqual = nivel de calitate AAC/MP4/M4A
+gui_mpcqual = nivel de calitate Musepack
+gui_ofmode = mod de compresie OptimFrog
+gui_ofopt = nivel de optimizare OptimFrog
+gui_bratio = BONK downsampling ratio
+gui_bquanl = BONK quantanization level
+gui_bpsize = aproximarea dimensiunii cu BONK
+gui_outdir = Select output folder
 
 ##################
 # Help menu text #
@@ -97,9 +99,11 @@ preserve = conserva structura directorului
 formats = lista cu formatele suportate de codare/decodare
 only = converteste doar fisiere cu extensia
 keep = pastreaza fisierele cu extensia formatului de destinatie
+jobs = number of simultaneous files to process
 help = acest meniu de ajutor
 longhelp = lista completa de optiuni
 version = afiseaza informatii despre versiune
+update = check for newer version
 usage = utilizare: pacpl --to <format> <optiuni> [fisier(e)/director(directoare)]
 eopts = utilizatorul furnizeaza optiunile encoderului
 dopts = utilizatorul furnizeaza optiunile decoderului
@@ -120,7 +124,6 @@ freq = frectenva audio (imp. 44100)
 channels = numarul de canale audio (imp. 2)
 effect = efectul sox (aiff/au/snd/raw/voc/smp/avr/cdr)
 fcomp = nivel de compresie flac/fla (imp. 2)
-pcomp = nivel de compresie lpac/pac (imp. 3)
 acomp = nivel de compresie ape (imp. 3000)
 oggqual = nivel de calitate ogg (imp. 3)
 spxqual = nivel de calitate spx (imp. 8)
@@ -147,5 +150,5 @@ nocddb = dezactiveaza cddb
 noinput = dezactiveaza interactivitatea cddb
 nscheme = denumim schema
 cdinfo = arata informatia cddb pentru discul curent
-device = implicit = /dev/cdrom
+device = implicit = /dev/dvd
 rip_usage = utilizarea lui rip: pacpl --rip [track(uri)/all] --to <formatul> <optiunile>

@@ -1,199 +1,236 @@
-v4.0.5:
+=================
+[**** 5.0.1 ****]
+=================
 
-+ added support for KDE4 (konqueror/dolphin) service menus
+[01-04-2014]
 
-- removed all previously included mime types.
-- removed support for KDE3 (konqueror/dolphin) service menus.
-  the old pacpl.desktop can still be found in the source package
-  under plugins/d3lphin for those that still need it.
+* updated ogg vorbis & spx tags to use TRACKNUMBER instead of TRACK
 
-* the amarok script no longer works in 2.0* due to various
-  changes.  a new one is in the works however, and will be
-  included in a future release.
+% fixed coverting to "wma, ra, & mmf" thanks to bug report by Timothy E. Harris
+% fixed missing semicolon bug in nemo/nautilus/thunar script
+% fixed overwrite message to show output file, not source.
 
-% fixed typo in tag string when encoding mp4/m4a using faac.
-  thanks to Steve Harrold for reporting the issue.
-% fixed FLAC encoders list in codecs.conf.
-% fixed Makefile.in to include translations from the last release.
-  thanks to Bram Schoenmakers for spotting the fowl-up
-------------------------------------------------------------------------
+- removed support for .src and .ram extenions (no longer supported)
 
-v4.0.4:
+=================
+[**** 5.0.0 ****]
+=================
 
-+ added Romanian translation thanks to Sabadac Petru-Gabriel
-+ added Dutch translation thanks to Sander Pientka
-+ added Italian translation thanks to Marco Bignami
-+ added flake to supported FLAC encoders
+[11-1-2013]
 
-* updated Russian translation
-* updated Turkish translation thanks to Osman Karagoz
-* updated mime type names to prevent conflicts
+** 5.0.0 Official Stable Release **
 
-% fixed mp4 encoding/tagging via ffmpeg. thanks to Neil Stewart for
-  reporting the changes in the latest ffmpeg.
-% fixed a few typos/errors in the man page.  thanks to Reuben Thomas.
-------------------------------------------------------------------------
-v4.0.3:
+* minor code optimizations/changes
+* updated README program description
 
-+ added encode/decode support for m4b (iPod audio book)
-+ added d3lphin to the configure script
-+ added option --defopts.  this allows you to turn off/remove all default
-  encoder options set by the program, and allows you to completely customize
-  them via --eopts.
+% fixed amr encoding
+% fixed mmf, ra, wma, other codecs supported by ffmpeg
 
-* updated po directory (moved to /usr/share/pacpl/locale)
++ added a few obscure audio formats supported by sox/sndfile-convert including:
+  rf64 (sndfile) 8svx amb dat dvms f32 f64 fssd gsrt hcom txw vms
 
-% fixed various inconsistencies in Makefile.in and configure.ac
-  thanks to Cristian Greco for the patches, suggestions, and 
-  Debian package.
-% fixed link for ape encoder/decoder (mac) in README file
-% fixed bug when encoding to mp3 using bladeenc.  --eopts was not being
-  read into the command.
+[10-12-2013]
 
-------------------------------------------------------------------------
-v4.0.2:
+% fixed encoding to .mp4/.m4a using ffmpeg/avconv
+% fixed configure error when enabling nemo
 
-+ added ability to encode to rm
+- removed use of Ogg::Vorbis::Header.  tag writing for oga and ogg 
+  is now done via vorbiscomment (part of vorbis-tools)
 
-* updated Polish translation
-* updated Estonian translation
-* updated Russian translation
++ added oga extension for ogg vorbis audio
++ added ogv audio extract support
++ added webm audio extract support
 
-% fixed typo when trying to find normalize. thanks to FErki for spotting it.
-% fixed WMA tag read bug.  thanks to Andrew Neitsch for reporting the issue
-% fixed other minor issues
+* updated oga/ogg tag reading to use Audio::Scan
 
-------------------------------------------------------------------------
-v4.0.1:
+[10-10-2013]
 
-+ added ability to select alternate encoders/decoders for various formats
-+ added codecs.conf to set desired default encoders/decoders
-+ added options --normalize & --nopts
-+ added notice to print total completed/failed conversions
-+ added support for audio format mmf via ffmpeg
-+ added Turkish translation thanks to Cantek Cetin
-+ added Estonian translation thanks to Priit Jõerüüt
-+ added Catalan translation thanks to Xavi BS
-+ added Russian translation thanks to Illarion Khapersky 
-+ added French translation thanks to Guillaume Loyot
+% changed the kde plugin to popup a combobox for selecting the
+  output format to keep things somewhat consistent with the rest of
+  the platforms.
 
-* updated man page to include sndfile-convert in the "see also" section
-* updated application to remove partial files when encoding fails.
-* updated all translations to include new phrases (att: translators)
-* updated user modules (new syntax implemented) thanks to Stefano Sabatini
-* updated -v switch to be used for verbose, not version
-* updated the pnotice() sub to only print the banner once.  thanks to
-  Robert Krawitz for this, and many other suggestions.
-* updated mod-install.sh to force install Audio::FLAC::Header.  this may
-  or may not be necessary depending on your specific distribution and/or
-  installed libraries.
+% flip-flopped on the use 5.18.0 statement.  seems other (*buntu*)
+  distros consider that release "experimental".  worked around it
+  with a simple: 
+  
+  no if $] >= 5.018, warnings => "experimental::smartmatch";
 
-% fixed typo in mod-install-kubuntu.sh
-% fixed a few inconsistencies in the code
-% fixed parenthesis/forward-slash in directory/filename bug 
-% fixed ac3 decoding (ffmpeg can only encode to ac3, use mplayer to decode)
-% fixed input file deletion bug (using --delete) when ^C was pressed.
+% re-wrote preserve directory function.  it actually works again...
 
-- removed inclusion of uneeded Perl module Pod::Usage
++ added parallel processing.  about time we put those cores to use!
++ added use of Parallel::ForkManager module you can install it via:
+  1) perl -MCPAN -e 'install Parallel::ForkManager'
+  2) sudo apt-get install libparallel-forkmanager-perl
 
-------------------------------------------------------------------------
-v4.0.0:
++ added option -j,--jobs option to specify concurrent jobs to process
++ added JOBS varible in pacpl.conf.  default is set to 4
++ added jobs description to locale files (need translations!)
 
-+ added Chinese Simplified translation thanks to Ni Hui
-+ added Spanish translation thanks to Antonio 
-+ added --keep option.  this option prevents re-encoding of files matching
-  the destination format.
-+ added the following formats from sndfile-convert (part of the libsndfile
-  package): caf, fap, ircam, mat, mat4, mat5, nist, paf, pvf, sd2, sf, w64
++ added support for the Thunar file manager (tested under Xbuntu 13.04)
+  see plugins/gnome/thunar/INSTALL for more information
+  
+[10-1-2013]
 
-* updated en.po (renamed to en_US.po)
++ added the use 5.18.0; requriement to pacpl. to those
+  using earlier versions, you can remove this line but YMMV.
 
-% fixed typo in extra/README.module
-% fixed a few typos in the man page
-% fixed lang sub to handle .uft8/UTF-8 extensions
-% fixed apostrophe in directory name bug.  this affected all GUI service
-  menus and plugins with kdialog using the --getexistingdirectory option.
+% fixed configure script to work properly when different
+  gui dialog / file managers are installed
 
-------------------------------------------------------------------------
-v4.0.0-beta3:
+- removed support for lpac/pac (obsolete)
+- removed support for gogo (obsolete)
 
-+ added Polish translation thanks to Michal Smoczyk
-+ added Dolphin PACPL-Convert service menu
-+ added --enable-all option to configure script.  this should aid package
-  maintainers who install in a chroot.
+[9-30-2013]
 
-* updated configure script to not exit when plugin apps are not found
-* updated extra directory contents are now installed along with docs
-* updated pacpl.desktop service menu to use audio/* and video/*  Suggested
-  by William Pfeffer
++ added GNOMEDIR variable to the Makefile in case your gnome
+  installation is not located in the default /usr directory
 
-% fixed duplication bug when modifying ogg tags
-% fixed various directory creations in the Makefile
-% fixed owner and group on all po files
-% fixed copying of WMA artist tag to use AUTHOR instead of ALBUMARTIST. thanks
-  to Matthias Meyer for reporting this issue.
+* updated directory structure for plugins
+* updated configure script to use the following:
 
-- removed LANG variable from pacpl.conf.  The locale is now set according to
-  the environment variable $LANG.
+	--enable-kde      (for the KDE service menu)
+	--enable-nautilus (for the nautilus script)
+	--enable-nemo     (for the nemo action script)
 
-------------------------------------------------------------------------
-v4.0.0-beta2:
+  the kde and nautilus/nemo options cannot be used together.
+  you can however use both nemo and nautilus (assuming you have
+  both installed)
 
-+ added ability to rip audio tracks in Amarok via the right-click menu.
-+ added mod-install in extra/ directory for Kubuntu users.
-+ added German translation thanks to Andreas Lang.
+  by default none of the options are enabled
 
-* updated kdialog bitrate prompt to include 320kbps
-* updated user modules to use .m extension rather than .mod
-* updated mods/ directory in /etc/pacpl (renamed to modules/)
+- removed install.sh & README for nemo script directory
 
-% fixed Amarok plugin to close pacpl after adding the supported out formats
-% fixed bug in taginfo to make it case-insensitive
-% fixed sub write_user_tags() to print error when tags could not be wrote
-% fixed bug in write_user_tags() to make it case-insensitive
-% fixed configure script to check for CDDB_get
-% fixed bug when converting to .fla.  Thanks to Steven Woskow for the
-  report and beta-testing.
+[9-24-2013]
 
-------------------------------------------------------------------------
-v4.0.0-beta1:
+# bumped version to 5.0.0.  with the amount of time 
+  passed since the last release and all the feature 
+  additons/changes I feel its warranted: For now 
+  we're still in the nightly/pre-release testing stage
 
-major update.  the entire application has been re-written from scratch.
-the new layout allows languages and codecs to be added much easier than
-prior releases.
++ GNOME Support Added:
 
-- removed all --formattoformat options (eg: --mp3toflac)
-- removed pacpl-install
-- removed daemon mode (this may be re-implemented in a future release)
-- removed --playlist option
-- removed --play function
-- removed support for kexis (kxs).  if anyone was actually using this
-  format I apologize, but the programs inability to specify an output 
-  file just wouldn't work with the new system.
+Note: Tested and tailored for 13.04 Unity, it will however 
+      work on earlier versions and other debian based distros
+      using the Gnome desktop which have zenity & notify-send
+      installed
 
-+ added support for speex
-+ added support for user modules.  see extra/sample.mod
-+ added ability to alter/add meta-data during conversion via tagging opts
-+ added configure and makefile for installation (replaces pacpl-install)
-+ added --to option. this replaced --ct and the --formattoformat options
-+ added --only option. with this option, only files matching .ext will
-  get converted. (eg: pacpl --to wav --only flac /home/directory/) only
-  converts files ending in .flac to wav
-+ added --dryrun option.  this was inspired/suggested by Stefano Sabatini
-+ added --verbose option. useful in conjunction with --dryrun
-+ added language po-like files. translators (as always) are welcome.
-+ added the following video types to the video->audio conversions:
-  svcd, m4v, nsv, nuv, psp, and smk.
++ added PACPL-Convert (Nautilus/Nemo) script
 
-* update all files are now converted to wav first, then to the desired
-  output format.  in the future this will allow normalization, gain, etc.
-* update slackware package now uses the new kde installation directory /usr
-* update a large portion of the amarok script has been re-written.
++ added support for running the script through Nemo on Linux Mint
+  or other distributions that use that file manager
+  tested on Linux Mint 15 "Olivia" Cinnamon (64-bit)
 
-% fixed bug with handling dollar signs ($) in file names being treated 
-  as regular expressions.  thanks to Donald Byrd for the report.
+- removed use of Audio::WMA
+- removed use of MP4::Info
+- removed use of Audio::Musepack
+- removed use of Audio::APETags
 
-% fixed bug when copying ogg tags.  only copy tags starting with the tag
-  string (artist, title, etc)...as opposed to any tag containing the string.  
-  thanks to Edward Kear for reporting this issue.
+  the above four modules have been replaced by Audio::Scan for 
+  reading the tags from the various formats including flac.
 
++ added use of perl module Audio::Scan
++ added support for reading .ape tags
++ added support for TAK audio format (decode only)
++ added cdparanoia to mod-install-ubuntu.sh as part of the basic tools
++ added new string to .po files (gui_outdir) - **translators needed**
+
+% fixed changed FLAC tag DESCRIPTION to COMMENT
+% fixed FLAC upper/lower case issue by reading tags with Audio::Scan
+% fixed cd ripping - $out_dir should be $outdir in order run correctly
+% fixed encoding to .mp4 & .m4a.  Had same issue as Musepack files.
+
+* updated configure for gnome & kde - neither is installed by default.
+  you will need to --enable-kde or --enable-gnome if you would like to
+  have eiher of the plugins installed.
+
+* updated extra/mod-install*.sh to reflect module changes
+* updated %run (put all codedcs in alphabetical order) a little house cleaning..
+* updated default bitrate in pacpl.conf to 192kbps for formats that support it
+* updated pacpl.conf - changed default disc device to /dev/dvd
+  & modified all lang/*.po files to reflect change.
+
+- removed RAM from codecs.conf (has no encoder)
+
+[9-21-2013]
+
++ added --enable-kde (adds Konqueror/Dolphin pacpl.desktop)
++ added --enable-gnome (nautilus script in the works) ***not included...yet***
+
++ added support for amr audio format
++ added support for 3gp audio format
++ added support for 3g2 audio format
+
+= Note: The above three formats only work if your version of ffmpeg/avconv supports them.
+  see extra/ffmpeg-conf.sh / extra/libav-conf.sh (requires libopencore-amr)
+
+% fixed spacing error in codecs.conf for DTS
+
+- removed --enable-konqueror  & --enable-dolphin options
+
+[9-18-2013]
+
++ added ffmpeg-conf.sh and libav-conf.sh to extra/ dir.
+  this shows what libs and options are needed for full support for pacpl
++ added support for libav (avconv) encoder/decoder - ffmpeg fork
++ added ffmpeg/avconv support to various formats as available encoder/decoder
++ added support for adts audio format
+
+% fixed mpc tagging using the new SV7/SV8 releases. (options have to come BEFORE
+  the input and output file)
+% fixed all ffmpeg encode instances to apply $eopts (user options) when
+  --defopts=0 to the output file as opposed to the input. 
+
+* updated codecs.conf to include new formats that can be configured
+* updated extra/README.extra
+* update Makefile.am
+    * use wildcard * for LANG_MODS instead of listing them individually
+    * remove -t flag for $(INSTALL_DATA)
+
+[9-14-2013]
+
+* updated extra/mod-install.sh (removed Switch module)
+* updated extra/mod-install-kubuntu.sh (renamed to mod-install-ubuntu.sh)
+    -  removed liboggvorbis-perl
+    +  added various required modules/libs for Ogg::Vorbis::Header
+    +  added section to install basic encoders/decoders
+    +  added section to fix apt repository /var/lib/apt/lists
+       to be able to install restricted-extras package.
+    =  tested in both Ubuntu & Kubuntu 13.04
+
+    Note: When running the script choose the default [yes] for all prompts
+
+[9-12-2013]
+
++ added support for lowercase tags when writing/reading flac metadata
++ added git repository (https://github.com/vorzox/pacpl)
++ added support for dcaenc (dts) encoder (requires multi-channel wav as input)
++ added support for dts (default encoder/decoder=ffmpeg)
+
+[9-10-2013]
+
++ added support for mp3HD audio format
++ added support for aften ac3 encoder
++ added support for twolame mp2 encoder
++ added support for opus audio format
++ added support for off (OptimumFrog - Float) audio format
++ added support for TwinVQ (vqf) audio format (decode only)
++ added Greek/Hellenic translation thanks to Evangelos Apostolakos
++ added required module CDDB (this goes along with CDDB_get)
+
+- removed amarok support
+- removed pacpl gui KMDR
+- removed support for d3lphin (obsolete)
+- removed --enable-all configuration option (obsolete)
+- removed deprecated use of Switch in favor of given-when-default
+
+* updated README to include new/updated URLs for applications
+* updated website pacpl.sourceforge.net (vorzox.wix.com/pacpl)
+* update Makefile.am and configure.ac to comply with current standards
+* updated slack-desc: changes layout and includes new formats
+
+% fixed ffmpeg ac3 encoding. specified bitrate was in bits not kilobits
+% fixed ffmpeg tag handling...again...thanks to Dave Allen Barker Jr.
+% fixed pacpl.desktop to include missing formats
+% fixed return 1 when encoding fails
+% fixed added MP3::Tag->config(write_v24 => 'YES') to allow updating &
+  modifying of newer ID3v2 tags.

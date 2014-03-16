@@ -10,7 +10,7 @@
 # 4) 拼写检查
 # 5) 请翻译这段介绍并包含在您的 lang.po 中
 # 
-# 您可以将您的翻译提交到 viiron@gmail.com
+# 您可以将您的翻译提交到 vorzox@gmail.com
 
 ##################
 # 错误消息 #
@@ -49,6 +49,8 @@ seek_help = 参见“pacpl --help”或“pacpl --longhelp”以查看选项清�
 ###########
 
 converting = 正在转换：
+up_to_date = is up to date:
+update_version = A newer version of Perl Audio Converter exists:
 conv_comp = 转换完成。
 removed_tmp = 删除临时文件：
 removed_src = 删除源文件：
@@ -67,25 +69,25 @@ show_encoders = encoders for
 show_decoders = decoders for
 
 #######################################
-# Konqueror 和 Amarok 的用户提示符 #
+# Konqueror 和 Dolphin 的用户提示符 #
 #######################################
 
-kde_overwrite = 如果输出文件已存在是否覆盖？(1 = 是，0 = 否)
-kde_bitrate = 选择比特率
-kde_freq = 音频采样率
-kde_chans = 音频通道
-kde_fcomp = FLAC 压缩级别
-kde_pcomp = LPAC 压缩级别
-kde_acomp = APE 压缩级别
-kde_oggqual = Ogg Vorbis 质量级别
-kde_spxqual = speex 质量级别
-kde_aacqual = AAC/MP4/M4A 质量级别
-kde_mpcqual = Musepack 质量级别
-kde_ofmode = OptimFrog 压缩模式
-kde_ofopt = OptimFrog 最佳级别
-kde_bratio = BONK 下载采样率
-kde_bquanl = BONK 量化级别
-kde_bpsize = BONK 预计大小
+gui_overwrite = 如果输出文件已存在是否覆盖？(1 = 是，0 = 否)
+gui_bitrate = 选择比特率
+gui_freq = 音频采样率
+gui_chans = 音频通道
+gui_fcomp = FLAC 压缩级别
+gui_acomp = APE 压缩级别
+gui_oggqual = Ogg Vorbis 质量级别
+gui_spxqual = speex 质量级别
+gui_aacqual = AAC/MP4/M4A 质量级别
+gui_mpcqual = Musepack 质量级别
+gui_ofmode = OptimFrog 压缩模式
+gui_ofopt = OptimFrog 最佳级别
+gui_bratio = BONK 下载采样率
+gui_bquanl = BONK 量化级别
+gui_bpsize = BONK 预计大小
+gui_outdir = Select output folder
 
 ##################
 # 帮助菜单文本 #
@@ -97,9 +99,11 @@ preserve = 保持目录结构
 formats = 列出支持的编码/解码格式
 only = 只转换匹配扩展名的文件
 keep = 保持文件匹配目标格式
+jobs = number of simultaneous files to process
 help = 本帮助菜单
 longhelp = 完整的选项清单
 version = 显示版本信息
+update = check for newer version
 usage = 用法：pacpl --to <格式> <选项> [文件/目录]
 defopts = turn off default encoder options (0)
 eopts = 用户提供的编码选项
@@ -121,7 +125,6 @@ freq = 声频 (默认：44100)
 channels = 音频通道数 (默认：2)
 effect = sox 效果 (aiff/au/snd/raw/voc/smp/avr/cdr)
 fcomp = flac/fla 压缩级别 (默认：2)
-pcomp = lpac/pac 压缩级别 (默认：3)
 acomp = ape 压缩级别 (默认：3000)
 oggqual = ogg 质量级别 (默认：3)
 spxqual = spx 质量级别 (默认：8)
@@ -148,5 +151,5 @@ nocddb = 禁用 cddb
 noinput = 禁用 cddb 交互
 nscheme = 命名方案
 cdinfo = 显示当前碟片的 cddb 信息
-device = 默认 = /dev/cdrom
+device = 默认 = /dev/dvd
 rip_usage = 抓取用法：pacpl --rip [音轨/全部] --to <格式> <选项>

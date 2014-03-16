@@ -1,0 +1,16 @@
+You will have to install the plugin manually using the following:
+
+1)  sudo ./install-gnome.sh
+
+This will modify ${HOME}/.config/Thunar/uca.xml
+and copy the supporting application/icon to their respective locations.
+
+2) You will also need to edit /etc/pacpl/pacpl.conf and change ZEN_DIR & ZEN_OPTS to 1
+   and make sure KDE_DIR & KDE_OPTS = 0
+
+Note: this version can be used with the kde plugin on any system that
+supports multiple desktop choices (Slackware for example) if need be. 
+You will just need to run the install-kde.sh script instead and do
+the exact opposite of the step 2) above.
+
+Restart Thunar (if already open) to see the changes take effect.
