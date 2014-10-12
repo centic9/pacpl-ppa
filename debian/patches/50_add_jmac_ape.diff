@@ -1,24 +1,26 @@
 Index: git/codecs.conf
 ===================================================================
---- git.orig/codecs.conf	2012-09-30 00:25:45.000000000 +0200
-+++ git/codecs.conf	2012-09-30 00:26:21.000000000 +0200
-@@ -7,6 +7,10 @@
- #
+--- git.orig/codecs.conf	2014-10-12 22:29:49.671324916 +0200
++++ git/codecs.conf	2014-10-12 22:32:21.853208695 +0200
+@@ -24,6 +24,12 @@
+ 
  AAC = faac,faad
  
++# APE #
 +# encoders: jmac, mac
 +# decoders: jmac, mac
++
 +APE = jmac,jmac
 +
- # encoders: flac, ffmpeg
- # decoders: flac, ffmpeg, mplayer
- #
+ # AC3 #
+ # E: aften, avconv, ffmpeg
+ # D: avconv, ffmpeg, mplayer
 Index: git/pacpl
 ===================================================================
---- git.orig/pacpl	2012-09-30 00:26:07.000000000 +0200
-+++ git/pacpl	2012-09-30 00:26:21.000000000 +0200
-@@ -834,6 +834,13 @@
-                                                     },
+--- git.orig/pacpl	2014-10-12 22:29:49.671324916 +0200
++++ git/pacpl	2014-10-12 22:29:49.667324867 +0200
+@@ -692,6 +692,13 @@
+ 
                                          PROMPT => { ACOMP => 1 },
                                       },
 +                              jmac => {
@@ -31,9 +33,9 @@ Index: git/pacpl
                              },
                  
                  DECODER => {
-@@ -841,7 +848,11 @@
-                                         NAME => "mac",
-                                         DSTR => sub { "%i %o -d $dopts" },
+@@ -709,7 +716,11 @@
+                                        NAME => 'avconv',
+                                        DSTR => sub { "-y -i %i $dopts %o" },
                                       },
 -                           },
 +                              jmac => {
@@ -43,4 +45,4 @@ Index: git/pacpl
 +			   },
  
                  TAGS    => {
-                              READ   => 0,
+                              READ   => 1,

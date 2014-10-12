@@ -1,79 +1,30 @@
 Index: git/codecs.conf
 ===================================================================
---- git.orig/codecs.conf	2012-09-30 00:26:07.000000000 +0200
-+++ git/codecs.conf	2012-09-30 00:26:07.000000000 +0200
-@@ -28,6 +28,11 @@
- M4A = faac,faad
- MP4 = faac,faad
+--- git.orig/codecs.conf	2014-10-12 22:33:27.910021694 +0200
++++ git/codecs.conf	2014-10-12 22:34:46.534985764 +0200
+@@ -71,6 +71,8 @@
+ # E: avconv, ffmpeg, sox, toolame, twolame
+ # D: avconv, ffmpeg, mplayer 
  
-+# encoders: twolame
-+# decoders: twolame
-+#
-+MP2 = twolame,twolame
++MP2 = ffmpeg,ffmpeg
 +
- # encoders: lame, bladeenc, gogo, toolame, ffmpeg, sox
- # decoders: lame, ffmpeg, mplayer, sox
- #
+ # OGG #
+ # E: avconv, ffmpeg, oggenc, sox
+ # D: avconv, ffmpeg, mplayer, oggdec, sox
 Index: git/pacpl
 ===================================================================
---- git.orig/pacpl	2012-09-30 00:26:07.000000000 +0200
-+++ git/pacpl	2012-09-30 00:26:20.000000000 +0200
-@@ -485,6 +485,58 @@
+--- git.orig/pacpl	2014-10-12 22:33:27.910021694 +0200
++++ git/pacpl	2014-10-12 22:35:48.759745979 +0200
+@@ -1116,9 +1116,9 @@
                             },
-                },
-                
-+        mp2 => {
-+
-+                DEFAULT_ENCODER => "twolame",
-+                DEFAULT_DECODER => "twolame",
-+
-+                ENCODER => {
-+                           twolame => {
-+                                        NAME => "twolame",
-+                                        ESTR => sub {
-+                                                      $opts = "-b $bitrate" if $defopts == 1;
-+                                                      $opts = '' if $defopts == 0;
-+                                                      "$eopts $opts %i %o"
-+                                                    },
-+
-+                                        PROMPT => { BITRATE => 1 },
-+                                      },
-+
-+                            ffmpeg => {
-+                                        NAME => "ffmpeg",
-+                                        ESTR => sub {
-+                                                      $opts = "-ab $bitrate.k -ar $freq -ac $channels" if $defopts == 1;
-+                                                      $opts = '' if $defopts == 0;
-+                                                      "$eopts -y -i %i $opts %o"
-+                                                    },
-+
-+                                        PROMPT => {
-+                                                    BITRATE  => 1,
-+                                                    FREQ     => 1,
-+                                                    CHANNELS => 1,
-+                                                  },
-+                                      },
-+                           },
-+
-+                DECODER => {
-+                            ffmpeg => {
-+                                        NAME => "ffmpeg",
-+                                        DSTR => sub { "$dopts -y -i %i %o" },
-+                                      },
-+
-+                           mplayer => {
-+                                        NAME => "mplayer",
-+                                        DSTR => sub { "-vc dummy -vo null -nortc -ao pcm:file=%o %i" },
-+                                      },
-+                           },
-+
-+                TAGS    => {
+   
+                    TAGS => {
+-                             READ   => 0,
+-                             WRITE  => 0,
+-                             MODULE => undef,
 +                             READ   => 1,
 +                             WRITE  => 1,
 +                             MODULE => "MP3::Tag",
-+                           },
-+               },
-+               
-         mp3 => {
- 
-                 DEFAULT_ENCODER => "lame",
+                            },
+                },                                        
+ 			   

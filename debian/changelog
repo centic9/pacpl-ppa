@@ -1,3 +1,9 @@
+pacpl (4.0.5-7.1ubuntu0~ppa2) trusty; urgency=medium
+
+  * Re-apply patches.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Thu, 26 Jun 2014 22:01:18 +0200
+
 pacpl (4.0.5-7.1ubuntu0~ppa1) precise; urgency=low
 
   * Rebase to 4.0.5-7.1 debian version.
