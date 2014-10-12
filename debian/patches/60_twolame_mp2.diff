@@ -1,7 +1,7 @@
 Index: git/codecs.conf
 ===================================================================
---- git.orig/codecs.conf	2014-10-12 22:33:27.910021694 +0200
-+++ git/codecs.conf	2014-10-12 22:34:46.534985764 +0200
+--- git.orig/codecs.conf	2014-10-12 22:43:45.445683836 +0200
++++ git/codecs.conf	2014-10-12 22:43:45.441683764 +0200
 @@ -71,6 +71,8 @@
  # E: avconv, ffmpeg, sox, toolame, twolame
  # D: avconv, ffmpeg, mplayer 
@@ -13,8 +13,8 @@ Index: git/codecs.conf
  # D: avconv, ffmpeg, mplayer, oggdec, sox
 Index: git/pacpl
 ===================================================================
---- git.orig/pacpl	2014-10-12 22:33:27.910021694 +0200
-+++ git/pacpl	2014-10-12 22:35:48.759745979 +0200
+--- git.orig/pacpl	2014-10-12 22:43:45.445683836 +0200
++++ git/pacpl	2014-10-12 22:43:45.445683836 +0200
 @@ -1116,9 +1116,9 @@
                             },
    

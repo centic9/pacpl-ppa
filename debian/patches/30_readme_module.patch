@@ -3,8 +3,8 @@ Description: Better documentation for README.module (in particular, specify
 where to install user modules).
 Index: git/extra/README.module
 ===================================================================
---- git.orig/extra/README.module	2012-09-30 00:28:27.000000000 +0200
-+++ git/extra/README.module	2014-03-16 19:10:09.000000000 +0100
+--- git.orig/extra/README.module	2014-10-12 22:43:42.517646723 +0200
++++ git/extra/README.module	2014-10-12 22:43:42.513646666 +0200
 @@ -1,8 +1,14 @@
  USER MODULES:
  
