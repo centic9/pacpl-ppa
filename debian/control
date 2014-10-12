@@ -10,7 +10,9 @@ Build-Depends: debhelper (>= 8.0),
                libaudio-flac-header-perl,
                libaudio-musepack-perl,
                libaudio-wma-perl,
-               libaudio-scan-perl
+               libaudio-scan-perl,
+               libparallel-forkmanager-perl,
+               libcddb-perl
 Standards-Version: 3.9.2
 Homepage: http://pacpl.sourceforge.net
 Vcs-Git: git://git.debian.org/git/collab-maint/pacpl.git

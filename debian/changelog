@@ -1,6 +1,18 @@
-pacpl (4.0.5-7.1ubuntu0~ppa2) trusty; urgency=medium
+pacpl (5.0.1-0ubuntu0~ppa3) trusty; urgency=medium
 
-  * Re-apply patches.
+  * Some more changes to build successfully.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Mon, 13 Oct 2014 00:02:55 +0200
+
+pacpl (5.0.1-0ubuntu0~ppa2) trusty; urgency=medium
+
+  * Add missing dependency on libparallel-forkmanager-perl and libcddb-perl.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sun, 12 Oct 2014 23:39:44 +0200
+
+pacpl (5.0.1-0ubuntu0~ppa1) trusty; urgency=medium
+
+  * Re-apply some patches to latest version 5.0.1, some patches are applied now.
 
  -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Thu, 26 Jun 2014 22:01:18 +0200
 
