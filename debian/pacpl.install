@@ -3,5 +3,5 @@ usr/share/doc/pacpl
 usr/share/man
 usr/share/pacpl
 extra/README.module extra/sample.m usr/share/doc/pacpl/modules
-extra/README.extra extra/pacpl-gui.kmdr
+extra/README.extra usr/share/doc/pacpl
 etc/pacpl/*.conf
