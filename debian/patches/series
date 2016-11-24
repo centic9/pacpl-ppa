@@ -1,6 +1,7 @@
-10_twolame_mp3_enc.patch
 30_readme_module.patch
 40_change-normalize-to-normalize-audio.patch
-45_case-independent-flac-tags.patch
-50_replace-depreciated-switch-by-given-for-perl5.14.patch
-60_use-ogg-vorbis-header-pureperl.patch
+80-fix_enforce_outdir_switch_if_p_switch_is_used.patch
+configure-exit0.patch
+typos.patch
+plugins.patch
+multiple-format-input.patch

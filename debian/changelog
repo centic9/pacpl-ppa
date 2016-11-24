@@ -1,3 +1,41 @@
+pacpl (5.0.1-1) unstable; urgency=medium
+
+  [ Maxime Chatelle ]
+  * Switch debian/copyright to copyright-format/1.0.
+  * Bump Standards-Version to 3.9.6.
+  * Update Vcs-* in debian/control.
+  * Update contact email in debian/copyright.
+  * Add patch to enforce --outdir if --preserve given. (Closes: #697519)
+    Patch name: 80-fix_enforce_outdir_switch_if_p_switch_is_used.patch
+
+  [ Matteo Cypriani ]
+  * New maintainer. (Closes: #782435)
+  * New upstream release. (Closes: #746957, #671796)
+  * Update debian/copyright.
+  * Drop patches not needed any more:
+    + 10_twolame_mp3_enc.patch
+    + 45_case-independent-flac-tags.patch
+    + 50_replace-depreciated-switch-by-given-for-perl5.14.patch
+    + 60_use-ogg-vorbis-header-pureperl.patch
+  * Refresh remaining patches.
+  * New patches:
+    + configure-exit0.patch: makes the configure script exit properly.
+    + typos.patch: fixes some typos in the manpage.
+    + plugins.patch: tunes plugin files for Debian.
+    + multiple-format-input.patch: fixes a bug when converting input files
+      with several different formats.
+  * debian/control:
+    + Use secure Vcs-* URIs.
+    + Update Homepage.
+    + Update dependencies.
+    + Update package description.
+  * Bump Standards-Version to 3.9.8 (no changes needed).
+  * Switch to debhelper compat 10.
+  * pacpl-gui was dropped upstream, but file manager plugins are now provided.
+  * Update README.Debian.
+
+ -- Matteo Cypriani <mcy@lm7.fr>  Thu, 24 Nov 2016 12:42:37 -0500
+
 pacpl (4.0.5-7.1) unstable; urgency=low
 
   * Non-maintainer upload.
@@ -30,7 +68,7 @@ pacpl (4.0.5-6) unstable; urgency=low
 
 pacpl (4.0.5-5) unstable; urgency=low
 
-  * debian/control:   
+  * debian/control:
     - New maintainer: Maxime Chatelle <mmyc@gmx.com> (closes: #608808)
     - Bump up to policy 3.9.2. (no changes)
     - moved 'twolame' Recommand to Suggest.
@@ -39,16 +77,16 @@ pacpl (4.0.5-5) unstable; urgency=low
   * debian/compat:
     - set to debhelper 8
   * debian/patches:
-    - Removed 20_codecs-conf.patch falling back to original, 
+    - Removed 20_codecs-conf.patch falling back to original,
       using lame as mp3 encoder. Twolame encode to mp2, not mp3.
     - Added 35_pacpl_patent-warning-for-mp3-using-lame.patch to issue
       warning about patented mp3 file format (see patch header for detail)
       And, changed default mp3 decoder to ffmpeg (was lame)(included in patch).
       (the two previous Closes: #608601)
-    - Added patch : 40_change-normalize-to-normalize-audio.patch 
+    - Added patch : 40_change-normalize-to-normalize-audio.patch
       (Closes: #589790)
     - Added patch: 45_case-independent-flac-tags.patch
-      thank to Luca Niccoli <lultimouomo@gmail.com> 
+      thank to Luca Niccoli <lultimouomo@gmail.com>
       (Closes: #561459)
   * debian/README.Debian: Added notice about mp3 encoding.
 
@@ -97,7 +135,7 @@ pacpl (4.0.5-2) unstable; urgency=low
 
 pacpl (4.0.5-1) unstable; urgency=low
 
-  * New upstream version. 
+  * New upstream version.
     - debian/pacpl.install: updated in order to install new konqueror/dolphin
       plugins and deleted old mime files.
   * debian/control: bump up Standards-Version to 3.8.1 (no changes required).
@@ -114,7 +152,7 @@ pacpl (4.0.4-1) unstable; urgency=low
     - minor changes to description;
     - added new codecs to Recommends;
     - delete Build-Depends on autotools-dev;
-    - new maintainer email address. 
+    - new maintainer email address.
   * debian/pacpl.docs: removed, useless.
   * debian/copyright: updated.
 
@@ -135,4 +173,3 @@ pacpl (4.0.3-1) unstable; urgency=low
   * Initial release (Closes: #492666)
 
  -- Cristian Greco <cgreco@cs.unibo.it>  Fri, 26 Sep 2008 21:56:57 +0200
-

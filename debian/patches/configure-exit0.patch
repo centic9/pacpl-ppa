@@ -1,0 +1,14 @@
+Description: Have configure script quit with exit code 0
+Author: Matteo Cypriani <mcy@lm7.fr>
+Origin: vendor
+Forwarded: https://sourceforge.net/p/pacpl/bugs/13/
+Last-Update: 2016-11-24
+--- a/configure.ac
++++ b/configure.ac
+@@ -211,4 +211,4 @@
+ AC_MSG_NOTICE()
+ AC_MSG_NOTICE([make && make install])
+ 
+-exit 1
+\ No newline at end of file
++exit 0

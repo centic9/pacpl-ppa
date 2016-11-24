@@ -1,7 +1,13 @@
 usr/bin
-usr/share/kde4
 usr/share/man
 usr/share/pacpl
-extra/README.module extra/sample.m usr/share/doc/pacpl/modules
-extra/README.extra extra/pacpl-gui.kmdr usr/share/doc/pacpl/pacpl-gui
 etc/pacpl/*.conf
+extra/README.module extra/sample.m usr/share/doc/pacpl/modules/
+pacpl.png usr/share/icons/
+plugins/kde/PACPL-Konvert usr/share/pacpl/bin/
+plugins/kde/pacpl.desktop usr/share/kde4/services/
+plugins/gnome/nemo/PACPL-Convert usr/share/pacpl/bin/
+plugins/gnome/nemo/pacpl.nemo_action usr/share/nemo/actions/
+plugins/gnome/nautilus/install.sh usr/share/doc/plugins/nautilus/
+plugins/gnome/thunar/INSTALL usr/share/doc/plugins/thunar/
+plugins/gnome/thunar/install-gnome.sh usr/share/doc/plugins/thunar/

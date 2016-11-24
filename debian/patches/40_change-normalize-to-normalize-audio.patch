@@ -1,16 +1,13 @@
 Description: Correct "normalize" program and package name.
- "normalize" Debian package was renamed to "normalize-audio", 
- So, program name used in pacpl is corrected in this patch.
-Author: Maxime Chatelle <mmyc@gmx.com>
+ "normalize" Debian package was renamed to "normalize-audio".
+Author: Maxime Chatelle <xakz@rxsoft.eu>
 Bug-Debian: http://bugs.debian.org/589790
+Origin: vendor
 Forwarded: not-needed
-Last-Updated: 2011-06-20
-
-Index: pacpl/pacpl
-===================================================================
---- pacpl.orig/pacpl	2011-06-20 17:00:08.492983116 +0200
-+++ pacpl/pacpl	2011-06-20 17:04:09.504983025 +0200
-@@ -1833,8 +1833,8 @@
+Last-Update: 2016-10-13
+--- a/pacpl
++++ b/pacpl
+@@ -2524,8 +2524,8 @@
         }
         
         # normalize wav file before encoding to output format

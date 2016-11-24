@@ -1,0 +1,99 @@
+Description: Tune plugin files for Debian
+ * Fix paths so they match the package's installation paths.
+ * Avoid duplicate files.
+ * Don't depend on bash.
+ * Adapt the documentation.
+Author: Matteo Cypriani <mcy@lm7.fr>
+Origin: vendor
+Forwarded: not-needed
+Last-Update: 2016-11-24
+--- a/plugins/kde/pacpl.desktop
++++ b/plugins/kde/pacpl.desktop
+@@ -2,13 +2,13 @@
+ Type=Service
+ ServiceTypes=KonqPopupMenu/Plugin
+ MimeType=audio/*;video/*;application/x-flash-video;inode/directory
+-Icon=/etc/pacpl/icon.png
++Icon=pacpl
+ Actions=PACPL-Convert
+ X-KDE-StartupNotify=false
+ X-KDE-Priority=TopLevel
+ 
+ [Desktop Action PACPL-Convert]
+ Name=Perl Audio Converter
+-Icon=/etc/pacpl/pacpl.png
+-Exec=/usr/bin/PACPL-Konvert %F
++Icon=pacpl
++Exec=/usr/share/pacpl/bin/PACPL-Konvert %F
+ 
+--- a/plugins/gnome/nautilus/install.sh
++++ b/plugins/gnome/nautilus/install.sh
+@@ -1,9 +1,9 @@
+-#!/usr/bin/bash
++#!/bin/sh
+ 
+ echo
+ echo "Installing Nautilus Action Script......"
+ echo
+-cp -v PACPL-Convert $HOME/.local/share/nautilus/scripts
++ln -sv /usr/share/pacpl/bin/PACPL-Convert $HOME/.local/share/nautilus/scripts
+ echo
+ sleep 1
+-echo "Done.."
+\ No newline at end of file
++echo "Done.."
+--- a/plugins/gnome/nemo/pacpl.nemo_action
++++ b/plugins/gnome/nemo/pacpl.nemo_action
+@@ -1,7 +1,7 @@
+ [Nemo Action]
+ Name=Perl Audio Converter
+ Comment=Perl Audio Converter
+-Exec=/usr/share/nemo/actions/PACPL-Convert %F
++Exec=/usr/share/pacpl/bin/PACPL-Convert %F
+ Icon-Name=pacpl
+ Selection=Any
+ Extensions=dir;3G2;3GP;AAC;AC3;ADTS;AIF;AIFF;AMR;APE;AU;AVR;BONK;CAF;CDR;DTS;FAP;FLA;FLAC;IRCAM;LA;M4A;MAT;MAT4;MAT5;MMF;MP2;MP3;MP3HD;MP4;MPC;MPP;NIST;OFF;OFR;OFS;OGG;OPUS;PAF;PVF;RA;RAW;RM;SD2;SF;SHN;SMP;SND;SPX;TTA;VOC;W64;WAV;WMA;WV
+--- a/plugins/gnome/thunar/install-gnome.sh
++++ b/plugins/gnome/thunar/install-gnome.sh
+@@ -4,16 +4,14 @@
+ 
+ CONFIG=${HOME}/.config/Thunar/uca.xml
+ 
+-cp -v PACPL-Convert /usr/bin/
+-
+ # Insert lines at end of Thunars $CONFIG
+ sed -i 's/<\/actions>//' $CONFIG
+ sed -i '/^$/d' $CONFIG
+ echo "
+ <action>
+- 	<icon>/etc/pacpl/pacpl.png</icon>
++ 	<icon>/usr/share/icons/pacpl.png</icon>
+ 	<name>Perl Audio Converter</name>
+- 	<command>/usr/bin/PACPL-Convert %F</command>
++ 	<command>/usr/share/pacpl/bin/PACPL-Convert %F</command>
+  	<description>Linux Audio Converter / Tagger/ Ripper</description>
+  	<patterns>*</patterns>
+  	<directories/>
+--- a/plugins/gnome/thunar/INSTALL
++++ b/plugins/gnome/thunar/INSTALL
+@@ -1,16 +1,16 @@
+ You will have to install the plugin manually using the following:
+ 
+-1)  sudo ./install-gnome.sh
++1)  ./install-gnome.sh
+ 
+ This will modify ${HOME}/.config/Thunar/uca.xml
+-and copy the supporting application/icon to their respective locations.
+ 
+ 2) You will also need to edit /etc/pacpl/pacpl.conf and change ZEN_DIR & ZEN_OPTS to 1
+    and make sure KDE_DIR & KDE_OPTS = 0
+ 
+ Note: this version can be used with the kde plugin on any system that
+ supports multiple desktop choices (Slackware for example) if need be. 
+-You will just need to run the install-kde.sh script instead and do
+-the exact opposite of the step 2) above.
++You will just need to replace PACPL-Converter by PACPL-Konverter in
++your ${HOME}/.config/Thunar/uca.xml
++and do the exact opposite of the step 2) above.
+ 
+ Restart Thunar (if already open) to see the changes take effect.

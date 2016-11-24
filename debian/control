@@ -1,49 +1,66 @@
 Source: pacpl
+Maintainer: Matteo Cypriani <mcy@lm7.fr>
 Section: sound
 Priority: optional
-Maintainer: Maxime Chatelle <mmyc@gmx.com>
-Build-Depends: debhelper (>= 8.0),
+Build-Depends: debhelper (>= 10),
+               libcddb-perl,
                libcddb-get-perl,
-               libogg-vorbis-header-pureperl-perl,
                libmp3-tag-perl,
-               libmp4-info-perl,
+               libaudio-scan-perl,
                libaudio-flac-header-perl,
-               libaudio-musepack-perl,
-               libaudio-wma-perl
-Standards-Version: 3.9.2
-Homepage: http://pacpl.sourceforge.net
-Vcs-Git: git://git.debian.org/git/collab-maint/pacpl.git
-Vcs-Browser: http://git.debian.org/?p=collab-maint/pacpl.git
+               libparallel-forkmanager-perl
+Standards-Version: 3.9.8
+Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/pacpl.git
+Vcs-Git: https://anonscm.debian.org/git/collab-maint/pacpl.git
+Homepage: http://vorzox.wixsite.com/pacpl
 
 Package: pacpl
 Architecture: all
-Depends: ${perl:Depends}, ${misc:Depends},
+Depends: ${perl:Depends},
+         ${misc:Depends},
+         libcddb-perl,
          libcddb-get-perl,
-         libogg-vorbis-header-pureperl-perl,
          libmp3-tag-perl,
-         libmp4-info-perl,
+         libaudio-scan-perl,
          libaudio-flac-header-perl,
-         libaudio-musepack-perl,
-         libaudio-wma-perl
-Recommends: cdparanoia, faad, ffmpeg, flac, flake, mplayer, lame, 
- mppenc, sndfile-programs, sox, speex, vorbis-tools, wavpack, normalize-audio
-Suggests: konqueror, dolphin, kommander, twolame
+         libparallel-forkmanager-perl,
+         vorbis-tools
+Recommends: cdparanoia,
+            faad,
+            ffmpeg,
+            flac,
+            lame,
+            mplayer,
+            musepack-tools,
+            normalize-audio,
+            opus-tools,
+            sndfile-programs,
+            sox,
+            speex,
+            wavpack
+Suggests: faac,
+          flake,
+          twolame
 Description: multi-purpose audio converter/ripper/tagger script
  Perl Audio Converter is a tool for converting multiple audio types from one
  format to another using various external encoders/decoders.
  .
- It supports the following audio formats: AAC, AC3, AIFF, APE, AU, AVR, BONK,
- CAF, CDR, FAP, FLA, FLAC, IRCAM, LA, LPAC, M4A, MAT, MAT4, MAT5, MMF, MP2, MP3,
- MP4, MPC, MPP, NIST, OFR, OFS, OGG, PAC, PAF, PVF, RA, RAM, RAW, SD2, SF, SHN,
- SMP, SND, SPX, TTA, VOC, W64, WAV, WMA, and WV.
+ It supports the following audio formats (but the backend program that handles
+ a given format might not be packaged in Debian): 3G2, 3GP, 8SVX, AAC, AC3,
+ ADTS, AIFF, AL, AMB, AMR, APE, AU, AVR, BONK, CAF, CDR, CVU, DAT, DTS, DVMS,
+ F32, F64, FAP, FLA, FLAC, FSSD, GSRT, HCOM, IMA, IRCAM, LA, MAT, MAUD, MAT4,
+ MAT5, M4A, MP2, MP3, MP4, MPC, MPP, NIST, OFF, OFR, OFS, OPUS, OGA, OGG, PAF,
+ PRC, PVF, RA, RAM, RAW, RF64, SD2, SF, SHN, SMP, SND, SOU, SPX, SRN, TAK, TTA,
+ TXW, VOC, VMS, VQF, W64, WAV, WMA, and WV.
  .
  It can also convert audio from the following video extensions: RM, RV, ASF,
- DivX, MPG, MKV, MPEG, AVI, MOV, OGM, QT, VCD, SVCD, M4V, NSV, NUV, PSP, SMK,
- VOB, FLV, and WMV.
+ DivX, MPG, MKV, MPEG, AVI, MOV, OGM, OGV, QT, VCD, SVCD, M4V, NSV, NUV, PSP,
+ SMK, VOB, FLV, WEBM, and WMV.
  .
- Pacpl also includes a CD ripping function with CDDB support, batch conversion,
- tag preservation for most supported formats, independent tag reading/writing,
- a simple kommander gui and extensions for Dolphin and Konqueror.
+ Pacpl also features parallel processing, a CD ripping function with CDDB
+ support, batch conversion, tag preservation for most supported formats and
+ independent tag reading & writing. Service menus for KDE (Dolphin/Konqueror),
+ GNOME Nautilus script, and Nemo action script are also provided (see
+ README.Debian).
+ .
  You can write your own modules in order to add support for new file formats.
- .
- See README.Debian for more information about supported formats.
