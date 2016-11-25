@@ -4,10 +4,20 @@ Author: Maxime Chatelle <xakz@rxsoft.eu>
 Bug-Debian: http://bugs.debian.org/589790
 Origin: vendor
 Forwarded: not-needed
+<<<<<<< HEAD
 Last-Update: 2016-10-13
 --- a/pacpl
 +++ b/pacpl
 @@ -2524,8 +2524,8 @@
+=======
+Last-Updated: 2011-06-20
+
+Index: git/pacpl
+===================================================================
+--- git.orig/pacpl	2014-10-12 22:43:43.309656758 +0200
++++ git/pacpl	2014-10-12 22:43:43.309656758 +0200
+@@ -2535,8 +2535,8 @@
+>>>>>>> ppa/5.0.1
         }
         
         # normalize wav file before encoding to output format

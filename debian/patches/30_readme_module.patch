@@ -1,11 +1,19 @@
 Author: Cristian Greco <cristian.debian@gmail.com>
 Description: Better documentation for README.module (in particular, specify
+<<<<<<< HEAD
  where to install user modules).
 Origin: vendor
 Forwarded: https://sourceforge.net/p/pacpl/patches/3/
 Last-Update: 2014-10-29
 --- a/extra/README.module
 +++ b/extra/README.module
+=======
+where to install user modules).
+Index: git/extra/README.module
+===================================================================
+--- git.orig/extra/README.module	2014-10-12 22:43:42.517646723 +0200
++++ git/extra/README.module	2014-10-12 22:43:42.513646666 +0200
+>>>>>>> ppa/5.0.1
 @@ -1,8 +1,14 @@
  USER MODULES:
  

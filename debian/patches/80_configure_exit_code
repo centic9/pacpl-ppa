@@ -1,0 +1,21 @@
+Index: git/configure
+===================================================================
+--- git.orig/configure	2014-10-12 22:40:56.000000000 +0200
++++ git/configure	2014-10-12 23:56:48.248236549 +0200
+@@ -5381,4 +5381,4 @@
+ { $as_echo "$as_me:${as_lineno-$LINENO}: make && make install" >&5
+ $as_echo "$as_me: make && make install" >&6;}
+ 
+-exit 1
++exit 0
+Index: git/configure.ac
+===================================================================
+--- git.orig/configure.ac	2014-10-12 22:39:01.000000000 +0200
++++ git/configure.ac	2014-10-12 23:56:43.792188681 +0200
+@@ -211,4 +211,4 @@
+ AC_MSG_NOTICE()
+ AC_MSG_NOTICE([make && make install])
+ 
+-exit 1
+\ No newline at end of file
++exit 0

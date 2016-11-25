@@ -1,0 +1,25 @@
+Description: Add support for "twolame" mp3 encoder.
+Author: Cristian Greco <cristian.debian@gmail.com>
+
+Index: git/pacpl
+===================================================================
+--- git.orig/pacpl	2014-10-12 22:43:41.633635534 +0200
++++ git/pacpl	2014-10-12 22:43:41.629635479 +0200
+@@ -1141,6 +1141,17 @@
+                                         PROMPT => { BITRATE => 1 },
+                                       },
+ 
++                           twolame => {
++                                        NAME => "twolame",
++                                        ESTR => sub {
++                                                      $opts = "-b $bitrate" if $defopts == 1;
++                                                      $opts = '' if $defopts == 0;
++                                                      "$eopts $opts %i %o"
++                                                    },
++
++                                        PROMPT => { BITRATE => 1 },
++                                      },
++
+                             ffmpeg => {
+                                         NAME => "ffmpeg",
+                                         ESTR => sub { 
