@@ -3,9 +3,11 @@ Author: Matteo Cypriani <mcy@lm7.fr>
 Origin: vendor
 Forwarded: https://sourceforge.net/p/pacpl/patches/2/
 Last-Update: 2016-11-17
---- a/pacpl
-+++ b/pacpl
-@@ -2384,7 +2384,7 @@
+Index: git/pacpl
+===================================================================
+--- git.orig/pacpl	2016-11-25 17:41:57.237759246 +0100
++++ git/pacpl	2016-11-25 17:42:14.000000000 +0100
+@@ -2395,7 +2395,7 @@
     undef(@file);
  }
  
@@ -14,7 +16,7 @@ Last-Update: 2016-11-17
  sub proc_dirs {
  
     if (@dir) {
-@@ -3569,19 +3569,19 @@
+@@ -3608,19 +3608,19 @@
  
  Parallel Processing, a CD ripping function with CDDB support, batch conversion, 
  tag preservation for most supported formats, independent tag reading & writing, 
@@ -37,7 +39,7 @@ Last-Update: 2016-11-17
  
  B<-p, --preserve>
  
-@@ -3626,7 +3626,7 @@
+@@ -3665,7 +3665,7 @@
  
  B<-o, --only> I<format>
  

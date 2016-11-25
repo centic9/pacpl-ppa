@@ -1,7 +1,7 @@
 Index: git/configure
 ===================================================================
---- git.orig/configure	2014-10-12 22:40:56.000000000 +0200
-+++ git/configure	2014-10-12 23:56:48.248236549 +0200
+--- git.orig/configure	2016-11-25 17:40:42.005013362 +0100
++++ git/configure	2016-11-25 17:40:42.001013322 +0100
 @@ -5381,4 +5381,4 @@
  { $as_echo "$as_me:${as_lineno-$LINENO}: make && make install" >&5
  $as_echo "$as_me: make && make install" >&6;}
@@ -10,8 +10,8 @@ Index: git/configure
 +exit 0
 Index: git/configure.ac
 ===================================================================
---- git.orig/configure.ac	2014-10-12 22:39:01.000000000 +0200
-+++ git/configure.ac	2014-10-12 23:56:43.792188681 +0200
+--- git.orig/configure.ac	2016-11-25 17:40:42.005013362 +0100
++++ git/configure.ac	2016-11-25 17:40:42.033013640 +0100
 @@ -211,4 +211,4 @@
  AC_MSG_NOTICE()
  AC_MSG_NOTICE([make && make install])

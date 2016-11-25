@@ -7,8 +7,10 @@ Author: Matteo Cypriani <mcy@lm7.fr>
 Origin: vendor
 Forwarded: not-needed
 Last-Update: 2016-11-24
---- a/plugins/kde/pacpl.desktop
-+++ b/plugins/kde/pacpl.desktop
+Index: git/plugins/kde/pacpl.desktop
+===================================================================
+--- git.orig/plugins/kde/pacpl.desktop	2016-11-25 17:41:57.277759643 +0100
++++ git/plugins/kde/pacpl.desktop	2016-11-25 17:41:57.269759563 +0100
 @@ -2,13 +2,13 @@
  Type=Service
  ServiceTypes=KonqPopupMenu/Plugin
@@ -26,8 +28,10 @@ Last-Update: 2016-11-24
 +Icon=pacpl
 +Exec=/usr/share/pacpl/bin/PACPL-Konvert %F
  
---- a/plugins/gnome/nautilus/install.sh
-+++ b/plugins/gnome/nautilus/install.sh
+Index: git/plugins/gnome/nautilus/install.sh
+===================================================================
+--- git.orig/plugins/gnome/nautilus/install.sh	2016-11-25 17:41:57.277759643 +0100
++++ git/plugins/gnome/nautilus/install.sh	2016-11-25 17:41:57.269759563 +0100
 @@ -1,9 +1,9 @@
 -#!/usr/bin/bash
 +#!/bin/sh
@@ -42,8 +46,10 @@ Last-Update: 2016-11-24
 -echo "Done.."
 \ No newline at end of file
 +echo "Done.."
---- a/plugins/gnome/nemo/pacpl.nemo_action
-+++ b/plugins/gnome/nemo/pacpl.nemo_action
+Index: git/plugins/gnome/nemo/pacpl.nemo_action
+===================================================================
+--- git.orig/plugins/gnome/nemo/pacpl.nemo_action	2016-11-25 17:41:57.277759643 +0100
++++ git/plugins/gnome/nemo/pacpl.nemo_action	2016-11-25 17:41:57.269759563 +0100
 @@ -1,7 +1,7 @@
  [Nemo Action]
  Name=Perl Audio Converter
@@ -53,8 +59,10 @@ Last-Update: 2016-11-24
  Icon-Name=pacpl
  Selection=Any
  Extensions=dir;3G2;3GP;AAC;AC3;ADTS;AIF;AIFF;AMR;APE;AU;AVR;BONK;CAF;CDR;DTS;FAP;FLA;FLAC;IRCAM;LA;M4A;MAT;MAT4;MAT5;MMF;MP2;MP3;MP3HD;MP4;MPC;MPP;NIST;OFF;OFR;OFS;OGG;OPUS;PAF;PVF;RA;RAW;RM;SD2;SF;SHN;SMP;SND;SPX;TTA;VOC;W64;WAV;WMA;WV
---- a/plugins/gnome/thunar/install-gnome.sh
-+++ b/plugins/gnome/thunar/install-gnome.sh
+Index: git/plugins/gnome/thunar/install-gnome.sh
+===================================================================
+--- git.orig/plugins/gnome/thunar/install-gnome.sh	2016-11-25 17:41:57.277759643 +0100
++++ git/plugins/gnome/thunar/install-gnome.sh	2016-11-25 17:41:57.273759603 +0100
 @@ -4,16 +4,14 @@
  
  CONFIG=${HOME}/.config/Thunar/uca.xml
@@ -74,8 +82,10 @@ Last-Update: 2016-11-24
   	<description>Linux Audio Converter / Tagger/ Ripper</description>
   	<patterns>*</patterns>
   	<directories/>
---- a/plugins/gnome/thunar/INSTALL
-+++ b/plugins/gnome/thunar/INSTALL
+Index: git/plugins/gnome/thunar/INSTALL
+===================================================================
+--- git.orig/plugins/gnome/thunar/INSTALL	2016-11-25 17:41:57.277759643 +0100
++++ git/plugins/gnome/thunar/INSTALL	2016-11-25 17:41:57.277759643 +0100
 @@ -1,16 +1,16 @@
  You will have to install the plugin manually using the following:
  
