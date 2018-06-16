@@ -1,0 +1,25 @@
+diff --git a/pacpl.in b/pacpl.in
+index 5b9f7c2..341e680 100644
+--- a/pacpl.in
++++ b/pacpl.in
+@@ -2965,13 +2965,13 @@ when (/^ape$|^mpc$|^mpp$|^wv$/)	{
+                  when (/^wma$/) {
+                                         my $wma_tag = $tag_module->scan_tags($in_file)->{tags};
+ 
+-                                           $tag_name{title}   = $wma_tag->{TITLE}       if $wma_tag->{TITLE};
+-                                           $tag_name{track}   = $wma_tag->{TRACKNUMBER} if $wma_tag->{TRACKNUMBER};
+-                                           $tag_name{artist}  = $wma_tag->{AUTHOR}      if $wma_tag->{AUTHOR};
+-                                           $tag_name{album}   = $wma_tag->{ALBUMTITLE}  if $wma_tag->{ALBUMTITLE};
+-                                           $tag_name{comment} = $wma_tag->{DESCRIPTION} if $wma_tag->{DESCRIPTION};
+-                                           $tag_name{year}    = $wma_tag->{YEAR}        if $wma_tag->{YEAR};
+-                                           $tag_name{genre}   = $wma_tag->{GENRE}       if $wma_tag->{GENRE};
++                                           $tag_name{title}   = $wma_tag->{Title}		if $wma_tag->{Title};
++                                           $tag_name{track}   = $wma_tag->{'WM/TrackNumber'}	if $wma_tag->{'WM/TrackNumber'};
++                                           $tag_name{artist}  = $wma_tag->{'WM/AlbumArtist'}	if $wma_tag->{'WM/AlbumArtist'};
++                                           $tag_name{album}   = $wma_tag->{'WM/AlbumTitle'}	if $wma_tag->{'WM/AlbumTitle'};
++					    $tag_name{comment} = $wma_tag->{'WM/Description'}	if $wma_tag->{'WM/Description'};
++                                           $tag_name{year}    = $wma_tag->{'WM/Year'}		if $wma_tag->{'WM/Year'};
++                                           $tag_name{genre}   = $wma_tag->{'WM/Genre'}		if $wma_tag->{'WM/Genre'};
+                             
+                                         return 0;
+                                 }

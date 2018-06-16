@@ -103,7 +103,6 @@ help = this help menu
 jobs = number of simultaneous files to process
 longhelp = complete list of options
 version = display version information
-update = check for newer version
 usage = usage: pacpl --to <format> <options> [file(s)/directory(s)]
 defopts = turn off default encoder options (0)
 eopts = user supplied encoder options

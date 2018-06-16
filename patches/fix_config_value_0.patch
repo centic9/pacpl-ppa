@@ -1,0 +1,13 @@
+diff --git a/pacpl.in b/pacpl.in
+index 5c28750..436e140 100644
+--- a/pacpl.in
++++ b/pacpl.in
+@@ -175,7 +175,7 @@ if ($conf_file and -e $conf_file) {
+     foreach (@conf_opts) {
+         chomp;
+         my ($k, $v) = split(/\s*=\s*/);
+-            $config{$k} = $v if exists($config{$k}) and $v;
++            $config{$k} = $v if exists($config{$k}) and length($v);
+             say "$lang{debug} $k = $v" if $debug == 1 and exists($config{$k});
+     }
+ }

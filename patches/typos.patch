@@ -1,8 +1,7 @@
 Description: Fixes some typos in the manpage
 Author: Matteo Cypriani <mcy@lm7.fr>
 Origin: vendor
-Forwarded: https://sourceforge.net/p/pacpl/patches/2/
-Last-Update: 2016-11-17
+Last-Update: 2016-10-13
 --- a/pacpl
 +++ b/pacpl
 @@ -2384,7 +2384,7 @@
@@ -10,7 +9,7 @@ Last-Update: 2016-11-17
  }
  
 -# process directorys and push all to @file arrary
-+# process directories and push all to @file array
++# process directories and push all to @file arrary
  sub proc_dirs {
  
     if (@dir) {

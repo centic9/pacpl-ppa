@@ -4,14 +4,14 @@ Upstream-Contact: Philip Lyons <vorzox@gmail.com>
 Upstream-Name: Perl Audio Converter
 
 Files: *
-Copyright: 2005-2013 Philip Lyons <vorzox@gmail.com>
+Copyright: 2005-2018 Philip Lyons <vorzox@gmail.com>
 License: GPL-3+
 
 Files: debian/*
 Copyright:
  2008-2009,2011 Cristian Greco <cristian@regolo.cc>
  2011,2014 Maxime Chatelle <mmyc@gmx.com>
- 2016 Matteo Cypriani <mcy@lm7.fr>
+ 2016, 2018 Matteo Cypriani <mcy@lm7.fr>
 License: GPL-3+
 
 License: GPL-3+

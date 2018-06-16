@@ -1,4 +1,52 @@
 =================
+[**** 6.1.0 ****]
+=================
+
+* updated version to 6.1.0
+
+% fixed kdialog ouput directory space issue 
+  thanks to Jeremy Rehbaum (JRehbaum@juno.com)
+
+% incorporated patches from Paulo Marcel Coelho Aragão
+	- fix blank WMA tags
+	- fix decoder not working for WMA
+	- fix overwrite check to act more appropriately
+	- fix DEFOPTS = 0 to work as intended
+	+ added alac-decoder support for .mp4 files
+	+ added .gitignore
+	% fixed handling of m4a (AAC) codec handling
+
+% incoporated patches from Reuben Thomas (rrt@sc3d.org)
+	- fix installaton under different prefix and/or DESTDIR
+	- fix hardwired pathes in pacpl
+
+%note:  with above patches pacpl is now pacpl.in which will be renamed after configure
+
+% updated Makefile.am to remove pacpl with "make distclean"
+
+=================
+[**** 5.1.0 ****]
+=================
+
+* updated version to 5.1.0
+
++ added patches directory.  below updates and incorporations are included.
+
+% incorporated the following patches Matteo Cypriani (mcy@lm7.fr)
+	- typos
+	- configure exit
+	- enforce outdir when preserve is utilized
+	- multiple input source decode
+
+* updated README.module documentation thanks to Cristian Greco <cristian.debian@gmail.com> 
+
+=================
+[**** 5.0.2 ****]
+================
+
+%fixed regex to detect directory names with spaces thanks to Dmitry Klimov
+
+=================
 [**** 5.0.1 ****]
 =================
 
@@ -9,6 +57,7 @@
 % fixed coverting to "wma, ra, & mmf" thanks to bug report by Timothy E. Harris
 % fixed missing semicolon bug in nemo/nautilus/thunar script
 % fixed overwrite message to show output file, not source.
+% fixed Thunar PACPL-Konvert script thanks to Timothy E. Harris
 
 - removed support for .src and .ram extenions (no longer supported)
 

@@ -1,0 +1,20 @@
+Description: If the user use the --preserve flag, he must use the --outdir flag too, we enforce that.
+Author: Maxime Chatelle <xakz@rxsoft.eu>
+Last-Updated: 2014-10-29
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=697519
+Forwarded: no
+Index: git/pacpl
+===================================================================
+--- git.orig/pacpl	2014-10-29 11:18:15.544344979 +0100
++++ git/pacpl	2014-10-29 11:27:13.592321550 +0100
+@@ -352,6 +352,10 @@
+ 	'cdinfo'      => \$cdinfo,
+ );
+ 
++if (defined($preserve) && !defined($outdir)) {
++	die "You must specify --outdir when you use --preserve option. See man page.\n";
++}
++
+ $silent = '' if $verbose;
+ my $opts;
+ 

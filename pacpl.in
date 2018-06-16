@@ -2,7 +2,7 @@
 #
 #  Perl Audio Converter
 #
-#  Copyright (C) 2005-2013 Philip Lyons (vorzox@gmail.com)
+#  Copyright (C) 2005-2018 Philip Lyons (vorzox@gmail.com)
 #
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -79,10 +79,9 @@ my
    $taginfo,
 );
 
-# name, version & icon information
+# name and version
 my $name      = "Perl Audio Converter";
-my $version   = "5.0.1";
-my $icon_path = "/etc/pacpl/pacpl.png";
+my $version   = "6.1.0";
 
 # If these options are toggled,  messages/errors will be displayed 
 # via kdialog or zenity/notify-send (depending on environment)
@@ -135,11 +134,14 @@ my %config = (
              );
 
 # location of configuration file
-my $conf_path = "/etc/pacpl";
-my $po_dir    = "/usr/share/pacpl/locale";
+my $conf_path = "@sysconfdir@/pacpl";
+my $po_dir    = "@pkgdatadir@/locale";
 my $mod_dir   = "$conf_path/modules";
 
 my $conf_file;
+
+# Icon path
+my $icon_path = "$conf_path/pacpl.png";
 
 # load the appropriate locale file
 load_lang();
@@ -175,7 +177,7 @@ if ($conf_file and -e $conf_file) {
     foreach (@conf_opts) {
         chomp;
         my ($k, $v) = split(/\s*=\s*/);
-            $config{$k} = $v if exists($config{$k}) and $v;
+            $config{$k} = $v if exists($config{$k}) and length($v);
             say "$lang{debug} $k = $v" if $debug == 1 and exists($config{$k});
     }
 }
@@ -358,6 +360,10 @@ GetOptions
 	'nscheme=s'   => \$nscheme,
 	'cdinfo'      => \$cdinfo,
 );
+
+if (defined($preserve) && !defined($outdir)) {
+	die "You must specify --outdir when you use --preserve option. See man page.\n";
+}
 
 $silent = '' if $verbose;
 
@@ -1328,7 +1334,8 @@ my $pm = Parallel::ForkManager->new($jobs);
                            },
                },
 
-       m4a  => {
+       # m4a container with AAC codec
+       mp4a  => {
 
                 DEFAULT_ENCODER => "faac",
                 DEFAULT_DECODER => "faad",
@@ -1405,6 +1412,43 @@ my $pm = Parallel::ForkManager->new($jobs);
                 TAGS    => {
                              READ   => 1,
                              WRITE  => 1,
+                             MODULE => "Audio::Scan",
+                           },
+               },
+
+       # m4a container with ALAC codec
+       alac  => {
+
+                DEFAULT_ENCODER => undef,
+                DEFAULT_DECODER => "alac-decoder",
+                
+                DECODER => {
+                                      
+		   'alac-decoder' => {
+                                       NAME => "alac-decoder",
+                                       DSTR => sub { "$dopts -f %o %i" },
+                                     },
+                                       
+                           ffmpeg => {
+                                       NAME => "ffmpeg", 
+                                       DSTR => sub { "$dopts -y -i %i %o" },
+                                     },
+                                     
+                           avconv => {
+                                       NAME => 'avconv',
+                                       DSTR => sub { "$dopts -y -i %i %o" },
+                                     },
+
+                          mplayer => {
+                                       NAME => "mplayer",
+                                       DSTR => sub { "-vc null -vo null -ao pcm:file=%o %i" },
+                                     },
+                                      
+                           },
+
+                TAGS    => {
+                             READ   => 1,
+                             WRITE  => 0,
                              MODULE => "Audio::Scan",
                            },
                },
@@ -2205,7 +2249,7 @@ foreach my $fork (@ffmpeg_forks) {
       $run{$codec}{DEFAULT_DECODER}      = $fork;
       $run{$codec}{ENCODER}{$fork}{NAME} = $fork;
       $run{$codec}{DECODER}{$fork}{NAME} = $fork;
-      $run{$codec}{DECODER}{$fork}{DSTR} = sub {"-y %i $dopts %o"};
+      $run{$codec}{DECODER}{$fork}{DSTR} = sub {"-y -i %i $dopts %o"};
       $run{$codec}{ENCODER}{$fork}{ESTR} = sub {"-y -i %i $eopts -ab $bitrate.k -ar $freq -ac $channels %o"};
       $run{$codec}{TAGS}{READ}           = 0;
       $run{$codec}{TAGS}{WRITE}          = 0;
@@ -2337,18 +2381,19 @@ sub proc_files {
                    $decoder = $my_decoder if defined($my_decoder);
                    
                    $encoder = $run{$to}{DEFAULT_ENCODER} if not $my_encoder;
-                   $decoder = $run{$if}{DEFAULT_DECODER} if not $my_decoder;
+		   my $codec = ( $if eq "m4a" ? Audio::Scan->scan_info($i)->{info}->{tracks}[0]->{encoding} : $if );
+                   $decoder = $run{$codec}{DEFAULT_DECODER} if not $my_decoder;
               
-               if (-e "$file.$to" and not $overwrite) {
+               if (-e "$dir/$file.$to" and not $overwrite) {
                    pnotice("overwrite","$file.$to",1);
                    $total_failed++;
                    next;
                }
                                                                                                    
-               if (check_input($file,$dir,$if) == 0) {
+               if (check_input($file,$dir,$codec) == 0) {
                    
                    pnotice("unk_encoder","$file.$ext",1), next unless(exists($run{$to}{ENCODER}{$encoder}));
-                   pnotice("unk_decoder","$file.$ext",1), next unless(exists($run{$if}{DECODER}{$decoder}));
+                   pnotice("unk_decoder","$file.$ext",1), next unless(exists($run{$codec}{DECODER}{$decoder}));
               
                    get_visual_opts($to,$outdir) if $gui and not defined($first_run);
                    
@@ -2368,8 +2413,10 @@ sub proc_files {
                             $files{"FILE$number"}{FILE} = "$dir/$file";
                             $files{"FILE$number"}{OUTF} = "$outdir/$outfile";
                             $files{"FILE$number"}{EXT}  = "$ext";
+                            $files{"FILE$number"}{CODEC}  = "$codec";
                             $files{"FILE$number"}{NAME} = "$file";
                             $files{"FILE$number"}{OUTD} = "$outfile";
+                            $files{"FILE$number"}{DECODER} = "$decoder";
 
                             $number++;                  
                    }
@@ -2380,7 +2427,7 @@ sub proc_files {
    undef(@file);
 }
 
-# process directorys and push all to @file arrary
+# process directories and push all to @file arrary
 sub proc_dirs {
 
    if (@dir) {
@@ -2486,7 +2533,7 @@ find ( sub {
 # convert input to destination format
 sub convert {
 
-    my ($inf, $outf, $infmt, $iname, $oname) = @_;
+    my ($inf, $outf, $infmt, $iname, $oname, $codec, $dec) = @_;
 
     my $if = $infmt;
        $if =~ tr/A-Z/a-z/;
@@ -2501,18 +2548,19 @@ sub convert {
        
        # check to see if encoder/decoder exists.  if not, see if we have one 
        # that supports the desired input/output formats.
+       $decoder = $dec;
        check_encoder();
-       check_decoder($infmt);
+       check_decoder($codec);
                          
-    my $decode_string = $run{$if}{DECODER}{$decoder}{DSTR}->();
+    my $decode_string = $run{$codec}{DECODER}{$decoder}{DSTR}->();
        $decode_string =~ s/%i/\"$inf.$infmt\"/;
        $decode_string =~ s/%o/\"$outf.$$.wav\"/;
        $decode_string =~ s/(\$|\\)/\\$1/g;
 
-       pnotice("debug","\n$run{$if}{DECODER}{$decoder}{NAME} $decode_string", 2) if $dryrun;
+       pnotice("debug","\n$run{$codec}{DECODER}{$decoder}{NAME} $decode_string", 2) if $dryrun;
 
        # decode input file to temporary wav
-       system("$run{$if}{DECODER}{$decoder}{NAME} $decode_string $silent") if not $dryrun;
+       system("$run{$codec}{DECODER}{$decoder}{NAME} $decode_string $silent") if not $dryrun;
 
        # remove temporary wav file and die if decode fails
        if ($? > 0) {
@@ -2528,7 +2576,7 @@ sub convert {
        system("normalize $nopts \"$outf.$$.wav\"") if $normalize;
 
        # copy meta-data from input file to %tag_name 
-       read_tags("$inf.$infmt", "$if") if $run{$if}{TAGS}{READ} == 1 and not $dryrun;
+       read_tags("$inf.$infmt", "$codec") if $run{$codec}{TAGS}{READ} == 1 and not $dryrun;
 
     my $tag_opts = format_tags($to); # tag options for mp4/m4a/m4b/mpc/mpp/bonk/spx/wv
     
@@ -2593,7 +2641,7 @@ sub fork_files {
         say "$msg" if not $gui;        
         system("kdialog --icon $icon_path --title \"$name\" --passivepopup \"$msg\" 10 &") if $gui and $kde;
         system("notify-send \"$name\" \"$msg\" -t 35 -i $icon_path &") if $gui and $gnome;                          
-        convert("$files{$_}{FILE}","$files{$_}{OUTF}","$files{$_}{EXT}","$files{$_}{NAME}","$files{$_}{OUTD}");            
+        convert("$files{$_}{FILE}","$files{$_}{OUTF}","$files{$_}{EXT}","$files{$_}{NAME}","$files{$_}{OUTD}","$files{$_}{CODEC}","$files{$_}{DECODER}");
         $pm->finish;
     }            
 
@@ -2641,12 +2689,12 @@ sub check_input {
 
      my $file = shift;
      my $dir  = shift;
-     my $ext  = shift;
+     my $codec  = shift;
 
      perror("no_encoder","$to") unless(defined($run{$to}{ENCODER}));
 
-     unless(defined($run{$ext}{DECODER})) {
-         pnotice("no_decoder","$ext",2) if $verbose or not $only;
+     unless(defined($run{$codec}{DECODER})) {
+         pnotice("no_decoder","$codec",2) if $verbose or not $only;
          $total_failed++;
          return 1;
      }
@@ -2666,7 +2714,7 @@ sub get_visual_opts {
     my ($to_fmt,$od) = @_;
 
        # escape illegal characters in output directory name
-       $od =~ s/('|\(|\)|"|\\)/\\$1/g;
+       $od =~ s/( |'|\(|\)|"|\\)/\\$1/g;
 
        $outdir    = `kdialog --getexistingdirectory $od` if $config{KDE_DIR} == 1 and $kde;
        $outdir    = `zenity --title \"$lang{gui_outdir}\" --file-selection --directory --filename=\`pwd\`` if $config{ZEN_DIR} == 1 and $gnome;
@@ -2928,7 +2976,7 @@ sub read_tags {
                                         return 0;
                                 }
 
-     when (/^mp4$|^m4a$|^m4b$/) {    
+     when (/^(mp4|m4b|alac|mp4a)$/) {    
                                         my $mp4_tag = $tag_module->scan_tags($in_file)->{tags};
 
                                            $tag_name{title}   = $mp4_tag->{NAM}    if $mp4_tag->{NAM};
@@ -2959,13 +3007,13 @@ when (/^ape$|^mpc$|^mpp$|^wv$/)	{
                  when (/^wma$/) {
                                         my $wma_tag = $tag_module->scan_tags($in_file)->{tags};
 
-                                           $tag_name{title}   = $wma_tag->{TITLE}       if $wma_tag->{TITLE};
-                                           $tag_name{track}   = $wma_tag->{TRACKNUMBER} if $wma_tag->{TRACKNUMBER};
-                                           $tag_name{artist}  = $wma_tag->{AUTHOR}      if $wma_tag->{AUTHOR};
-                                           $tag_name{album}   = $wma_tag->{ALBUMTITLE}  if $wma_tag->{ALBUMTITLE};
-                                           $tag_name{comment} = $wma_tag->{DESCRIPTION} if $wma_tag->{DESCRIPTION};
-                                           $tag_name{year}    = $wma_tag->{YEAR}        if $wma_tag->{YEAR};
-                                           $tag_name{genre}   = $wma_tag->{GENRE}       if $wma_tag->{GENRE};
+                                           $tag_name{title}   = $wma_tag->{Title}		if $wma_tag->{Title};
+                                           $tag_name{track}   = $wma_tag->{'WM/TrackNumber'}	if $wma_tag->{'WM/TrackNumber'};
+                                           $tag_name{artist}  = $wma_tag->{'WM/AlbumArtist'}	if $wma_tag->{'WM/AlbumArtist'};
+                                           $tag_name{album}   = $wma_tag->{'WM/AlbumTitle'}	if $wma_tag->{'WM/AlbumTitle'};
+                                           $tag_name{comment} = $wma_tag->{'WM/Description'}	if $wma_tag->{'WM/Description'};
+                                           $tag_name{year}    = $wma_tag->{'WM/Year'}		if $wma_tag->{'WM/Year'};
+                                           $tag_name{genre}   = $wma_tag->{'WM/Genre'}		if $wma_tag->{'WM/Genre'};
                             
                                         return 0;
                                 }
@@ -2985,7 +3033,6 @@ sub write_tags {
     given ($out_format) {
 
        when (/^mp3$|^mp3hd$/) {
-                                  $tag_m = MP3::Tag->config(write_v24 => 'YES');
                                   $tag_m = MP3::Tag->new("$out_file");
                             
                                   # ID3v2 Tags
@@ -3388,7 +3435,7 @@ sub version {
 say "
 $name - $version
 
-Copyright (C) 2005-2013 Philip Lyons
+Copyright (C) 2005-2018 Philip Lyons
 
 This is free software.  You may redistribute copies of it under the terms of
 the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
@@ -3565,19 +3612,19 @@ SVCD, M4V, NSV, NUV, PSP, SMK, VOB, FLV, WEBM and WMV.
 
 Parallel Processing, a CD ripping function with CDDB support, batch conversion, 
 tag preservation for most supported formats, independent tag reading & writing, 
-service menus for KDE Dolphin/Konqueror, Gnome Nautilus script, and action 
+service menus for KDE Dolphin/Konqueror, GNOME Nautilus script, and action 
 scripts for Nemo/Thunar are also provided.
 
 =head1 OPTIONS
 
 B<-t, --to> I<format>
 
-set encode format for the input file(s) or directory(s).  you can see a
+set encode format for the input file(s) or directory(ies).  you can see a
 complete list of supported encode formats by using the B<--formats> option.
 
 B<-r, --recursive>
 
-recursively scan and convert input folder(s) to desination format.
+recursively scan and convert input folder(s) to destination format.
 
 B<-p, --preserve>
 
@@ -3622,7 +3669,7 @@ with all files in each sub-folder converted to ogg.
 
 B<-o, --only> I<format>
 
-only convert files matching extenstion.  this option is useful when you have
+only convert files matching extension.  this option is useful when you have
 a directory or batch of files with mixed audio types and only need to
 convert one specific type.
 
@@ -4025,4 +4072,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 =head1 AUTHOR
 
-Copyright (C) 2005-2013 Philip Lyons (vorzox@gmail.com)
+Copyright (C) 2005-2018 Philip Lyons (vorzox@gmail.com)

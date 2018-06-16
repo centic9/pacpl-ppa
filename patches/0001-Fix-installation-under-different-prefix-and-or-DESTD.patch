@@ -1,0 +1,104 @@
+From 3f7aa5a851ef842d1d38d0f37db7dc21e60df3b8 Mon Sep 17 00:00:00 2001
+From: Reuben Thomas <rrt@sc3d.org>
+Date: Mon, 22 Jan 2018 13:11:43 +0000
+Subject: [PATCH 1/2] Fix installation under different --prefix and/or DESTDIR
+
+Use DESTDIR consistently.
+
+Use sysconfdir and pkgdatadir to track user-configured prefix.
+
+Remove unnecessary re-definitions of automake variables from
+Makefile.am.
+---
+ Makefile.am | 21 ++++-----------------
+ Makefile.in | 11 ++++-------
+ 2 files changed, 8 insertions(+), 24 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index f52a21e..d3506f1 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -65,23 +65,10 @@ RM = @RM@ -f
+ SHELL = /bin/sh
+ 
+ #
+-# Configured directories...
+-#
+-
+-prefix      =  @prefix@
+-exec_prefix =  @exec_prefix@
+-bindir      =  @bindir@
+-datarootdir =  @datarootdir@
+-includedir  =  @includedir@
+-libdir      =  @libdir@
+-mandir      =  @mandir@
+-docdir      =  @docdir@
+-
+-#
+ # Configuration files directories and other
+ #
+-CONF_DIR = $(DESTDIR)/etc/$(PACKAGE_NAME)
+-PO_DIR   = $(DESTDIR)/usr/share/pacpl/locale
++CONF_DIR = $(DESTDIR)$(sysconfdir)/$(PACKAGE_NAME)
++PO_DIR   = $(DESTDIR)$(pkgdatadir)/locale
+ MOD_DIR  = $(CONF_DIR)/modules
+ DOC_DIR  = $(DESTDIR)$(docdir)
+ MAN_DIR  = $(DESTDIR)$(mandir)/man1
+@@ -157,7 +144,7 @@ uninstall: uninstall-plugins
+ 	$(RM) $(MAN_DIR)/pacpl.1.gz
+ 	$(RM) -r $(CONF_DIR)
+ 	$(RM) -r $(DOC_DIR)
+-	$(RM) -r $(DESTDIR)/usr/share/pacpl
++	$(RM) -r $(DESTDIR)$(pkgdatadir)
+ 
+ uninstall-plugins:
+ if INSTALL_KDE
+@@ -173,4 +160,4 @@ if INSTALL_NEMO
+ 	$(RM) $(NEMO_INSTALL_DIR)/PACPL-Convert
+ 	$(RM) $(NEMO_INSTALL_DIR)/pacpl.nemo_action
+ 	$(RM) $(ICON_DIR)/pacpl.png
+-endif	
+\ No newline at end of file
++endif
+diff --git a/Makefile.in b/Makefile.in
+index 04dbeb4..ff102dc 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -269,13 +269,10 @@ mandir = @mandir@
+ mkdir_p = @mkdir_p@
+ oldincludedir = @oldincludedir@
+ pdfdir = @pdfdir@
+-
+-#
+-# Configured directories...
+-#
+ prefix = @prefix@
+ program_transform_name = @program_transform_name@
+ psdir = @psdir@
++runstatedir = @runstatedir@
+ sbindir = @sbindir@
+ sharedstatedir = @sharedstatedir@
+ srcdir = @srcdir@
+@@ -311,8 +308,8 @@ ICON_DIR = $(DESTDIR)$(GNOMEDIR)/share/icons
+ #
+ # Configuration files directories and other
+ #
+-CONF_DIR = $(DESTDIR)/etc/$(PACKAGE_NAME)
+-PO_DIR = $(DESTDIR)/usr/share/pacpl/locale
++CONF_DIR = $(DESTDIR)$(sysconfdir)/$(PACKAGE_NAME)
++PO_DIR = $(DESTDIR)$(pkgdatadir)/locale
+ MOD_DIR = $(CONF_DIR)/modules
+ DOC_DIR = $(DESTDIR)$(docdir)
+ MAN_DIR = $(DESTDIR)$(mandir)/man1
+@@ -698,7 +695,7 @@ uninstall: uninstall-plugins
+ 	$(RM) $(MAN_DIR)/pacpl.1.gz
+ 	$(RM) -r $(CONF_DIR)
+ 	$(RM) -r $(DOC_DIR)
+-	$(RM) -r $(DESTDIR)/usr/share/pacpl
++	$(RM) -r $(DESTDIR)$(pkgdatadir)
+ 
+ uninstall-plugins:
+ @INSTALL_KDE_TRUE@	$(RM) $(KDE_INSTALL_DIR)/pacpl.desktop
+-- 
+2.7.4
+

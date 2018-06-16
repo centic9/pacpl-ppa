@@ -1,6 +1,6 @@
 #  Perl Audio Converter
 #
-#  Copyright (C) 2005-2014 Philip Lyons (vorzox@gmail.com)
+#  Copyright (C) 2005-2018 Philip Lyons (vorzox@gmail.com)
 #
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -65,29 +65,26 @@ RM = @RM@ -f
 SHELL = /bin/sh
 
 #
-# Configured directories...
-#
-
-prefix      =  @prefix@
-exec_prefix =  @exec_prefix@
-bindir      =  @bindir@
-datarootdir =  @datarootdir@
-includedir  =  @includedir@
-libdir      =  @libdir@
-mandir      =  @mandir@
-docdir      =  @docdir@
-
-#
 # Configuration files directories and other
 #
-CONF_DIR = $(DESTDIR)/etc/$(PACKAGE_NAME)
-PO_DIR   = $(DESTDIR)/usr/share/pacpl/locale
+CONF_DIR = $(DESTDIR)$(sysconfdir)/$(PACKAGE_NAME)
+PO_DIR   = $(DESTDIR)$(pkgdatadir)/locale
 MOD_DIR  = $(CONF_DIR)/modules
 DOC_DIR  = $(DESTDIR)$(docdir)
 MAN_DIR  = $(DESTDIR)$(mandir)/man1
 EXTRA_DIR = $(CONF_DIR)/extra
 
+edit = sed \
+	-e 's|@pkgdatadir[@]|$(pkgdatadir)|g' \
+	-e 's|@sysconfdir[@]|$(sysconfdir)|g'
+
 all : pacpl.1.gz
+
+pacpl: pacpl.in Makefile
+	rm -f $@ $@.tmp
+	$(edit) '$@.in' >$@.tmp
+	mv $@.tmp $@
+	chmod +x $@
 
 pacpl.1.gz : pacpl
 	$(POD2MAN) $< |	$(GZIP) -9 > $@
@@ -150,14 +147,15 @@ distclean: clean
 	$(RM) config.log
 	$(RM) config.status
 	$(RM) Makefile
+	$(RM) pacpl
 	find . -name '*~' -exec $(RM) '{}' \;
 
 uninstall: uninstall-plugins
 	$(RM) $(DESTDIR)$(bindir)/pacpl
 	$(RM) $(MAN_DIR)/pacpl.1.gz
-	$(RM) -r $(CONF_DIR)
-	$(RM) -r $(DOC_DIR)
-	$(RM) -r $(DESTDIR)/usr/share/pacpl
+	$(RM) -r $(CONF_DIR)/pacpl
+	$(RM) -r $(DOC_DIR)/pacpl
+	$(RM) -r $(DESTDIR)$(pkgdatadir)
 
 uninstall-plugins:
 if INSTALL_KDE
@@ -173,4 +171,4 @@ if INSTALL_NEMO
 	$(RM) $(NEMO_INSTALL_DIR)/PACPL-Convert
 	$(RM) $(NEMO_INSTALL_DIR)/pacpl.nemo_action
 	$(RM) $(ICON_DIR)/pacpl.png
-endif	
+endif

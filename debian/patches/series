@@ -1,7 +1,2 @@
-30_readme_module.patch
 40_change-normalize-to-normalize-audio.patch
-80-fix_enforce_outdir_switch_if_p_switch_is_used.patch
-configure-exit0.patch
-typos.patch
 plugins.patch
-multiple-format-input.patch

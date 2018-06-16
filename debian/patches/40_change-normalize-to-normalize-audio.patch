@@ -4,10 +4,10 @@ Author: Maxime Chatelle <xakz@rxsoft.eu>
 Bug-Debian: http://bugs.debian.org/589790
 Origin: vendor
 Forwarded: not-needed
-Last-Update: 2016-10-13
---- a/pacpl
-+++ b/pacpl
-@@ -2524,8 +2524,8 @@
+Last-Update: 2018-06-16
+--- a/pacpl.in
++++ b/pacpl.in
+@@ -2572,8 +2572,8 @@
         }
         
         # normalize wav file before encoding to output format
@@ -17,4 +17,4 @@ Last-Update: 2016-10-13
 +       system("normalize-audio $nopts \"$outf.$$.wav\"") if $normalize;
  
         # copy meta-data from input file to %tag_name 
-        read_tags("$inf.$infmt", "$if") if $run{$if}{TAGS}{READ} == 1 and not $dryrun;
+        read_tags("$inf.$infmt", "$codec") if $run{$codec}{TAGS}{READ} == 1 and not $dryrun;

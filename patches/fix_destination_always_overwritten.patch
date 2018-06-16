@@ -1,0 +1,13 @@
+diff --git a/pacpl.in b/pacpl.in
+index 341e680..3c16141 100644
+--- a/pacpl.in
++++ b/pacpl.in
+@@ -2343,7 +2343,7 @@ sub proc_files {
+                    $encoder = $run{$to}{DEFAULT_ENCODER} if not $my_encoder;
+                    $decoder = $run{$if}{DEFAULT_DECODER} if not $my_decoder;
+               
+-               if (-e "$file.$to" and not $overwrite) {
++               if (-e "$dir/$file.$to" and not $overwrite) {
+                    pnotice("overwrite","$file.$to",1);
+                    $total_failed++;
+                    next;
