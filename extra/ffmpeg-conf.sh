@@ -4,6 +4,13 @@
 
 ./configure --prefix=/usr \
 		--enable-nonfree \
+		--enable-pthread \
+		--mandir=/usr/man \
+		--disable-debug \
+		--enable-shared \
+		--enable-postproc \
+		--enable-libschroedinger \
+		--enable-slib \				
 		--enable-gpl \
 		--enable-version3 \
 		--enable-pic \

@@ -1,0 +1,21 @@
+Description: Have configure script quit with exit code 0
+Author: Matteo Cypriani <mcy@lm7.fr>
+Origin: vendor
+Last-Update: 2016-10-13
+--- a/configure
++++ b/configure
+@@ -5381,4 +5381,4 @@
+ { $as_echo "$as_me:${as_lineno-$LINENO}: make && make install" >&5
+ $as_echo "$as_me: make && make install" >&6;}
+ 
+-exit 1
++exit 0
+--- a/configure.ac
++++ b/configure.ac
+@@ -211,4 +211,4 @@
+ AC_MSG_NOTICE()
+ AC_MSG_NOTICE([make && make install])
+ 
+-exit 1
+\ No newline at end of file
++exit 0

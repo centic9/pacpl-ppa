@@ -1,0 +1,13 @@
+diff --git a/pacpl.in b/pacpl.in
+index 436e140..68619f9 100644
+--- a/pacpl.in
++++ b/pacpl.in
+@@ -2209,7 +2209,7 @@ foreach my $fork (@ffmpeg_forks) {
+       $run{$codec}{DEFAULT_DECODER}      = $fork;
+       $run{$codec}{ENCODER}{$fork}{NAME} = $fork;
+       $run{$codec}{DECODER}{$fork}{NAME} = $fork;
+-      $run{$codec}{DECODER}{$fork}{DSTR} = sub {"-y %i $dopts %o"};
++      $run{$codec}{DECODER}{$fork}{DSTR} = sub {"-y -i %i $dopts %o"};
+       $run{$codec}{ENCODER}{$fork}{ESTR} = sub {"-y -i %i $eopts -ab $bitrate.k -ar $freq -ac $channels %o"};
+       $run{$codec}{TAGS}{READ}           = 0;
+       $run{$codec}{TAGS}{WRITE}          = 0;

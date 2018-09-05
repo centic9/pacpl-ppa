@@ -1,0 +1,33 @@
+Author: Cristian Greco <cristian.debian@gmail.com>
+Description: Better documentation for README.module (in particular, specify
+where to install user modules).
+Index: git/extra/README.module
+===================================================================
+--- git.orig/extra/README.module	2014-10-29 10:58:38.608397451 +0100
++++ git/extra/README.module	2014-10-29 11:06:03.428377620 +0100
+@@ -1,8 +1,14 @@
+ USER MODULES:
+ 
+-The best way to incorporate you own module is to copy the sample.m
+-to a new file and change the various values accordinly.  If you're
+-familiar with Perl and hashes, then writing your own shouldn't be a
++You can use modules to extend pacpl conversion features adding new supported
++file formats.
++
++The best way to incorporate you own module is to copy the sample.m to a new
++file and change the various values accordingly. Then place the module in
++/etc/pacpl/modules and it will be automatically detected next time you run
++pacpl.
++
++If you're familiar with Perl and hashes, then writing your own shouldn't be a
+ problem.
+ 
+ Wild card %i will be the input file, and wild card %o will be 
+@@ -11,7 +17,5 @@
+ ESTR = string used to encode the temporary .wav file
+ DSTR = string used to decode to the temporary .wav file
+ 
+-
+-
+ It should be noted that for the time being --dopts and --eopts will no
+ longer work with imported codecs.

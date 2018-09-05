@@ -1,0 +1,16 @@
+diff --git a/pacpl.in b/pacpl.in
+index 0f862f9..611bb2d 100644
+--- a/pacpl.in
++++ b/pacpl.in
+@@ -1403,6 +1403,11 @@ my $pm = Parallel::ForkManager->new($jobs);
+                                        DSTR => sub { "-vc null -vo null -ao pcm:file=%o %i" },
+                                      },
+                                       
++		   'alac-decoder' => {
++                                       NAME => "alac-decoder",
++                                       DSTR => sub { "$dopts -f %o %i" },
++                                     },
++                                      
+                            },
+ 
+                 ESTR    => sub { "$eopts -w -q $aacqual %i -o %o" },

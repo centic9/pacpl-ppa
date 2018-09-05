@@ -1,0 +1,47 @@
+Description: Fixes some typos in the manpage
+Author: Matteo Cypriani <mcy@lm7.fr>
+Origin: vendor
+Last-Update: 2016-10-13
+--- a/pacpl
++++ b/pacpl
+@@ -2384,7 +2384,7 @@
+    undef(@file);
+ }
+ 
+-# process directorys and push all to @file arrary
++# process directories and push all to @file arrary
+ sub proc_dirs {
+ 
+    if (@dir) {
+@@ -3569,19 +3569,19 @@
+ 
+ Parallel Processing, a CD ripping function with CDDB support, batch conversion, 
+ tag preservation for most supported formats, independent tag reading & writing, 
+-service menus for KDE Dolphin/Konqueror, Gnome Nautilus script, and action 
++service menus for KDE Dolphin/Konqueror, GNOME Nautilus script, and action 
+ scripts for Nemo/Thunar are also provided.
+ 
+ =head1 OPTIONS
+ 
+ B<-t, --to> I<format>
+ 
+-set encode format for the input file(s) or directory(s).  you can see a
++set encode format for the input file(s) or directory(ies).  you can see a
+ complete list of supported encode formats by using the B<--formats> option.
+ 
+ B<-r, --recursive>
+ 
+-recursively scan and convert input folder(s) to desination format.
++recursively scan and convert input folder(s) to destination format.
+ 
+ B<-p, --preserve>
+ 
+@@ -3626,7 +3626,7 @@
+ 
+ B<-o, --only> I<format>
+ 
+-only convert files matching extenstion.  this option is useful when you have
++only convert files matching extension.  this option is useful when you have
+ a directory or batch of files with mixed audio types and only need to
+ convert one specific type.
+ 

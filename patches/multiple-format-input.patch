@@ -1,0 +1,43 @@
+Description: Allow converting from multiple source formats
+ When multiple source formats are used, e.g. by running
+ `pacpl -t mpc myflac.flac myogg.ogg`, the same decoder is used for all
+ the files. This patch fixes this bug. 
+Author: Matteo Cypriani <mcy@lm7.fr>
+Origin: vendor
+Last-Update: 2016-10-14
+--- a/pacpl
++++ b/pacpl
+@@ -2374,6 +2374,7 @@
+                             $files{"FILE$number"}{EXT}  = "$ext";
+                             $files{"FILE$number"}{NAME} = "$file";
+                             $files{"FILE$number"}{OUTD} = "$outfile";
++                            $files{"FILE$number"}{DECODER} = "$decoder";
+ 
+                             $number++;                  
+                    }
+@@ -2490,7 +2491,7 @@
+ # convert input to destination format
+ sub convert {
+ 
+-    my ($inf, $outf, $infmt, $iname, $oname) = @_;
++    my ($inf, $outf, $infmt, $iname, $oname, $dec) = @_;
+ 
+     my $if = $infmt;
+        $if =~ tr/A-Z/a-z/;
+@@ -2505,6 +2506,7 @@
+        
+        # check to see if encoder/decoder exists.  if not, see if we have one 
+        # that supports the desired input/output formats.
++       $decoder = $dec;
+        check_encoder();
+        check_decoder($infmt);
+                          
+@@ -2597,7 +2599,7 @@
+         say "$msg" if not $gui;        
+         system("kdialog --icon $icon_path --title \"$name\" --passivepopup \"$msg\" 10 &") if $gui and $kde;
+         system("notify-send \"$name\" \"$msg\" -t 35 -i $icon_path &") if $gui and $gnome;                          
+-        convert("$files{$_}{FILE}","$files{$_}{OUTF}","$files{$_}{EXT}","$files{$_}{NAME}","$files{$_}{OUTD}");            
++        convert("$files{$_}{FILE}","$files{$_}{OUTF}","$files{$_}{EXT}","$files{$_}{NAME}","$files{$_}{OUTD}","$files{$_}{DECODER}");
+         $pm->finish;
+     }            
+ 
