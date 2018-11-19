@@ -13,7 +13,7 @@ Last-Update: 2016-10-13
  sub proc_dirs {
  
     if (@dir) {
-@@ -3569,19 +3569,19 @@
+@@ -3608,19 +3608,19 @@
  
  Parallel Processing, a CD ripping function with CDDB support, batch conversion, 
  tag preservation for most supported formats, independent tag reading & writing, 
@@ -36,7 +36,7 @@ Last-Update: 2016-10-13
  
  B<-p, --preserve>
  
-@@ -3626,7 +3626,7 @@
+@@ -3665,7 +3665,7 @@
  
  B<-o, --only> I<format>
  

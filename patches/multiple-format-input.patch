@@ -5,9 +5,11 @@ Description: Allow converting from multiple source formats
 Author: Matteo Cypriani <mcy@lm7.fr>
 Origin: vendor
 Last-Update: 2016-10-14
---- a/pacpl
-+++ b/pacpl
-@@ -2374,6 +2374,7 @@
+Index: git/pacpl
+===================================================================
+--- git.orig/pacpl	2016-11-25 17:41:57.297759841 +0100
++++ git/pacpl	2016-11-25 17:41:57.293759801 +0100
+@@ -2385,6 +2385,7 @@
                              $files{"FILE$number"}{EXT}  = "$ext";
                              $files{"FILE$number"}{NAME} = "$file";
                              $files{"FILE$number"}{OUTD} = "$outfile";
@@ -15,7 +17,7 @@ Last-Update: 2016-10-14
  
                              $number++;                  
                     }
-@@ -2490,7 +2491,7 @@
+@@ -2501,7 +2502,7 @@
  # convert input to destination format
  sub convert {
  
@@ -24,7 +26,7 @@ Last-Update: 2016-10-14
  
      my $if = $infmt;
         $if =~ tr/A-Z/a-z/;
-@@ -2505,6 +2506,7 @@
+@@ -2516,6 +2517,7 @@
         
         # check to see if encoder/decoder exists.  if not, see if we have one 
         # that supports the desired input/output formats.
@@ -32,7 +34,7 @@ Last-Update: 2016-10-14
         check_encoder();
         check_decoder($infmt);
                           
-@@ -2597,7 +2599,7 @@
+@@ -2608,7 +2610,7 @@
          say "$msg" if not $gui;        
          system("kdialog --icon $icon_path --title \"$name\" --passivepopup \"$msg\" 10 &") if $gui and $kde;
          system("notify-send \"$name\" \"$msg\" -t 35 -i $icon_path &") if $gui and $gnome;                          
