@@ -14,7 +14,7 @@ papcl:
 pacpl: It supports the following audio formats:
 pacpl:
 pacpl: 3G2, 3GP, 8SVX, AAC, AC3, ADTS, AIFF, AL, AMB, AMR, APE, AU,
-pacpl: AVR, BONK, CAF, CDR, CVU, DAT, DTS, DVMS, F32, F64, FAP, FLA,
+pacpl: AVR, BONK, CAF, CDR, CVU, DAT, DFS, DTS, DVMS, F32, F64, FAP, FLA,
 pacpl: FLAC, FSSD, GSRT, HCOM, IMA, IRCAM, LA, MAT, MAUD, MAT4, MAT5,
 pacpl: M4A, MP2, MP3, MP4, MPC, MPP, NIST, OFF, OFR, OFS, OPUS, OGA,
 pacpl: OGG, PAF, PRC, PVF, RA, RAM, RAW, RF64, SD2, SF, SHN, SMP, SND,

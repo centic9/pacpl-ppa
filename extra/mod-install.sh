@@ -2,6 +2,8 @@
 #
 # Run this script to install the required modules for 
 # the Perl Audio Converter.
+#
+# Update: Make sure cpan has already been initizlized before running this script
 
 perl -MCPAN -e 'install Parse::RecDescent'
 perl -MCPAN -e 'install Devel::Symdump'
@@ -15,3 +17,4 @@ perl -MCPAN -e 'install MP3::Tag'
 perl -MCPAN -e 'install IO::String'
 perl -MCPAN -e 'install CDDB'
 perl -MCPAN -e 'install CDDB_get'
+perl -MCPAN -e 'install String::ShellQuote'

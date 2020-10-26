@@ -1,4 +1,33 @@
 =================
+[**** 6.1.2 ****]
+=================
+
+* updated version to 6.1.2
+
+* updated mod-install-debian.sh in extra/
+
+% fixed the following thanks to Reuben Thomas (rrt@sc3d.org)
+	% rename ChangeLog.txt back to ChangeLog
+	% fixed typo in formats DFS to DSF
+	% change FLAC tag module from Audio::Scan back to Audio::FLAC::Header
+
++ this version has been tested and now works on Chromebooks with crostini
+
+=================
+[**** 6.1.1 ****]
+=================
+
+% incorporated patches from Paulo Marcel Coelho Aragao
+	- added ability to decode dsf files
+	- implemented String::ShellQuote
+	- patch to show total failures (if any) as exit code
+
+% renamed mod-install-ubuntu.sh to mod-install-debian.sh
+% renamed Changelog.txt back to Changelog
+
++ added String::ShellQuote to mod-install scripts in extra
+
+=================
 [**** 6.1.0 ****]
 =================
 
