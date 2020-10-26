@@ -4,13 +4,13 @@ Bug-Debian: http://bugs.debian.org/561459
 Forwarded: https://sourceforge.net/tracker/?func=detail&aid=3323220&group_id=139264&atid=742827
 Last-Updated: 2011-06-20
 
-Index: git/pacpl
+Index: git/pacpl.in
 ===================================================================
---- git.orig/pacpl.in	2016-11-25 17:40:41.917012490 +0100
-+++ git/pacpl.in	2016-11-25 17:42:19.000000000 +0100
-@@ -2965,13 +2965,41 @@
+--- git.orig/pacpl.in	2020-10-26 07:40:24.272975029 +0100
++++ git/pacpl.in	2020-10-26 07:40:24.264975026 +0100
+@@ -2995,13 +2995,41 @@
            when (/^flac$|^fla$/) {
-                                        my $flac_tag = Audio::Scan->scan_tags($in_file)->{tags};
+                                        my $flac_tag = Audio::FLAC::Header->scan_tags($in_file)->{tags};
  
 -                                          $tag_name{title}   = $flac_tag->{TITLE}       if $flac_tag->{TITLE};
 -                                          $tag_name{track}   = $flac_tag->{TRACKNUMBER} if $flac_tag->{TRACKNUMBER};

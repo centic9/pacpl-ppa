@@ -5,16 +5,18 @@ Bug-Debian: http://bugs.debian.org/589790
 Origin: vendor
 Forwarded: not-needed
 Last-Update: 2018-06-16
---- a/pacpl.in
-+++ b/pacpl.in
-@@ -2572,8 +2572,8 @@
+Index: git/pacpl.in
+===================================================================
+--- git.orig/pacpl.in	2020-10-26 07:41:12.388992400 +0100
++++ git/pacpl.in	2020-10-26 07:41:38.085001374 +0100
+@@ -2602,8 +2602,8 @@
         }
         
         # normalize wav file before encoding to output format
 -       perror("no_app","normalize") if $normalize and not `which normalize 2>/dev/null`;
--       system("normalize $nopts \"$outf.$$.wav\"") if $normalize;
+-       system("normalize $nopts $wavf_q") if $normalize;
 +       perror("no_app","normalize") if $normalize and not `which normalize-audio 2>/dev/null`;
-+       system("normalize-audio $nopts \"$outf.$$.wav\"") if $normalize;
++       system("normalize-audio $nopts $wavf_q") if $normalize;
  
         # copy meta-data from input file to %tag_name 
         read_tags("$inf.$infmt", "$codec") if $run{$codec}{TAGS}{READ} == 1 and not $dryrun;
