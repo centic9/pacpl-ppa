@@ -2,9 +2,9 @@ usr/bin
 usr/share/doc/pacpl
 usr/share/man
 usr/share/pacpl
-extra/README.module extra/sample.m usr/share/doc/pacpl/modules
 extra/README.extra usr/share/doc/pacpl
 etc/pacpl/*.conf
+extra/README.module extra/sample.m usr/share/doc/pacpl/modules/
 pacpl.png usr/share/icons/
 plugins/kde/PACPL-Konvert usr/share/pacpl/bin/
 plugins/kde/pacpl.desktop usr/share/kde4/services/

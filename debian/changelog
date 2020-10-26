@@ -1,3 +1,9 @@
+pacpl (6.1.2-0ubuntu0~ppa1) focal; urgency=medium
+
+  * New upstream version.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Mon, 26 Oct 2020 07:31:03 +0100
+
 pacpl (6.1.0-1ubuntu0~ppa1) bionic; urgency=medium
 
   * Backport latest release to Bionic.
