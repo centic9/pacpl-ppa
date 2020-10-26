@@ -5,7 +5,9 @@
 # & decoders which you will find useful while
 # utilizing the application
 #
-# run this script using: sudo sh ./mod-install-kubuntu.sh
+# run this script using: sudo sh ./mod-install-debian.sh
+#
+# Update: Make sure cpan has already been initizlized before running this script
 
 echo ""
 echo ""
@@ -20,6 +22,7 @@ sudo apt-get install libvorbis-dev \
                      libmp3-tag-perl \
                      libaudio-scan-perl \
                      libaudio-flac-header-perl \
+		     libstring-shellquote-perl \
                      libparallel-forkmanager-perl 
                      
 # install some default encoders / decoders
@@ -39,13 +42,11 @@ sudo apt-get install vorbis-tools \
 		     mplayer \
 		     cdparanoia \
 		     flac \
-		     faac \
 		     faad \
 		     opus-tools \
 		     sndfile-programs \
 		     speex \
 		     wavpack \
-		     aften \
 		     perl-doc
 
 echo ""

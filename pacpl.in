@@ -2,7 +2,7 @@
 #
 #  Perl Audio Converter
 #
-#  Copyright (C) 2005-2018 Philip Lyons (vorzox@gmail.com)
+#  Copyright (C) 2005-2019 Philip Lyons (vorzox@gmail.com)
 #
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -24,6 +24,7 @@ use File::Basename;
 use File::Find;
 use File::Spec::Functions qw(rel2abs);
 use Parallel::ForkManager;
+use String::ShellQuote;
 
 use feature qw(switch say);
 
@@ -81,7 +82,7 @@ my
 
 # name and version
 my $name      = "Perl Audio Converter";
-my $version   = "6.1.0";
+my $version   = "6.1.2";
 
 # If these options are toggled,  messages/errors will be displayed 
 # via kdialog or zenity/notify-send (depending on environment)
@@ -807,6 +808,26 @@ my $pm = Parallel::ForkManager->new($jobs);
                              READ   => 0,
                              WRITE  => 0,
                              MODULE => undef,
+                           },
+               },
+
+       dsf  => {
+
+                DEFAULT_ENCODER => undef,
+                DEFAULT_DECODER => "sacd",
+                
+                DECODER => {
+                                      
+			     sacd => {
+                                       NAME => "sacd",
+                                       DSTR => sub { "-i %i" },
+                                     },
+			   },
+
+                TAGS    => {
+                             READ   => 1,
+                             WRITE  => 0,
+                             MODULE => "Audio::Scan",
                            },
                },
 
@@ -2405,7 +2426,9 @@ sub proc_files {
                    $outfile = "$file" if not $out_name;
 
                    if ($keep and $if eq $to) {
-                       system("cp -v \"$dir/$file.$ext\" \"$outdir/$outfile.$ext\"") if $outdir ne $dir and not -e "$outdir/$outfile.$ext";
+		       my $source_q = shell_quote "$dir/$file.$ext";
+		       my $dest_q = shell_quote "$outdir/$outfile.$ext";
+                       system("cp -v $source_q $dest_q") if $outdir ne $dir and not -e "$outdir/$outfile.$ext";
                        next if $outdir eq $dir;
                    } 
                    
@@ -2539,12 +2562,6 @@ sub convert {
        $if =~ tr/A-Z/a-z/;
 
        clear_tag_hash() if not $rip;
-
-       # catch ^C.  will have to be pressed repeatedly to exit the process.
-       $SIG{INT} = sub {
-                         unlink("$outf.$$.wav");
-                         kill 9, $$; 
-                       };
        
        # check to see if encoder/decoder exists.  if not, see if we have one 
        # that supports the desired input/output formats.
@@ -2552,19 +2569,32 @@ sub convert {
        check_encoder();
        check_decoder($codec);
                          
+    my $wavf = "$outf.$$.wav";
+    my $wavf_q = shell_quote $wavf;
     my $decode_string = $run{$codec}{DECODER}{$decoder}{DSTR}->();
-       $decode_string =~ s/%i/\"$inf.$infmt\"/;
-       $decode_string =~ s/%o/\"$outf.$$.wav\"/;
-       $decode_string =~ s/(\$|\\)/\\$1/g;
+    my $inf_q = shell_quote "$inf.$infmt";
+       $decode_string =~ s/%i/$inf_q/;
+       if ( $decode_string =~ m/%o/ )  {
+	   $decode_string =~ s/%o/$wavf_q/;
+       } else  {
+	   $wavf = "$outf.wav";
+	   $wavf_q = shell_quote $wavf;
+       }
 
        pnotice("debug","\n$run{$codec}{DECODER}{$decoder}{NAME} $decode_string", 2) if $dryrun;
+
+       # catch ^C.  will have to be pressed repeatedly to exit the process.
+       $SIG{INT} = sub {
+                         unlink("$wavf");
+                         kill 9, $$; 
+                       };
 
        # decode input file to temporary wav
        system("$run{$codec}{DECODER}{$decoder}{NAME} $decode_string $silent") if not $dryrun;
 
        # remove temporary wav file and die if decode fails
        if ($? > 0) {
-           unlink("$outf.$$.wav") if -e "$outf.$$.wav";
+           unlink("$wavf") if -e "$wavf";
            say "";
            $banner = 0;
            pnotice("decode_failed","$inf.$infmt: try with --verbose",1);
@@ -2573,20 +2603,20 @@ sub convert {
        
        # normalize wav file before encoding to output format
        perror("no_app","normalize") if $normalize and not `which normalize 2>/dev/null`;
-       system("normalize $nopts \"$outf.$$.wav\"") if $normalize;
+       system("normalize $nopts $wavf_q") if $normalize;
 
        # copy meta-data from input file to %tag_name 
        read_tags("$inf.$infmt", "$codec") if $run{$codec}{TAGS}{READ} == 1 and not $dryrun;
 
     my $tag_opts = format_tags($to); # tag options for mp4/m4a/m4b/mpc/mpp/bonk/spx/wv
     
+    my $outf_q = shell_quote "$outf.$to";
     my $encode_string = $run{$to}{ENCODER}{$encoder}{ESTR}->();
-       $encode_string =~ s/%i/$tag_opts \"$outf.$$.wav\"/  if $to =~ /mpc|mpp|mp4|m4a/ and $encoder eq "faac" or $encoder eq "mpcenc";
-       $encode_string =~ s/%i/\"$outf.$$.wav\" $tag_opts/  if $to =~ /mpc|mpp|mp4|m4a/ and $encoder eq "ffmpeg" or $encoder eq "avconv";
-       $encode_string =~ s/%i/\"$outf.$$.wav\"/            if $to !~ /mpc|mpp|mp4|m4a/;
-       $encode_string =~ s/%o/$tag_opts \"$outf.$to\"/     if $tag_opts ne " " and $to !~ /mpc|mpp|mp4|m4a/;
-       $encode_string =~ s/%o/\"$outf.$to\"/               if $tag_opts eq " " or $to =~ /mpc|mpp|mp4|m4a/;
-       $encode_string =~ s/(\$|\\)/\\$1/g;
+       $encode_string =~ s/%i/$tag_opts $wavf_q/  if $to =~ /mpc|mpp|mp4|m4a/ and $encoder eq "faac" or $encoder eq "mpcenc";
+       $encode_string =~ s/%i/$wavf_q $tag_opts/  if $to =~ /mpc|mpp|mp4|m4a/ and $encoder eq "ffmpeg" or $encoder eq "avconv";
+       $encode_string =~ s/%i/$wavf_q/            if $to !~ /mpc|mpp|mp4|m4a/;
+       $encode_string =~ s/%o/$tag_opts $outf_q/     if $tag_opts ne " " and $to !~ /mpc|mpp|mp4|m4a/;
+       $encode_string =~ s/%o/$outf_q/               if $tag_opts eq " " or $to =~ /mpc|mpp|mp4|m4a/;
        
        # read tag options from command line if present
        get_user_tags();
@@ -2599,7 +2629,7 @@ sub convert {
        # remove partially encoded output file and temporary wav if encoding fails
        if ($? > 0) {
            unlink("$outf.$to")          if -e "$outf.$to";
-           unlink("$outf.$$.wav")       if -e "$outf.$$.wav";
+           unlink("$wavf")		if -e "$wavf";
            say "";
            $banner = 0;
            pnotice("encode_failed","$outf.$to: $?",1);        
@@ -2609,10 +2639,10 @@ sub convert {
        # write meta-data to output file from %tag_name hash
        write_tags("$outf.$to", "$to") if $run{$to}{TAGS}{WRITE} == 1 and $tag_opts eq " "  and not $dryrun;
  
-       unlink("$outf.$$.wav") if not $dryrun;
+       unlink("$wavf") if not $dryrun;
        unlink("$inf.$infmt")  if $delete and not $dryrun;
 
-       pnotice("removed_tmp","$outf.$$.wav","2") if $verbose;
+       pnotice("removed_tmp","$wavf","2") if $verbose;
        pnotice("removed_src","$inf.$infmt", "2") if $delete and $verbose;
 }
 
@@ -2963,7 +2993,7 @@ sub read_tags {
                                 }
 
           when (/^flac$|^fla$/) {
-                                       my $flac_tag = Audio::Scan->scan_tags($in_file)->{tags};
+                                       my $flac_tag = Audio::FLAC::Header->scan_tags($in_file)->{tags};
 
                                           $tag_name{title}   = $flac_tag->{TITLE}       if $flac_tag->{TITLE};
                                           $tag_name{track}   = $flac_tag->{TRACKNUMBER} if $flac_tag->{TRACKNUMBER};
@@ -2986,6 +3016,20 @@ sub read_tags {
                                            $tag_name{comment} = $mp4_tag->{CMT}    if $mp4_tag->{CMT};
                                            $tag_name{year}    = $mp4_tag->{DAY}    if $mp4_tag->{DAY};
                                            $tag_name{genre}   = $mp4_tag->{GNRE}   if $mp4_tag->{GNRE};
+ 
+                                        return 0;
+                                }
+
+		 when (/^dsf$/) {    
+                                        my $dsf_tag = $tag_module->scan_tags($in_file)->{tags};
+
+                                           $tag_name{title}   = $dsf_tag->{TIT2}    if $dsf_tag->{TIT2};
+                                           $tag_name{track}   = $dsf_tag->{TRCK}    if $dsf_tag->{TRCK}; 
+                                           $tag_name{artist}  = $dsf_tag->{TPE1}    if $dsf_tag->{TPE1};
+                                           $tag_name{album}   = $dsf_tag->{TALB}    if $dsf_tag->{TALB};
+                                           $tag_name{comment} = $dsf_tag->{COMM}    if $dsf_tag->{COMM};
+                                           $tag_name{year}    = $dsf_tag->{TYER}    if $dsf_tag->{TYER};
+                                           $tag_name{genre}   = $dsf_tag->{TCON}    if $dsf_tag->{TCON};
  
                                         return 0;
                                 }
@@ -3076,7 +3120,8 @@ sub write_tags {
                                   $tag_m = "$tag_m -t \"YEAR=$tag_name{year}\""         if $tag_name{year};
                                   $tag_m = "$tag_m -t \"GENRE=$tag_name{genre}\""       if $tag_name{genre};
                             
-                                  system("vorbiscomment -w $tag_m \"$out_file\"") if $tag_m ne ''; 
+				  my $out_file_q = shell_quote $out_file;
+                                  system("vorbiscomment -w $tag_m $out_file_q") if $tag_m ne ''; 
                             
                                   return 0;
                               }
@@ -3328,7 +3373,8 @@ sub rip_cd {
         $on =~ s/\//_/g;
 
         say "\ncdparanoia -d $device $tno $on.wav\n"  if $dryrun;
-        system("cdparanoia -d $device $tno \"$on.wav\" >/dev/null 2>&1")  if not $dryrun;
+	my $on_q = shell_quote "$on.wav";
+        system("cdparanoia -d $device $tno $on_q >/dev/null 2>&1")  if not $dryrun;
 
     if ($to !~ /wav/i) {
 
@@ -3435,7 +3481,7 @@ sub version {
 say "
 $name - $version
 
-Copyright (C) 2005-2018 Philip Lyons
+Copyright (C) 2005-2019 Philip Lyons
 
 This is free software.  You may redistribute copies of it under the terms of
 the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
@@ -3561,7 +3607,7 @@ if (@ARGV) {
 
 load_user_modules() if $config{IMPORTM} == 1;
 
-if ($to and @ARGV and not $rip) { proc_input(); } 
+if ($to and @ARGV and not $rip) { proc_input(); exit $total_failed; } 
 
 elsif ($to and $rip) { proc_cd(); }
 elsif ($my_encoder and not $to) { show_encoders(); }
@@ -3596,7 +3642,7 @@ It supports the following audio formats:
 ========================================
 
 3G2, 3GP, 8SVX, AAC, AC3, ADTS, AIFF, AL, AMB, AMR, APE, AU, 
-AVR, BONK, CAF, CDR, CVU, DAT, DTS, DVMS, F32, F64, FAP, FLA, 
+AVR, BONK, CAF, CDR, CVU, DAT, DSF, DTS, DVMS, F32, F64, FAP, FLA, 
 FLAC, FSSD, GSRT, HCOM, IMA, IRCAM, LA, MAT, MAUD, MAT4, MAT5, 
 M4A, MP2, MP3, MP4, MPC, MPP, NIST, OFF, OFR, OFS, OPUS, OGA, 
 OGG, PAF, PRC, PVF, RA, RAM, RAW, RF64, SD2, SF, SHN, SMP, SND, 
@@ -4072,4 +4118,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 =head1 AUTHOR
 
-Copyright (C) 2005-2018 Philip Lyons (vorzox@gmail.com)
+Copyright (C) 2005-2019 Philip Lyons (vorzox@gmail.com)

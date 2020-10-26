@@ -8,9 +8,9 @@ perl -MCPAN -e 'shell' (or just 'cpan')
 
 and from there type: install Module::Name
 ---------------------------------------------------------------------------
-mod-install-ubuntu.sh
+mod-install-debian.sh
 
-Same as above except it uses apt-get to install the disto based packages
-for ubuntu/kubuntu.
+Same as above except it uses apt-get to install the distro based packages
+for debian based operating systems.
 
 The script will attempt ot install Ogg::Vorbis::Header manually.

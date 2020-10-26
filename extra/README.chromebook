@@ -1,0 +1,17 @@
+If your Chromebook supports Crostini you will need to install the following
+packages:
+
+sudo apt install build-essential
+sudo apt install autoconf
+
+---------
+Afterwards go to the main pacpl director and do the following:
+---------
+
+cd extra/
+sh mod-install-debian.sh
+cd ..
+autoconf
+./configure --prefix=/usr --sysconfdir=/etc
+make
+sudo make install

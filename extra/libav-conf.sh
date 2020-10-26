@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Confiure script for libav
+# This is a general configuration use at your own risk
 
 ./configure --prefix=/usr \
 		--enable-nonfree \

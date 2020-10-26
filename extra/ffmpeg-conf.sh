@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Confiure script for ffmpeg
+# This is a generl configure script, use at your own risk
 
 ./configure --prefix=/usr \
 		--enable-nonfree \
