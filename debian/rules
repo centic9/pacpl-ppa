@@ -3,13 +3,8 @@
 %:
 	dh $@ --with autoreconf
 
-override_dh_autoreconf:
-	cp ChangeLog.txt ChangeLog
-	dh_autoreconf
-
 override_dh_auto_install:
 	dh_auto_install --destdir=debian/tmp
 
-override_dh_auto_clean:
-	dh_auto_clean
-	rm -f ChangeLog
+override_dh_installchangelogs:
+	dh_installchangelogs ChangeLog

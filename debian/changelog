@@ -1,3 +1,41 @@
+pacpl (6.1.2-2) unstable; urgency=medium
+
+  * New source-only upload (Closes: #981149).
+  * Add missing dependency libstring-shellquote-perl (Closes: #980395).
+
+ -- Matteo Cypriani <mcy@lm7.fr>  Wed, 27 Jan 2021 09:05:04 +0100
+
+pacpl (6.1.2-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/watch: Use https protocol.
+
+  [ Matteo Cypriani ]
+  * Acknowledging NMU.
+  * New upstream release.
+    + Updated package description (DSF support).
+    + Updated d/copyright.
+    + Refreshed patches.
+    + Added flac_decoding.patch (fixes converting from FLAC).
+  * Bump Standards-Version to 4.5.1 (no changes needed)
+  * Set dh compat level in Build-Depends, bumped to 13 and fixed dh_missing
+    errors:
+    + Added d/not-installed.
+    + Updated paths in d/pacpl.install.
+    + d/rules: added override_dh_installchangelogs target.
+  * d/watch: switched to format version 4.
+  * d/control: added Rules-Requires-Root field.
+  * d/control: updated Homepage.
+
+ -- Matteo Cypriani <mcy@lm7.fr>  Fri, 08 Jan 2021 21:29:47 +0100
+
+pacpl (6.1.0-1.1) unstable; urgency=medium
+
+  * Non maintainer upload by the Reproducible Builds team.
+  * No source change upload to rebuild on buildd with .buildinfo files.
+
+ -- Holger Levsen <holger@debian.org>  Sat, 02 Jan 2021 01:41:13 +0100
+
 pacpl (6.1.0-1) unstable; urgency=medium
 
   * New upstream version.

@@ -1,0 +1,13 @@
+etc/pacpl/extra/README.chromebook
+etc/pacpl/extra/README.extra
+etc/pacpl/extra/ffmpeg-conf.sh
+etc/pacpl/extra/libav-conf.sh
+etc/pacpl/extra/mod-install-debian.sh
+etc/pacpl/extra/mod-install.sh
+usr/share/doc/pacpl/ChangeLog
+usr/share/doc/pacpl/AUTHORS
+usr/share/doc/pacpl/COPYING
+usr/share/doc/pacpl/INSTALL
+usr/share/doc/pacpl/NEWS
+usr/share/doc/pacpl/README
+usr/share/doc/pacpl/TODO

@@ -2,17 +2,18 @@ Source: pacpl
 Maintainer: Matteo Cypriani <mcy@lm7.fr>
 Section: sound
 Priority: optional
-Build-Depends: debhelper (>= 11),
+Build-Depends: debhelper-compat (= 13),
                libcddb-perl,
                libcddb-get-perl,
                libmp3-tag-perl,
                libaudio-scan-perl,
                libaudio-flac-header-perl,
                libparallel-forkmanager-perl
-Standards-Version: 4.1.4
+Standards-Version: 4.5.1
+Rules-Requires-Root: no
 Vcs-Browser: https://salsa.debian.org/debian/pacpl
 Vcs-Git: https://salsa.debian.org/debian/pacpl.git
-Homepage: http://vorzox.wixsite.com/pacpl
+Homepage: https://votoxin.wixsite.com/pacpl
 
 Package: pacpl
 Architecture: all
@@ -24,6 +25,7 @@ Depends: ${perl:Depends},
          libaudio-scan-perl,
          libaudio-flac-header-perl,
          libparallel-forkmanager-perl,
+         libstring-shellquote-perl,
          vorbis-tools
 Recommends: cdparanoia,
             faad,
@@ -47,11 +49,11 @@ Description: multi-purpose audio converter/ripper/tagger script
  .
  It supports the following audio formats (but the backend program that handles
  a given format might not be packaged in Debian): 3G2, 3GP, 8SVX, AAC, AC3,
- ADTS, AIFF, AL, AMB, AMR, APE, AU, AVR, BONK, CAF, CDR, CVU, DAT, DTS, DVMS,
- F32, F64, FAP, FLA, FLAC, FSSD, GSRT, HCOM, IMA, IRCAM, LA, MAT, MAUD, MAT4,
- MAT5, M4A, MP2, MP3, MP4, MPC, MPP, NIST, OFF, OFR, OFS, OPUS, OGA, OGG, PAF,
- PRC, PVF, RA, RAM, RAW, RF64, SD2, SF, SHN, SMP, SND, SOU, SPX, SRN, TAK, TTA,
- TXW, VOC, VMS, VQF, W64, WAV, WMA, and WV.
+ ADTS, AIFF, AL, AMB, AMR, APE, AU, AVR, BONK, CAF, CDR, CVU, DAT, DSF, DTS,
+ DVMS, F32, F64, FAP, FLA, FLAC, FSSD, GSRT, HCOM, IMA, IRCAM, LA, MAT, MAUD,
+ MAT4, MAT5, M4A, MP2, MP3, MP4, MPC, MPP, NIST, OFF, OFR, OFS, OPUS, OGA, OGG,
+ PAF, PRC, PVF, RA, RAM, RAW, RF64, SD2, SF, SHN, SMP, SND, SOU, SPX, SRN, TAK,
+ TTA, TXW, VOC, VMS, VQF, W64, WAV, WMA, and WV.
  .
  It can also convert audio from the following video extensions: RM, RV, ASF,
  DivX, MPG, MKV, MPEG, AVI, MOV, OGM, OGV, QT, VCD, SVCD, M4V, NSV, NUV, PSP,

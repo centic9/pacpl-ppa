@@ -1,0 +1,19 @@
+Description: Fix FLAC header decoding
+ Converting from FLAC failed because the header decoding used the wrong method
+ name from Audio::FLAC::Header.
+Author: Matteo Cypriani <mcy@lm7.fr>
+Origin: vendor
+Forwarded: Philip Lyons <vorzox@gmail.com>
+Last-Update: 2021-01-08
+--- a/pacpl.in
++++ b/pacpl.in
+@@ -2993,7 +2993,8 @@
+                                 }
+ 
+           when (/^flac$|^fla$/) {
+-                                       my $flac_tag = Audio::FLAC::Header->scan_tags($in_file)->{tags};
++                                       my $flac_file = Audio::FLAC::Header->new($in_file);
++                                       my $flac_tag = $flac_file->tags();
+ 
+                                           $tag_name{title}   = $flac_tag->{TITLE}       if $flac_tag->{TITLE};
+                                           $tag_name{track}   = $flac_tag->{TRACKNUMBER} if $flac_tag->{TRACKNUMBER};

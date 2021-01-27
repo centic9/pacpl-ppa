@@ -2,8 +2,8 @@ usr/bin
 usr/share/man
 usr/share/pacpl
 etc/pacpl/*.conf
-extra/README.module extra/sample.m usr/share/doc/pacpl/modules/
-pacpl.png usr/share/icons/
+etc/pacpl/extra/README.module etc/pacpl/extra/sample.m usr/share/doc/pacpl/modules/
+etc/pacpl/pacpl.png usr/share/icons/
 plugins/kde/PACPL-Konvert usr/share/pacpl/bin/
 plugins/kde/pacpl.desktop usr/share/kde4/services/
 plugins/gnome/nemo/PACPL-Convert usr/share/pacpl/bin/

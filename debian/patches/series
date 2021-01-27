@@ -1,2 +1,3 @@
 40_change-normalize-to-normalize-audio.patch
 plugins.patch
+flac_decoding.patch
