@@ -2,7 +2,7 @@ Source: pacpl
 Maintainer: Matteo Cypriani <mcy@lm7.fr>
 Section: sound
 Priority: optional
-Build-Depends: debhelper-compat (= 13),
+Build-Depends: debhelper (>= 12),
                libcddb-perl,
                libcddb-get-perl,
                libmp3-tag-perl,
