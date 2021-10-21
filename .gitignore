@@ -6,3 +6,4 @@ pacpl
 pacpl.1.gz
 pacpl.in.orig
 configure
+debian/files
