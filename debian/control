@@ -9,7 +9,7 @@ Build-Depends: debhelper-compat (= 13),
                libaudio-scan-perl,
                libaudio-flac-header-perl,
                libparallel-forkmanager-perl
-Standards-Version: 4.5.1
+Standards-Version: 4.6.2
 Rules-Requires-Root: no
 Vcs-Browser: https://salsa.debian.org/debian/pacpl
 Vcs-Git: https://salsa.debian.org/debian/pacpl.git
@@ -56,8 +56,8 @@ Description: multi-purpose audio converter/ripper/tagger script
  TTA, TXW, VOC, VMS, VQF, W64, WAV, WMA, and WV.
  .
  It can also convert audio from the following video extensions: RM, RV, ASF,
- DivX, MPG, MKV, MPEG, AVI, MOV, OGM, OGV, QT, VCD, SVCD, M4V, NSV, NUV, PSP,
- SMK, VOB, FLV, WEBM, and WMV.
+ DivX, MPG, MKV, MPEG, MPEG4, AVI, MOV, OGM, OGV, QT, VCD, SVCD, M4V, NSV, NUV,
+ PSP, SMK, VOB, FLV, WEBM, VP9 and WMV.
  .
  Pacpl also features parallel processing, a CD ripping function with CDDB
  support, batch conversion, tag preservation for most supported formats and

@@ -1,0 +1,28 @@
+Description: Don't try installing TODO
+ The TODO file is not shipped anymore.
+Author: Matteo Cypriani <mcy@lm7.fr>
+Origin: vendor
+Forwarded: Philip Lyons <vorzox@gmail.com>
+Last-Update: 2023-02-01
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -24,7 +24,7 @@
+ # Modules & Documentation
+ #
+ 
+-DOCS = INSTALL README AUTHORS TODO NEWS ChangeLog COPYING
++DOCS = INSTALL README AUTHORS NEWS ChangeLog COPYING
+ 
+ LANG_MODS = po/*
+ EXTRAS    = extra/*
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -286,7 +286,7 @@
+ #
+ # Modules & Documentation
+ #
+-DOCS = INSTALL README AUTHORS TODO NEWS ChangeLog COPYING
++DOCS = INSTALL README AUTHORS NEWS ChangeLog COPYING
+ LANG_MODS = po/*
+ EXTRAS = extra/*
+ 

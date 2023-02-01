@@ -2,7 +2,7 @@
 #
 #  Perl Audio Converter
 #
-#  Copyright (C) 2005-2019 Philip Lyons (vorzox@gmail.com)
+#  Copyright (C) 2005-2021 Philip Lyons (vorzox@gmail.com)
 #
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -82,7 +82,7 @@ my
 
 # name and version
 my $name      = "Perl Audio Converter";
-my $version   = "6.1.2";
+my $version   = "6.1.3";
 
 # If these options are toggled,  messages/errors will be displayed 
 # via kdialog or zenity/notify-send (depending on environment)
@@ -2290,7 +2290,7 @@ my @movie_codecs = (
                      "ogm",   "qt",    "vcd",   "vob",   
                      "wmv",   "flv",   "svcd",  "m4v",   
                      "nsv",   "nuv",   "psp",   "smk",
-                     "ogv",   "webm",
+                     "ogv",   "webm",  "vp9",   "mpeg4",
                      
                      # decode only audio formats
                      "vqf",   "tak",
@@ -2993,7 +2993,8 @@ sub read_tags {
                                 }
 
           when (/^flac$|^fla$/) {
-                                       my $flac_tag = Audio::FLAC::Header->scan_tags($in_file)->{tags};
+                                       my $flac_file = Audio::FLAC::Header->new($in_file);
+                                       my $flac_tag = $flac_file->tags();
 
                                           $tag_name{title}   = $flac_tag->{TITLE}       if $flac_tag->{TITLE};
                                           $tag_name{track}   = $flac_tag->{TRACKNUMBER} if $flac_tag->{TRACKNUMBER};
@@ -3481,7 +3482,7 @@ sub version {
 say "
 $name - $version
 
-Copyright (C) 2005-2019 Philip Lyons
+Copyright (C) 2005-2021 Philip Lyons
 
 This is free software.  You may redistribute copies of it under the terms of
 the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
@@ -4118,4 +4119,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 =head1 AUTHOR
 
+<<<<<<< HEAD
+Copyright (C) 2005-2021 Philip Lyons (vorzox@gmail.com)
+=======
 Copyright (C) 2005-2019 Philip Lyons (vorzox@gmail.com)
+>>>>>>> cc4eb189828ef15228da02c14a39e484294126ec
