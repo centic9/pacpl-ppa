@@ -15,7 +15,7 @@ echo "Installing required libs and perl modules..."
 echo ""
 sleep 4
 
-sudo apt-get install libvorbis-dev \
+sudo apt install     libvorbis-dev \
 		     libcddb-perl \
 		     libinline-perl \
                      libcddb-get-perl \
@@ -33,7 +33,7 @@ echo "Installing some basic encoding/decoding tools to get you started.."
 echo ""
 sleep 4
 
-sudo apt-get install vorbis-tools \
+sudo apt install     vorbis-tools \
 		     lame \
 		     twolame \
 		     sox \
@@ -55,12 +55,12 @@ echo "Settign up your repository to be able to install the restricted-extras pac
 echo ""
 sleep 4
 
-sudo apt-get clean
-cd /var/lib/apt
-sudo mv lists lists.old
-sudo mkdir -p lists/partial
-sudo apt-get clean
-sudo apt-get update
+#sudo apt-get clean
+#cd /var/lib/apt
+#sudo mv lists lists.old
+#sudo mkdir -p lists/partial
+#sudo apt-get clean
+#sudo apt-get update
 
 echo ""
 echo ""
