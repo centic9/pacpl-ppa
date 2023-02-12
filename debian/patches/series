@@ -1,3 +1,9 @@
 40_change-normalize-to-normalize-audio.patch
+45_case-independent-flac-tags.patch
+50_add_jmac_ape.diff
+# applied upstream: 60_twolame_mp2.diff
+# configure is gone now: 80_configure_exit_code
+# applied upstream: 80-fix_enforce_outdir_switch_if_p_switch_is_used.patch
+# applied upstream: typos.patch
 plugins.patch
 no_todo.patch

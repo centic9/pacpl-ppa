@@ -5,6 +5,6 @@ config.status
 Makefile
 pacpl
 pacpl.1.gz
-patches/
 pacpl.in.orig
 configure
+debian/files

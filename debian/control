@@ -2,13 +2,16 @@ Source: pacpl
 Maintainer: Matteo Cypriani <mcy@lm7.fr>
 Section: sound
 Priority: optional
-Build-Depends: debhelper-compat (= 13),
+Build-Depends: debhelper (>= 12),
                libcddb-perl,
                libcddb-get-perl,
                libmp3-tag-perl,
                libaudio-scan-perl,
                libaudio-flac-header-perl,
-               libparallel-forkmanager-perl
+               libparallel-forkmanager-perl,
+               libaudio-musepack-perl,
+               libaudio-wma-perl,
+               libcddb-perl
 Standards-Version: 4.6.2
 Rules-Requires-Root: no
 Vcs-Browser: https://salsa.debian.org/debian/pacpl
@@ -24,6 +27,8 @@ Depends: ${perl:Depends},
          libmp3-tag-perl,
          libaudio-scan-perl,
          libaudio-flac-header-perl,
+         libaudio-musepack-perl,
+         libaudio-wma-perl,
          libparallel-forkmanager-perl,
          libstring-shellquote-perl,
          vorbis-tools
@@ -33,6 +38,7 @@ Recommends: cdparanoia,
             flac,
             lame,
             mplayer,
+            mppenc,
             musepack-tools,
             normalize-audio,
             opus-tools,
@@ -42,7 +48,8 @@ Recommends: cdparanoia,
             wavpack
 Suggests: faac,
           flake,
-          twolame
+          twolame,
+          libjmac-java
 Description: multi-purpose audio converter/ripper/tagger script
  Perl Audio Converter is a tool for converting multiple audio types from one
  format to another using various external encoders/decoders.

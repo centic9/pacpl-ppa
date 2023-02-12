@@ -1,0 +1,48 @@
+Index: git/codecs.conf
+===================================================================
+--- git.orig/codecs.conf	2020-10-26 07:40:27.404976182 +0100
++++ git/codecs.conf	2020-10-26 07:40:27.400976181 +0100
+@@ -24,6 +24,12 @@
+ 
+ AAC = faac,faad
+ 
++# APE #
++# encoders: jmac, mac
++# decoders: jmac, mac
++
++APE = jmac,jmac
++
+ # AC3 #
+ # E: aften, avconv, ffmpeg
+ # D: avconv, ffmpeg, mplayer
+Index: git/pacpl.in
+===================================================================
+--- git.orig/pacpl.in	2020-10-26 07:40:27.404976182 +0100
++++ git/pacpl.in	2020-10-26 07:40:27.404976182 +0100
+@@ -699,6 +699,13 @@
+ 
+                                         PROMPT => { ACOMP => 1 },
+                                      },
++                              jmac => {
++                                        NAME => "java",
++                                        ESTR => sub {
++                                                      "-jar /usr/share/java/jmac.jar c2 %i %o"
++                                                    },
++                                     },
++
+                             },
+                 
+                 DECODER => {
+@@ -716,7 +723,11 @@
+                                        NAME => 'avconv',
+                                        DSTR => sub { "-y -i %i $dopts %o" },
+                                      },
+-                           },
++                              jmac => {
++                                        NAME => "java",
++                                        DSTR => sub { "-jar /usr/share/java/jmac.jar d %i %o" },
++                                     },
++			   },
+ 
+                 TAGS    => {
+                              READ   => 1,

@@ -11,6 +11,18 @@ pacpl (6.1.3-1) unstable; urgency=medium
 
  -- Matteo Cypriani <mcy@lm7.fr>  Wed, 01 Feb 2023 22:04:56 +0100
 
+pacpl (6.1.2-2ubuntu0~ppa2) jammy; urgency=medium
+
+  * Reupload for Jammy
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sat, 17 Sep 2022 22:16:02 +0200
+
+pacpl (6.1.2-2ubuntu0~ppa1) focal; urgency=medium
+
+  * Backport to Focal
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Thu, 21 Oct 2021 21:16:56 +0200
+
 pacpl (6.1.2-2) unstable; urgency=medium
 
   * New source-only upload (Closes: #981149).
@@ -42,12 +54,24 @@ pacpl (6.1.2-1) unstable; urgency=medium
 
  -- Matteo Cypriani <mcy@lm7.fr>  Fri, 08 Jan 2021 21:29:47 +0100
 
+pacpl (6.1.2-0ubuntu0~ppa1) focal; urgency=medium
+
+  * New upstream version.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Mon, 26 Oct 2020 07:31:03 +0100
+
 pacpl (6.1.0-1.1) unstable; urgency=medium
 
   * Non maintainer upload by the Reproducible Builds team.
   * No source change upload to rebuild on buildd with .buildinfo files.
 
  -- Holger Levsen <holger@debian.org>  Sat, 02 Jan 2021 01:41:13 +0100
+
+pacpl (6.1.0-1ubuntu0~ppa1) bionic; urgency=medium
+
+  * Backport latest release to Bionic.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Mon, 19 Nov 2018 20:57:58 +0100
 
 pacpl (6.1.0-1) unstable; urgency=medium
 
@@ -77,6 +101,12 @@ pacpl (5.1.0-1) unstable; urgency=medium
   * Bump Standards-Version to 4.1.3 (no changes needed).
 
  -- Matteo Cypriani <mcy@lm7.fr>  Sun, 18 Mar 2018 15:09:14 +0100
+
+pacpl (5.0.1-1ubuntu0~ppa1) xenial; urgency=medium
+
+  * Backport latest release
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Fri, 25 Nov 2016 17:39:42 +0100
 
 pacpl (5.0.1-1) unstable; urgency=medium
 
@@ -116,6 +146,42 @@ pacpl (5.0.1-1) unstable; urgency=medium
 
  -- Matteo Cypriani <mcy@lm7.fr>  Thu, 24 Nov 2016 12:42:37 -0500
 
+pacpl (5.0.1-0ubuntu0~ppa5) xenial; urgency=medium
+
+  * Rebuild for Xenial.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sun, 07 Aug 2016 09:58:52 +0200
+
+pacpl (5.0.1-0ubuntu0~ppa4) trusty; urgency=medium
+
+  * Fix installing README and gui file
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Mon, 13 Oct 2014 19:36:02 +0200
+
+pacpl (5.0.1-0ubuntu0~ppa3) trusty; urgency=medium
+
+  * Some more changes to build successfully.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Mon, 13 Oct 2014 00:02:55 +0200
+
+pacpl (5.0.1-0ubuntu0~ppa2) trusty; urgency=medium
+
+  * Add missing dependency on libparallel-forkmanager-perl and libcddb-perl.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sun, 12 Oct 2014 23:39:44 +0200
+
+pacpl (5.0.1-0ubuntu0~ppa1) trusty; urgency=medium
+
+  * Re-apply some patches to latest version 5.0.1, some patches are applied now.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Thu, 26 Jun 2014 22:01:18 +0200
+
+pacpl (4.0.5-7.1ubuntu0~ppa1) precise; urgency=low
+
+  * Rebase to 4.0.5-7.1 debian version.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sun, 30 Sep 2012 00:19:58 +0200
+
 pacpl (4.0.5-7.1) unstable; urgency=low
 
   * Non-maintainer upload.
@@ -125,6 +191,33 @@ pacpl (4.0.5-7.1) unstable; urgency=low
       Ogg::Vorbis::Header. (Closes: #655405)
 
  -- Tim Retout <diocles@debian.org>  Mon, 09 Apr 2012 22:41:38 +0100
+
+pacpl (4.0.5-7ubuntu1~ppa4) precise; urgency=low
+
+  * Upload for Precise.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sun, 06 May 2012 10:51:52 +0200
+
+pacpl (4.0.5-7ubuntu1~ppa2) lucid; urgency=low
+
+  * Add runtime dependency on Audio::Scan as well.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sun, 20 Nov 2011 19:41:00 +0100
+
+pacpl (4.0.5-7ubuntu1~ppa1) lucid; urgency=low
+
+  * Add patch which uses Audio::Scan instead of Audio::APETags, 
+   (LP: #892610.)
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sun, 20 Nov 2011 10:02:57 +0100
+
+pacpl (4.0.5-7ubuntu0+ppa1) lucid; urgency=low
+
+  * Upport changes to -7 from debian, remaining patches
+     - add ape using jmac and java
+     - add mp2 using twolame
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Tue, 06 Sep 2011 23:04:00 +0200
 
 pacpl (4.0.5-7) unstable; urgency=low
 
@@ -181,6 +274,26 @@ pacpl (4.0.5-4) unstable; urgency=low
     - bump up Standards-Version to 3.9.1 (no changes).
 
  -- Cristian Greco <cristian@regolo.cc>  Mon, 03 Jan 2011 18:02:44 +0100
+
+pacpl (4.0.5-3ubuntu0~ppa3) lucid; urgency=low
+
+  * Try to use twolame for mp2, not for mp3, which is incorrect.
+  * Avoid having large patches due to cut off blanks at line-end.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Wed, 05 Jan 2011 19:03:02 +0100
+
+pacpl (4.0.5-3ubuntu0~ppa2) lucid; urgency=low
+
+  * Upload for lucid because quilt format 3.0 is not supported in karmic.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sat, 20 Mar 2010 21:37:30 +0100
+
+pacpl (4.0.5-3ubuntu0~ppa1) karmic; urgency=low
+
+  * Add support for ape format via jmac java application from libjmac-java as
+    application mac is not available at all on Ubuntu.
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Sat, 20 Mar 2010 20:39:17 +0100
 
 pacpl (4.0.5-3) unstable; urgency=low
 
