@@ -9,8 +9,8 @@ Forwarded: not-needed
 Last-Update: 2016-11-24
 Index: git/plugins/kde/pacpl.desktop
 ===================================================================
---- git.orig/plugins/kde/pacpl.desktop	2020-10-26 07:40:28.556976606 +0100
-+++ git/plugins/kde/pacpl.desktop	2020-10-26 07:40:28.544976601 +0100
+--- git.orig/plugins/kde/pacpl.desktop	2023-02-12 16:15:26.308105379 +0100
++++ git/plugins/kde/pacpl.desktop	2023-02-12 16:15:26.304105364 +0100
 @@ -2,13 +2,13 @@
  Type=Service
  ServiceTypes=KonqPopupMenu/Plugin
@@ -30,8 +30,8 @@ Index: git/plugins/kde/pacpl.desktop
  
 Index: git/plugins/gnome/nautilus/install.sh
 ===================================================================
---- git.orig/plugins/gnome/nautilus/install.sh	2020-10-26 07:40:28.556976606 +0100
-+++ git/plugins/gnome/nautilus/install.sh	2020-10-26 07:40:28.544976601 +0100
+--- git.orig/plugins/gnome/nautilus/install.sh	2023-02-12 16:15:26.308105379 +0100
++++ git/plugins/gnome/nautilus/install.sh	2023-02-12 16:15:26.304105364 +0100
 @@ -1,9 +1,9 @@
 -#!/usr/bin/bash
 +#!/bin/sh
@@ -48,8 +48,8 @@ Index: git/plugins/gnome/nautilus/install.sh
 +echo "Done.."
 Index: git/plugins/gnome/nemo/pacpl.nemo_action
 ===================================================================
---- git.orig/plugins/gnome/nemo/pacpl.nemo_action	2020-10-26 07:40:28.556976606 +0100
-+++ git/plugins/gnome/nemo/pacpl.nemo_action	2020-10-26 07:40:28.548976603 +0100
+--- git.orig/plugins/gnome/nemo/pacpl.nemo_action	2023-02-12 16:15:26.308105379 +0100
++++ git/plugins/gnome/nemo/pacpl.nemo_action	2023-02-12 16:15:26.304105364 +0100
 @@ -1,7 +1,7 @@
  [Nemo Action]
  Name=Perl Audio Converter
@@ -61,8 +61,8 @@ Index: git/plugins/gnome/nemo/pacpl.nemo_action
  Extensions=dir;3G2;3GP;AAC;AC3;ADTS;AIF;AIFF;AMR;APE;AU;AVR;BONK;CAF;CDR;DTS;FAP;FLA;FLAC;IRCAM;LA;M4A;MAT;MAT4;MAT5;MMF;MP2;MP3;MP3HD;MP4;MPC;MPP;NIST;OFF;OFR;OFS;OGG;OPUS;PAF;PVF;RA;RAW;RM;SD2;SF;SHN;SMP;SND;SPX;TTA;VOC;W64;WAV;WMA;WV
 Index: git/plugins/gnome/thunar/install-gnome.sh
 ===================================================================
---- git.orig/plugins/gnome/thunar/install-gnome.sh	2020-10-26 07:40:28.556976606 +0100
-+++ git/plugins/gnome/thunar/install-gnome.sh	2020-10-26 07:40:28.548976603 +0100
+--- git.orig/plugins/gnome/thunar/install-gnome.sh	2023-02-12 16:15:26.308105379 +0100
++++ git/plugins/gnome/thunar/install-gnome.sh	2023-02-12 16:15:26.304105364 +0100
 @@ -4,16 +4,14 @@
  
  CONFIG=${HOME}/.config/Thunar/uca.xml
@@ -84,8 +84,8 @@ Index: git/plugins/gnome/thunar/install-gnome.sh
   	<directories/>
 Index: git/plugins/gnome/thunar/INSTALL
 ===================================================================
---- git.orig/plugins/gnome/thunar/INSTALL	2020-10-26 07:40:28.556976606 +0100
-+++ git/plugins/gnome/thunar/INSTALL	2020-10-26 07:40:28.548976603 +0100
+--- git.orig/plugins/gnome/thunar/INSTALL	2023-02-12 16:15:26.308105379 +0100
++++ git/plugins/gnome/thunar/INSTALL	2023-02-12 16:15:26.308105379 +0100
 @@ -1,16 +1,16 @@
  You will have to install the plugin manually using the following:
  

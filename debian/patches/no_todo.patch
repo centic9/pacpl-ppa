@@ -4,8 +4,10 @@ Author: Matteo Cypriani <mcy@lm7.fr>
 Origin: vendor
 Forwarded: Philip Lyons <vorzox@gmail.com>
 Last-Update: 2023-02-01
---- a/Makefile.am
-+++ b/Makefile.am
+Index: git/Makefile.am
+===================================================================
+--- git.orig/Makefile.am	2023-02-12 16:15:27.164108583 +0100
++++ git/Makefile.am	2023-02-12 16:15:27.160108568 +0100
 @@ -24,7 +24,7 @@
  # Modules & Documentation
  #
@@ -15,8 +17,10 @@ Last-Update: 2023-02-01
  
  LANG_MODS = po/*
  EXTRAS    = extra/*
---- a/Makefile.in
-+++ b/Makefile.in
+Index: git/Makefile.in
+===================================================================
+--- git.orig/Makefile.in	2023-02-12 16:15:27.164108583 +0100
++++ git/Makefile.in	2023-02-12 16:15:27.160108568 +0100
 @@ -286,7 +286,7 @@
  #
  # Modules & Documentation

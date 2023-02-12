@@ -6,11 +6,11 @@ Last-Updated: 2011-06-20
 
 Index: git/pacpl.in
 ===================================================================
---- git.orig/pacpl.in	2020-10-26 07:40:24.272975029 +0100
-+++ git/pacpl.in	2020-10-26 07:40:24.264975026 +0100
-@@ -2995,13 +2995,41 @@
-           when (/^flac$|^fla$/) {
-                                        my $flac_tag = Audio::FLAC::Header->scan_tags($in_file)->{tags};
+--- git.orig/pacpl.in	2023-02-12 16:15:23.852096187 +0100
++++ git/pacpl.in	2023-02-12 16:15:23.852096187 +0100
+@@ -2996,13 +2996,41 @@
+                                        my $flac_file = Audio::FLAC::Header->new($in_file);
+                                        my $flac_tag = $flac_file->tags();
  
 -                                          $tag_name{title}   = $flac_tag->{TITLE}       if $flac_tag->{TITLE};
 -                                          $tag_name{track}   = $flac_tag->{TRACKNUMBER} if $flac_tag->{TRACKNUMBER};
