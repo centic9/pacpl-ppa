@@ -7,3 +7,4 @@
 # applied upstream: typos.patch
 plugins.patch
 no_todo.patch
+flac_decoding
