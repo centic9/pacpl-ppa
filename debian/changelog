@@ -1,3 +1,9 @@
+pacpl (6.1.3-1ubuntu0~ppa2) noble; urgency=medium
+
+  * Upload to noble
+
+ -- Dominik Stadler (Ubuntu key) <dominik.stadler@gmx.at>  Fri, 11 Oct 2024 15:20:40 +0200
+
 pacpl (6.1.3-1ubuntu0~ppa1) jammy; urgency=medium
 
   * Backport to Jammy
