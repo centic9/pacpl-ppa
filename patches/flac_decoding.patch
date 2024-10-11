@@ -5,11 +5,9 @@ Author: Matteo Cypriani <mcy@lm7.fr>
 Origin: vendor
 Forwarded: Philip Lyons <vorzox@gmail.com>
 Last-Update: 2021-01-08
-Index: git/pacpl.in
-===================================================================
---- git.orig/pacpl.in	2021-10-21 21:17:45.808566990 +0200
-+++ git/pacpl.in	2021-10-21 21:17:45.804566990 +0200
-@@ -3004,7 +3004,8 @@
+--- a/pacpl.in
++++ b/pacpl.in
+@@ -2993,7 +2993,8 @@
                                  }
  
            when (/^flac$|^fla$/) {
@@ -17,5 +15,5 @@ Index: git/pacpl.in
 +                                       my $flac_file = Audio::FLAC::Header->new($in_file);
 +                                       my $flac_tag = $flac_file->tags();
  
- 									   if ($flac_tag->{title}) {
- 										   $tag_name{title}   = $flac_tag->{title};
+                                           $tag_name{title}   = $flac_tag->{TITLE}       if $flac_tag->{TITLE};
+                                           $tag_name{track}   = $flac_tag->{TRACKNUMBER} if $flac_tag->{TRACKNUMBER};
